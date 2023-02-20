@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Fish Compatibility</string>
+    <string name="compare_fish_button">Compare Fish</string>
+    <string name="virtual_tank_button">Virtual Tank</string>
+    <string name="search_button">Search Fish and Diseases</string>
+    <string name="logo_content_desc">Logo for Fish Compatibility</string>
 </resources>
