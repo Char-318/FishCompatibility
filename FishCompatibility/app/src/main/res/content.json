@@ -1,0 +1,1230 @@
+{
+    "fish":[
+        {
+            "name":"Goldfish",
+            "scientificName":"Carassius auratus",
+            "aliases":[],
+            "minTemp":10,
+            "maxTemp":21,
+            "minAcidity":6,
+            "maxAcidity":8,
+            "minGenHard":5,
+            "maxGenHard":19,
+            "minCarbHard":6,
+            "maxCarbHard":16,
+            "vore":"Herbivore",
+            "foodType":[
+                {
+                    "0":"Goldfish flakes",
+                    "1":"Goldfish pellets"
+                }
+            ],
+            "averageSize":25,
+            "edibleSize":7,
+            "lifeExpectancy":15.5,
+            "minWaterCurrent":0,
+            "maxWaterCurrent":2,
+            "substrate":[
+                {
+                    "0":"Gravel"
+                }
+            ],
+            "image":"",
+            "minSwimLevel":1,
+            "maxSwimLevel":1,
+            "finNipper":false,
+            "longFins":false,
+            "aggressive":false,
+            "hardy":true,
+            "territorial":false,
+            "minPopulation":2,
+            "maxPopulation":0,
+            "fast":true
+        },
+        {
+            "name":"Fancy Goldfish",
+            "scientificName":"Carassius auratus",
+            "aliases":[
+                {
+                    "0":"Fantail goldfish",
+                    "1":"Blackmoor goldfish",
+                    "2":"Black telescope",
+                    "3":"Bubble eye goldfish",
+                    "4":"Veiltail goldfish",
+                    "5":"Lionhead goldfish",
+                    "6":"Pearlscale goldfish",
+                    "7":"Wakin goldfish"
+                }
+            ],
+            "minTemp":15,
+            "maxTemp":23,
+            "minAcidity":6.5,
+            "maxAcidity":8.5,
+            "minGenHard":8,
+            "maxGenHard":18,
+            "minCarbHard":5,
+            "maxCarbHard":15,
+            "vore":"Omnivore",
+            "foodType":[
+                {
+                    "0":"Slow sinking food"
+                }
+            ],
+            "averageSize":20,
+            "edibleSize":7,
+            "lifeExpectancy":12.5,
+            "minWaterCurrent":0,
+            "maxWaterCurrent":0,
+            "substrate":[
+                {
+                    "0":"Gravel"
+                }
+            ],
+            "image":"",
+            "minSwimLevel":1,
+            "maxSwimLevel":1,
+            "finNipper":false,
+            "longFins":true,
+            "aggressive":false,
+            "hardy":true,
+            "territorial":false,
+            "minPopulation":2,
+            "maxPopulation":0,
+            "fast":false
+        },
+        {
+            "name":"Endler Guppy",
+            "scientificName":"Poecilia wingei",
+            "aliases":[
+                {
+                    "0":"Endler's livebearer",
+                    "1":"Endler"
+                }
+            ],
+            "minTemp":22,
+            "maxTemp":28,
+            "minAcidity":7,
+            "maxAcidity":8,
+            "minGenHard":8,
+            "maxGenHard":18,
+            "minCarbHard":5,
+            "maxCarbHard":15,
+            "vore":"Omnivore",
+            "foodType":[
+                {
+                    "0":"Algae flakes",
+                    "1":"Algae granules"
+                }
+            ],
+            "averageSize":2.5,
+            "edibleSize":0,
+            "lifeExpectancy":2.5,
+            "minWaterCurrent":0,
+            "maxWaterCurrent":2,
+            "substrate":[
+                {
+                    "0":"Gravel",
+                    "1":"Sand"
+                }
+            ],
+            "image":"",
+            "minSwimLevel":0,
+            "maxSwimLevel":2,
+            "finNipper":false,
+            "longFins":false,
+            "aggressive":false,
+            "hardy":true,
+            "territorial":false,
+            "minPopulation":3,
+            "maxPopulation":0,
+            "fast":true
+        },
+        {
+            "name":"Hillstream Loach",
+            "scientificName":"Balitoridae",
+            "aliases":[
+                {
+                    "0":"River loach"
+                }
+            ],
+            "minTemp":18,
+            "maxTemp":24,
+            "minAcidity":6.5,
+            "maxAcidity":8,
+            "minGenHard":4,
+            "maxGenHard":12,
+            "minCarbHard":3,
+            "maxCarbHard":10,
+            "vore":"Omnivore",
+            "foodType":[
+                {
+                    "0":"Sinking catfish pellets"
+                }
+            ],
+            "averageSize":6,
+            "edibleSize":1,
+            "lifeExpectancy":9,
+            "minWaterCurrent":2,
+            "maxWaterCurrent":3,
+            "substrate":[
+                {
+                    "0":"Sand",
+                    "1":"Fine gravel"
+                }
+            ],
+            "image":"",
+            "minSwimLevel":0,
+            "maxSwimLevel":0,
+            "finNipper":false,
+            "longFins":true,
+            "aggressive":false,
+            "hardy":true,
+            "territorial":true,
+            "minPopulation":6,
+            "maxPopulation":0,
+            "fast":true
+        },
+        {
+            "name":"Weather Loach",
+            "scientificName":"Misgurnus Anguillicaudatus",
+            "aliases":[
+                {
+                    "0":"Pond loach",
+                    "1":"Dojo loach",
+                    "2":"Oriental weatherloach",
+                    "3":"Oriental weatherfish"
+                }
+            ],
+            "minTemp":18,
+            "maxTemp":24,
+            "minAcidity":6.5,
+            "maxAcidity":8,
+            "minGenHard":4,
+            "maxGenHard":12,
+            "minCarbHard":3,
+            "maxCarbHard":10,
+            "vore":"Omnivore",
+            "foodType":[
+                {
+                    "0":"Sinking catfish pellets"
+                }
+            ],
+            "averageSize":25,
+            "edibleSize":5,
+            "lifeExpectancy":10,
+            "minWaterCurrent":0,
+            "maxWaterCurrent":1,
+            "substrate":[
+                {
+                    "0":"Fine gravel",
+                    "1":"Sand"
+                }
+            ],
+            "image":"",
+            "minSwimLevel":0,
+            "maxSwimLevel":0,
+            "finNipper":false,
+            "longFins":true,
+            "aggressive":false,
+            "hardy":true,
+            "territorial":false,
+            "minPopulation":3,
+            "maxPopulation":0,
+            "fast":false
+        },
+        {
+            "name":"Betta",
+            "scientificName":"Betta splendens",
+            "aliases":[
+                {
+                    "0":"Siamese fighting fish"
+                }
+            ],
+            "minTemp":20,
+            "maxTemp":28,
+            "minAcidity":6,
+            "maxAcidity":8,
+            "minGenHard":4,
+            "maxGenHard":12,
+            "minCarbHard":3,
+            "maxCarbHard":10,
+            "vore":"Omnivore",
+            "foodType":[
+                {
+                    "0":"Betta flakes",
+                    "1":"Betta granules"
+                }
+            ],
+            "averageSize":7,
+            "edibleSize":2,
+            "lifeExpectancy":3.5,
+            "minWaterCurrent":0,
+            "maxWaterCurrent":1,
+            "substrate":[
+                {
+                    "0":"Sand",
+                    "1":"Gravel"
+                }
+            ],
+            "image":"",
+            "minSwimLevel":1,
+            "maxSwimLevel":2,
+            "finNipper":true,
+            "longFins":true,
+            "aggressive":true,
+            "hardy":false,
+            "territorial":true,
+            "minPopulation":1,
+            "maxPopulation":1,
+            "fast":false
+        },
+        {
+            "name":"Glass Catfish",
+            "scientificName":"Kryptopterus vitreolus",
+            "aliases":[
+                {
+                    "0":"Ghost catfish",
+                    "1":"Phantom catfish"
+                }
+            ],
+            "minTemp":22,
+            "maxTemp":27,
+            "minAcidity":6,
+            "maxAcidity":8,
+            "minGenHard":4,
+            "maxGenHard":18,
+            "minCarbHard":3,
+            "maxCarbHard":15,
+            "vore":"Omnivore",
+            "foodType":[
+                {
+                    "0":"Flakes",
+                    "1":"Pellets"
+                }
+            ],
+            "averageSize":12.5,
+            "edibleSize":3,
+            "lifeExpectancy":7.5,
+            "minWaterCurrent":2,
+            "maxWaterCurrent":2,
+            "substrate":[
+                {
+                    "0":"Fine gravel",
+                    "1":"Sand"
+                }
+            ],
+            "image":"",
+            "minSwimLevel":1,
+            "maxSwimLevel":1,
+            "finNipper":false,
+            "longFins":false,
+            "aggressive":false,
+            "hardy":false,
+            "territorial":false,
+            "minPopulation":5,
+            "maxPopulation":0,
+            "fast":true
+        },
+        {
+            "name":"Pleco",
+            "scientificName":"Hypostomus plecostomus",
+            "aliases":[
+                {
+                    "0":"Suckermouth catfish"
+                }
+            ],
+            "minTemp":22,
+            "maxTemp":27,
+            "minAcidity":6,
+            "maxAcidity":8,
+            "minGenHard":4,
+            "maxGenHard":18,
+            "minCarbHard":3,
+            "maxCarbHard":15,
+            "vore":"Herbivore",
+            "foodType":[
+                {
+                    "0":"Sinking catfish pellets"
+                }
+            ],
+            "averageSize":38,
+            "edibleSize":0,
+            "lifeExpectancy":12.5,
+            "minWaterCurrent":2,
+            "maxWaterCurrent":3,
+            "substrate":[
+                {
+                    "0":"Fine gravel",
+                    "1":"Sand"
+                }
+            ],
+            "image":"",
+            "minSwimLevel":0,
+            "maxSwimLevel":0,
+            "finNipper":false,
+            "longFins":true,
+            "aggressive":false,
+            "hardy":true,
+            "territorial":true,
+            "minPopulation":1,
+            "maxPopulation":1,
+            "fast":false
+        },
+        {
+            "name":"Bronze Corydora",
+            "scientificName":"Corydoras aeneus",
+            "aliases":[
+                {
+                    "0":"Bronze cory",
+                    "1":"Green cory"
+                }
+            ],
+            "minTemp":17,
+            "maxTemp":27,
+            "minAcidity":6,
+            "maxAcidity":8,
+            "minGenHard":4,
+            "maxGenHard":12,
+            "minCarbHard":3,
+            "maxCarbHard":10,
+            "vore":"Omnivore",
+            "foodType":[
+                {
+                    "0":"Sinking catfish pellets"
+                }
+            ],
+            "averageSize":6,
+            "edibleSize":0,
+            "lifeExpectancy":10,
+            "minWaterCurrent":0,
+            "maxWaterCurrent":1,
+            "substrate":[
+                {
+                    "0":"Fine gravel",
+                    "1":"Sand"
+                }
+            ],
+            "image":"",
+            "minSwimLevel":0,
+            "maxSwimLevel":0,
+            "finNipper":false,
+            "longFins":true,
+            "aggressive":false,
+            "hardy":true,
+            "territorial":false,
+            "minPopulation":5,
+            "maxPopulation":0,
+            "fast":true
+        },
+        {
+            "name":"Molly",
+            "scientificName":"Poecilia sphenops",
+            "aliases":[
+                {
+                    "0":"Short-finned molly",
+                    "1":"Common molly"
+                }
+            ],
+            "minTemp":20,
+            "maxTemp":28,
+            "minAcidity":7,
+            "maxAcidity":8,
+            "minGenHard":8,
+            "maxGenHard":18,
+            "minCarbHard":5,
+            "maxCarbHard":15,
+            "vore":"Omnivore",
+            "foodType":[
+                {
+                    "0":"Algae flakes",
+                    "1":"Algae granules"
+                }
+            ],
+            "averageSize":10,
+            "edibleSize":0,
+            "lifeExpectancy":3.5,
+            "minWaterCurrent":0,
+            "maxWaterCurrent":1,
+            "substrate":[
+                {
+                    "0":"Gravel",
+                    "1":"Sand"
+                }
+            ],
+            "image":"",
+            "minSwimLevel":0,
+            "maxSwimLevel":2,
+            "finNipper":true,
+            "aggressive":false,
+            "hardy":true,
+            "territorial":true,
+            "minPopulation":3,
+            "maxPopulation":0,
+            "fast":true
+        },
+        {
+            "name":"Danio",
+            "scientificName":"Danio",
+            "aliases":[],
+            "minTemp":17,
+            "maxTemp":27,
+            "minAcidity":6.5,
+            "maxAcidity":8,
+            "minGenHard":4,
+            "maxGenHard":12,
+            "minCarbHard":3,
+            "maxCarbHard":10,
+            "vore":"Omnivore",
+            "foodType":[
+                {
+                    "0":"Flakes",
+                    "1":"Granules"
+                }
+            ],
+            "averageSize":5,
+            "edibleSize":1,
+            "lifeExpectancy":3.5,
+            "minWaterCurrent":2,
+            "maxWaterCurrent":2,
+            "substrate":[
+                {
+                    "0":"Gravel",
+                    "1":"Sand"
+                }
+            ],
+            "image":"",
+            "minSwimLevel":1,
+            "maxSwimLevel":2,
+            "finNipper":true,
+            "longFins":false,
+            "aggressive":false,
+            "hardy":true,
+            "territorial":true,
+            "minPopulation":5,
+            "maxPopulation":0,
+            "fast":true
+        },
+        {
+            "name":"Swordtail",
+            "scientificName":"Xiphophorus hellerii",
+            "aliases":[],
+            "minTemp":22,
+            "maxTemp":27,
+            "minAcidity":7,
+            "maxAcidity":8,
+            "minGenHard":4,
+            "maxGenHard":12,
+            "minCarbHard":3,
+            "maxCarbHard":10,
+            "vore":"Omnivore",
+            "foodType":[
+                {
+                    "0":"Algae flakes",
+                    "1":"Algae granules"
+                }
+            ],
+            "averageSize":10,
+            "edibleSize":0,
+            "lifeExpectancy":4,
+            "minWaterCurrent":2,
+            "maxWaterCurrent":2,
+            "substrate":[
+                {
+                    "0":"Sand",
+                    "1":"Gravel"
+                }
+            ],
+            "image":"",
+            "minSwimLevel":0,
+            "maxSwimLevel":2,
+            "finNipper":false,
+            "longFins":false,
+            "aggressive":false,
+            "hardy":true,
+            "territorial":true,
+            "minPopulation":3,
+            "maxPopulation":0,
+            "fast":true
+        },
+        {
+            "name":"Gourami",
+            "scientificName":"Osphronemidae",
+            "aliases":[],
+            "minTemp":20,
+            "maxTemp":28,
+            "minAcidity":6,
+            "maxAcidity":8,
+            "minGenHard":4,
+            "maxGenHard":12,
+            "minCarbHard":3,
+            "maxCarbHard":10,
+            "vore":"Omnivore",
+            "foodType":[
+                {
+                    "0":"Flakes",
+                    "1":"Granules",
+                    "2":"Pellets"
+                }
+            ],
+            "averageSize":13.5,
+            "edibleSize":4,
+            "lifeExpectancy":3.5,
+            "minWaterCurrent":0,
+            "maxWaterCurrent":0,
+            "substrate":[
+                {
+                    "0":"gravel",
+                    "1":"Sand"
+                }
+            ],
+            "image":"",
+            "minSwimLevel":1,
+            "maxSwimLevel":2,
+            "finNipper":true,
+            "longFins":true,
+            "aggressive":true,
+            "hardy":false,
+            "territorial":true,
+            "minPopulation":3,
+            "maxPopulation":0,
+            "fast":false
+        },
+        {
+            "name":"Dwarf Cichlid",
+            "scientificName":"Apistogramma cichlid",
+            "aliases":[
+                
+            ],
+            "minTemp":22,
+            "maxTemp":27,
+            "minAcidity":6,
+            "maxAcidity":8,
+            "minGenHard":4,
+            "maxGenHard":12,
+            "minCarbHard":3,
+            "maxCarbHard":10,
+            "vore":"Omnivore",
+            "foodType":[
+                {
+                    "0":"Flakes",
+                    "1":"Granules"
+                }
+            ],
+            "averageSize":7.5,
+            "edibleSize":2,
+            "lifeExpectancy":7.5,
+            "minWaterCurrent":1,
+            "maxWaterCurrent":2,
+            "substrate":[
+                {
+                    "0":"Gravel",
+                    "1":"Sand"
+                }
+            ],
+            "image":"",
+            "minSwimLevel":0,
+            "maxSwimLevel":0,
+            "finNipper":true,
+            "longFins":true,
+            "aggressive":true,
+            "hardy":true,
+            "territorial":true,
+            "minPopulation":2,
+            "maxPopulation":0,
+            "fast":false
+        },
+        {
+            "name":"Angelfish",
+            "scientificName":"Pterophyllum scalare",
+            "aliases":[
+                {
+                    "0":"Freshwater angelfish"
+                }
+            ],
+            "minTemp":25,
+            "maxTemp":28,
+            "minAcidity":6.8,
+            "maxAcidity":7,
+            "minGenHard":4,
+            "maxGenHard":12,
+            "minCarbHard":3,
+            "maxCarbHard":10,
+            "vore":"Omnivore",
+            "foodType":[
+                {
+                    "0":"Protien flakes",
+                    "1":"Protein pellets"
+                }
+            ],
+            "averageSize":9,
+            "edibleSize":2.5,
+            "lifeExpectancy":11,
+            "minWaterCurrent":1,
+            "maxWaterCurrent":1,
+            "substrate":[
+                {
+                    "0":"Sand",
+                    "1":"Mud"
+                }
+            ],
+            "image":"",
+            "minSwimLevel":1,
+            "maxSwimLevel":1,
+            "finNipper":true,
+            "longFins":true,
+            "aggressive":true,
+            "hardy":true,
+            "territorial":true,
+            "minPopulation":2,
+            "maxPopulation":0,
+            "fast":false
+        },
+        {
+            "name":"Platy",
+            "scientificName":"Xiphophorus maculatus",
+            "aliases":[
+                {
+                    "0":"Southern platyfish",
+                    "1":"Common platy",
+                    "2":"Moonfish"
+                }
+            ],
+            "minTemp":17,
+            "maxTemp":27,
+            "minAcidity":7,
+            "maxAcidity":8,
+            "minGenHard":4,
+            "maxGenHard":12,
+            "minCarbHard":3,
+            "maxCarbHard":10,
+            "vore":"Omnivore",
+            "foodType":[
+                {
+                    "0":"Algae flakes",
+                    "1":"Algae granules"
+                }
+            ],
+            "averageSize":7,
+            "edibleSize":1,
+            "lifeExpectancy":3.5,
+            "minWaterCurrent":1,
+            "maxWaterCurrent":2,
+            "substrate":[
+                {
+                    "0":"Sand",
+                    "1":"Gravel"
+                }
+            ],
+            "image":"",
+            "minSwimLevel":1,
+            "maxSwimLevel":1,
+            "finNipper":true,
+            "longFins":false,
+            "aggressive":false,
+            "hardy":true,
+            "territorial":false,
+            "minPopulation":3,
+            "maxPopulation":0,
+            "fast":true
+        }
+    ],
+    "diseases":[
+        {
+            "name":"Ammonia Poisoning",
+            "alias":[],
+            "symptoms":[
+                {
+                    "0":"Rapid breathing",
+                    "1":"Gasping",
+                    "2":"Mucus hyperproduction",
+                    "3":"Reddened skin",
+                    "4":"Darting and twitching"
+                }
+            ],
+            "causes":[
+                {
+                    "0":"Overcrowding",
+                    "1":"Overfeeding",
+                    "2":"Poor filtration",
+                    "3":"Waste matter"
+                }
+            ],
+            "prevention":[
+                {
+                    "0":"Maintain good water quality",
+                    "1":"Check the filter regularly",
+                    "2":"Adding zeolite to fish bags and hospital tanks"
+                }
+            ],
+            "treatment":[
+                {
+                    "0":"Can be adjusted with zeolite or a new matured filter"
+                }
+            ]
+        },
+        {
+            "name":"Carbon Dioxide Poisoning",
+            "alias":[],
+            "symptoms":[
+                {
+                    "0":"Rapid breathing",
+                    "1":"Loss of appetite",
+                    "2":"Reduced growth rate",
+                    "3":"Hypoxia"
+                }
+            ],
+            "causes":[
+                {
+                    "0":"High content of carbon dioxide",
+                    "1":"Transporting fish"
+                }
+            ],
+            "prevention":[
+                {
+                    "0":"Good water circulation",
+                    "1":"Aerate heavily planted aquariums",
+                    "2":"Avoid overcrowding"
+                }
+            ],
+            "treatment":[
+                {
+                    "0":"Increase aeration and improve water circulation",
+                    "1":"Move an asphyxiated fish back and forth in the water until it starts breathing"
+                }
+            ]
+        },
+        {
+            "name":"Gas Bubble Poisoning",
+            "alias":[],
+            "symptoms":[
+                {
+                    "0":"Blindness",
+                    "1":"Bubbles on the fish, particularly around the gills",
+                    "2":"Lethargy"
+                }
+            ],
+            "causes":[
+                {
+                    "0":"Partial water changes with cold water"
+                }
+            ],
+            "prevention":[
+                {
+                    "0":"Heat new water before adding it to the aquarium"
+                }
+            ],
+            "treatment":[
+                {
+                    "0":"Move the fish to a separate aquarium",
+                    "1":"Aerate or agitate the water"
+                }
+            ]
+        },
+        {
+            "name":"Hypoxia",
+            "alias":[],
+            "symptoms":[
+                {
+                    "0":"Staring and unresponsive eyes",
+                    "1":"Abnormal colouration",
+                    "2":"Swimming near the surface and gasping",
+                    "3":"Loss of bouyancy",
+                    "4":"Rests at the bottom of the tank",
+                    "5":"Rapid breathing"
+                }
+            ],
+            "causes":[
+                {
+                    "0":"Insufficient oxygen content in the water",
+                    "1":"Increased temperature",
+                    "2":"Not enough aeration",
+                    "3":"Increased bacteria in the tank",
+                    "4":"Gill damage",
+                    "5":"Nitrite damaging the red blood cells",
+                    "6":"High levels of carbon dioxide"
+                }
+            ],
+            "prevention":[
+                {
+                    "0":"Maintain the correct level of aeration"
+                }
+            ],
+            "treatment":[
+                {
+                    "0":"Aerate the aquarium vigourously",
+                    "1":"Partial water change",
+                    "2":"Adding hydrogen peroxide in emergencies",
+                    "3":"Fish with damaged gills may need more oxygen than normal"
+                }
+            ]
+        },
+        {
+            "name":"Anchor Worm",
+            "alias":[],
+            "symptoms":[
+                {
+                    "0":"Y-shaped, elongated parasite on the body",
+                    "1":"Holes in the body",
+                    "2":"Scratching",
+                    "3":"Hypoxia"
+                }
+            ],
+            "causes":[
+                {
+                    "0":"Parasites reproduce on the infected fish and the new ones release and swim onto other fish"
+                }
+            ],
+            "prevention":[
+                {
+                    "0":"Don't buy fish from tank with fish that have visible parasites",
+                    "1":"Avoid putting water from live food into the tank"
+                }
+            ],
+            "treatment":[
+                {
+                    "0":"Isolate the infected fish",
+                    "1":"If the fish is large enough, remove parasites in small batches with forceps and treat the wound with antiseptic",
+                    "2":"Larvae can be removed with medication"
+                }
+            ]
+        },
+        {
+            "name":"Skin Flukes",
+            "alias":[],
+            "symptoms":[
+                {
+                    "0":"Coughing",
+                    "1":"Scratching",
+                    "2":"Mucus hyperproduction",
+                    "3":"Red patches on the skin",
+                    "4":"Ulcers",
+                    "5":"Frayed fins",
+                    "6":"Clamped fins"
+                }
+            ],
+            "causes":[
+                {
+                    "0":"Spread through direct contact",
+                    "1":"Overcrowding",
+                    "2":"Poor aquarium hygiene"
+                }
+            ],
+            "prevention":[
+                {
+                    "0":"Maintain good aquarium hygiene",
+                    "1":"Avoid overcrowding",
+                    "2":"Quarantine new fish"
+                }
+            ],
+            "treatment":[
+                {
+                    "0":"Bath immersion in medication",
+                    "1":"Bath immersion in salt"
+                }
+            ]
+        },
+        {
+            "name":"Ich",
+            "alias":[],
+            "symptoms":[
+                {
+                    "0":"Small white spots",
+                    "1":"Coughing",
+                    "2":"Short darting movements",
+                    "3":"Scratching",
+                    "4":"Frayed fins",
+                    "5":"Twitching fins",
+                    "6":"Increased breathing",
+                    "7":"Gasping",
+                    "8":"Resting at the bottom of the tank"
+                }
+            ],
+            "causes":[
+                {
+                    "0":"Smaller fish are more susceptible",
+                    "1":"Chilling",
+                    "2":"Infected fish",
+                    "3":"Infected water from new fish, live food or plants"
+                }
+            ],
+            "prevention":[
+                {
+                    "0":"Quarantine new fish"
+                }
+            ],
+            "treatment":[
+                {
+                    "0":"Medication",
+                    "1":"Salt",
+                    "2":"Remove parasites from plants and decor"
+                }
+            ]
+        },
+        {
+            "name":"Velvet Disease",
+            "alias":[],
+            "symptoms":[
+                {
+                    "0":"Coughing",
+                    "1":"Small yellow or green spots",
+                    "2":"Scratching",
+                    "3":"Clamped fins",
+                    "4":"Shimmying",
+                    "5":"Fin twitching",
+                    "6":"Mucus hyperproduction",
+                    "7":"Increased breathing rate",
+                    "8":"Lethargy",
+                    "9":"Loss of appetite"
+                }
+            ],
+            "causes":[
+                {
+                    "0":"Parasite feeds beneath the skin, then falls off to reproduce in the substrate"
+                }
+            ],
+            "prevention":[
+                {
+                    "0":"Quarantine new fish"
+                }
+            ],
+            "treatment":[
+                {
+                    "0":"Medication in the water",
+                    "1":"Increase temperature unless infestation is severe",
+                    "2":"Turn off aquarium and room lights"
+                }
+            ]
+        },
+        {
+            "name":"Lymphocystis",
+            "alias":[
+                {
+                    "0":"Cauliflower disease"
+                }
+            ],
+            "symptoms":[
+                {
+                    "0":"Small white spots that grow larger",
+                    "1":"Loss of appetite"
+                }
+            ],
+            "causes":[
+                {
+                    "0":"Not very infectious",
+                    "1":"Spread through damaged skin or ingesting the cysts",
+                    "2":"Spread through direct contact"
+                }
+            ],
+            "prevention":[
+                {
+                    "0":"Quarantine new fish"
+                }
+            ],
+            "treatment":[
+                {
+                    "0":"Quarantine the infected fish",
+                    "1":"Normally disappears on its own",
+                    "2":"Surgery to remove cysts"
+                }
+            ]
+        },
+        {
+            "name":"Fin Rot",
+            "alias":[],
+            "symptoms":[
+                {
+                    "0":"Red spots or streaks on the fins",
+                    "1":"Tears in the fins"
+                }
+            ],
+            "causes":[
+                {
+                    "0":"Spread through the water or from fish",
+                    "1":"Injury",
+                    "2":"Poor water quality",
+                    "3":"Stress"
+                }
+            ],
+            "prevention":[
+                {
+                    "0":"Maintain good water quality",
+                    "1":"Avoid fin nippers"
+                }
+            ],
+            "treatment":[
+                {
+                    "0":"Medication",
+                    "1":"Salt"
+                }
+            ]
+        },
+        {
+            "name":"Fish Tuberculosis",
+            "alias":[],
+            "symptoms":[
+                {
+                    "0":"Pale raised lumps",
+                    "1":"Loss of appetite",
+                    "2":"Weight loss",
+                    "3":"Pale colouration",
+                    "4":"Change in shape",
+                    "5":"Lethargy",
+                    "6":"Skin ulcers"
+                }
+            ],
+            "causes":[
+                {
+                    "0":"Ingesting microbacteria from ulcers, faeces or carcasses",
+                    "1":"Spread through eggs or embryos",
+                    "2":"Poor tank conditions"
+                }
+            ],
+            "prevention":[
+                {
+                    "0":"Isolate potentially infected fish",
+                    "1":"Maintain good aquarium hygiene"
+                }
+            ],
+            "treatment":[
+                {
+                    "0":"Antibiotics",
+                    "1":"Euthanasia"
+                }
+            ]
+        },
+        {
+            "name":"Cotton Wool Disease",
+            "alias":[],
+            "symptoms":[
+                {
+                    "0":"White tufts around a wound",
+                    "1":"Growths may become red or brown"
+                }
+            ],
+            "causes":[
+                {
+                    "0":"Fungi attacking damaged tissues",
+                    "1":"Poor aquarium hygiene",
+                    "2":"Stress",
+                    "3":"Chilling",
+                    "4":"Old age",
+                    "5":"Injuries",
+                    "6":"Disease"
+                }
+            ],
+            "prevention":[
+                {
+                    "0":"Minimise stress",
+                    "1":"Maintain good water conditions"
+                }
+            ],
+            "treatment":[
+                {
+                    "0":"Salt bath immersion in a separate tank",
+                    "1":"Fungicide",
+                    "2":"Gentian violet if the fish is healthy"
+                }
+            ]
+        },
+        {
+            "name":"Gill Rot",
+            "alias":[],
+            "symptoms":[
+                {
+                    "0":"Coughing",
+                    "1":"Yawning",
+                    "2":"Hypoxia",
+                    "3":"Dark red gills",
+                    "4":"Erosion of gill filaments",
+                    "5":"Mucus hyperproduction"
+                }
+            ],
+            "causes":[
+                {
+                    "0":"Spores in the water or from new fish",
+                    "1":"Poor water quality",
+                    "2":"Overcrowding",
+                    "3":"High levels of algae",
+                    "4":"Temperatures over 20 °C"
+                }
+            ],
+            "prevention":[
+                {
+                    "0":"Maintain good water quality"
+                }
+            ],
+            "treatment":[
+                {
+                    "0":"Bath immersion in fungicide",
+                    "1":"Increase aeration"
+                }
+            ]
+        },
+        {
+            "name":"Dropsy",
+            "alias":[],
+            "symptoms":[
+                {
+                    "0":"Bloated body",
+                    "1":"Protruding scales",
+                    "2":"Pale red colouration of the abdomen",
+                    "3":"Lethargy",
+                    "4":"Gasping",
+                    "5":"Rapid breathing",
+                    "6":"Ulcers"
+                }
+            ],
+            "causes":[
+                {
+                    "0":"Bacterial or viral infection",
+                    "1":"Osmoregulatory problems",
+                    "2":"Poor water quality",
+                    "3":"Immune problems",
+                    "4":"Insufficient nutrition"
+                }
+            ],
+            "prevention":[
+                {
+                    "0":"Minimise stress",
+                    "1":"Maintain good water conditions",
+                    "2":"Maintain good diet"
+                }
+            ],
+            "treatment":[
+                {
+                    "0":"Medication"
+                }
+            ]
+        },
+        {
+            "name":"Pop Eye",
+            "alias":[],
+            "symptoms":[
+                {
+                    "0":"Cloudy eyes",
+                    "1":"Bulging eyes"
+                }
+            ],
+            "causes":[
+                {
+                    "0":"Eye flukes",
+                    "1":"Bacterial, viral or fungal infection",
+                    "2":"Vitamin deficiency",
+                    "3":"Osmoregulation problems",
+                    "4":"Poor water quality"
+                }
+            ],
+            "prevention":[
+                {
+                    "0":"Maintain good water quality"
+                }
+            ],
+            "treatment":[
+                {
+                    "0":"Needs urgent attention from a vet",
+                    "1":"Partial water change"
+                }
+            ]
+        }
+    ]
+}
