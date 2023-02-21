@@ -21,7 +21,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- TODO: Need to compress image - too large to be displayed -->
         <ImageView
             android:id="@+id/logoImage"
             android:layout_width="match_parent"
@@ -30,6 +29,7 @@
             android:contentDescription="@string/logo_content_desc"
             android:cropToPadding="false"
             android:scaleType="fitCenter"
+            app:srcCompat="@drawable/gourami"
             tools:srcCompat="@drawable/gourami" />
 
         <Space
