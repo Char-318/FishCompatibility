@@ -21,13 +21,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- TODO: Change ImageView to actual logo image -->
         <ImageView
             android:id="@+id/logoImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
             android:contentDescription="@string/logo_content_desc"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:cropToPadding="false"
+            android:scaleType="fitCenter"
+            tools:srcCompat="@drawable/gourami" />
 
         <Space
             android:layout_width="match_parent"
