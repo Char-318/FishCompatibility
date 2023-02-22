@@ -6,6 +6,7 @@
     <string name="logo_content_desc">Logo for Fish Compatibility</string>
     <string name="home_button">Home</string>
     <string name="search_page_title">Search</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fish_fragment_name">Fish name</string>
+    <string name="fish_fragment_sci_name">Scientific name</string>
+    <string name="fish_fragment_alias">Alias</string>
 </resources>
