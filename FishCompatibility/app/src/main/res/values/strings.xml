@@ -4,4 +4,6 @@
     <string name="virtual_tank_button">Virtual Tank</string>
     <string name="search_button">Search Fish and Diseases</string>
     <string name="logo_content_desc">Logo for Fish Compatibility</string>
+    <string name="home_button">Home</string>
+    <string name="search_page_title">Search</string>
 </resources>
