@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,6 +57,15 @@ public class FishListItemFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fish_list_item, container, false);
+        View inflatedView =  inflater.inflate(R.layout.fragment_fish_list_item, container, false);
+
+        TextView name = (TextView) inflatedView.findViewById(R.id.fishName);
+        TextView scientificName = (TextView) inflatedView.findViewById(R.id.scientificName);
+        TextView alias = (TextView) inflatedView.findViewById(R.id.alias);
+        ImageView image = (ImageView) inflatedView.findViewById(R.id.fishImage);
+
+        // TODO: Set the values using resource file
+
+        return inflatedView;
     }
 }
