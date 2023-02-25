@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getDataFromJson();
     }
 
     /** Called when the search button is clicked */
@@ -35,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(openSearchIntent);
     }
 
+    /**
+     * Uses an InputStream to read data in from the json file.
+     * @return String containing the contents of the json file.
+     */
     private String loadJsonAsString() {
         String json;
 
@@ -53,9 +59,14 @@ public class MainActivity extends AppCompatActivity {
         return json;
     }
 
-    private void interpretJson() {
+    /**
+     * Populates the global arrays fishes and diseases to contain the contents from the json file.
+     */
+    private void getDataFromJson() {
         try {
             JSONObject jsonObject = new JSONObject(loadJsonAsString());
+
+            // Getting data for each fish
             JSONArray fishJsonArray = jsonObject.getJSONArray("fish");
             fishes = new Fish[fishJsonArray.length()];
 
@@ -112,7 +123,8 @@ public class MainActivity extends AppCompatActivity {
                 boolean hardy = fishObject.getBoolean("hardy");
                 boolean territorial = fishObject.getBoolean("territorial");
                 boolean fast = fishObject.getBoolean("fast");
-                
+
+                // Populating fishes array
                 Fish fish = new Fish(name, sciName, vore, aliases, foodTypes, substrates, minCurr, 
                         maxCurr, minSwimLvl, maxSwimLvl, minPop, maxPop, minTemp, maxTemp, 
                         minAcidity, maxAcidity, minGenHard, maxGenHard, minCarbHard, maxCarbHard, 
@@ -120,7 +132,8 @@ public class MainActivity extends AppCompatActivity {
                         territorial, fast, image);
                 fishes[i] = fish;
             }
-            
+
+            // Getting data for each disease
             JSONArray diseaseJsonArray = jsonObject.getJSONArray("diseases");
             diseases = new Disease[diseaseJsonArray.length()];
             
@@ -159,6 +172,7 @@ public class MainActivity extends AppCompatActivity {
                     treatments[j] = jsonTreatments.getString(j);
                 }
 
+                // Populating diseases array
                 Disease disease = new Disease(
                         name, aliases, symptoms, causes, preventions, treatments);
                 diseases[i] = disease;
@@ -168,6 +182,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Uses image url to select a .png image from the resource file.
+     * @param pUrl Url of the image to be selected. Comes from the json file.
+     * @return Drawable of the image.
+     */
     private Drawable urlToDrawable(String pUrl) {
         int imageResource = getResources().getIdentifier(
                 "@drawable/" + pUrl, null, getPackageName());
