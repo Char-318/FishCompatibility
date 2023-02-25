@@ -29,7 +29,7 @@
                     "0":"Gravel"
                 }
             ],
-            "image":"goldfish.png",
+            "image":"goldfish",
             "minSwimLevel":1,
             "maxSwimLevel":1,
             "finNipper":false,
@@ -80,7 +80,7 @@
                     "0":"Gravel"
                 }
             ],
-            "image":"fancy_goldfish.png",
+            "image":"fancy_goldfish",
             "minSwimLevel":1,
             "maxSwimLevel":1,
             "finNipper":false,
@@ -127,7 +127,7 @@
                     "1":"Sand"
                 }
             ],
-            "image":"endler_guppy.png",
+            "image":"endler_guppy",
             "minSwimLevel":0,
             "maxSwimLevel":2,
             "finNipper":false,
@@ -172,7 +172,7 @@
                     "1":"Fine gravel"
                 }
             ],
-            "image":"hillstream_loach.png",
+            "image":"hillstream_loach",
             "minSwimLevel":0,
             "maxSwimLevel":0,
             "finNipper":false,
@@ -220,7 +220,7 @@
                     "1":"Sand"
                 }
             ],
-            "image":"weather_loach.png",
+            "image":"weather_loach",
             "minSwimLevel":0,
             "maxSwimLevel":0,
             "finNipper":false,
@@ -266,7 +266,7 @@
                     "1":"Gravel"
                 }
             ],
-            "image":"betta.png",
+            "image":"betta",
             "minSwimLevel":1,
             "maxSwimLevel":2,
             "finNipper":true,
@@ -313,7 +313,7 @@
                     "1":"Sand"
                 }
             ],
-            "image":"glass_catfish.png",
+            "image":"glass_catfish",
             "minSwimLevel":1,
             "maxSwimLevel":1,
             "finNipper":false,
@@ -358,7 +358,7 @@
                     "1":"Sand"
                 }
             ],
-            "image":"pleco.png",
+            "image":"pleco",
             "minSwimLevel":0,
             "maxSwimLevel":0,
             "finNipper":false,
@@ -404,7 +404,7 @@
                     "1":"Sand"
                 }
             ],
-            "image":"bronze_corydora.png",
+            "image":"bronze_corydora",
             "minSwimLevel":0,
             "maxSwimLevel":0,
             "finNipper":false,
@@ -451,7 +451,7 @@
                     "1":"Sand"
                 }
             ],
-            "image":"molly.png",
+            "image":"molly",
             "minSwimLevel":0,
             "maxSwimLevel":2,
             "finNipper":true,
@@ -492,7 +492,7 @@
                     "1":"Sand"
                 }
             ],
-            "image":"danio.png",
+            "image":"danio",
             "minSwimLevel":1,
             "maxSwimLevel":2,
             "finNipper":true,
@@ -534,7 +534,7 @@
                     "1":"Gravel"
                 }
             ],
-            "image":"swordtail.png",
+            "image":"swordtail",
             "minSwimLevel":0,
             "maxSwimLevel":2,
             "finNipper":false,
@@ -577,7 +577,7 @@
                     "1":"Sand"
                 }
             ],
-            "image":"gourami.png",
+            "image":"gourami",
             "minSwimLevel":1,
             "maxSwimLevel":2,
             "finNipper":true,
@@ -621,7 +621,7 @@
                     "1":"Sand"
                 }
             ],
-            "image":"dwarf_cichlid.png",
+            "image":"dwarf_cichlid",
             "minSwimLevel":0,
             "maxSwimLevel":0,
             "finNipper":true,
@@ -667,7 +667,7 @@
                     "1":"Mud"
                 }
             ],
-            "image":"angelfish.png",
+            "image":"angelfish",
             "minSwimLevel":1,
             "maxSwimLevel":1,
             "finNipper":true,
@@ -715,7 +715,7 @@
                     "1":"Gravel"
                 }
             ],
-            "image":"platy.png",
+            "image":"platy",
             "minSwimLevel":1,
             "maxSwimLevel":1,
             "finNipper":true,

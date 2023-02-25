@@ -1,6 +1,7 @@
 package com.example.fishcompatibility;
 
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 
 public class Fish {
     private final String name;
@@ -32,7 +33,7 @@ public class Fish {
     private final boolean hardy;
     private final boolean territorial;
     private final boolean fast;
-    private final Bitmap image;
+    private final Drawable image;
 
     public Fish(String pName, String pSciName, String pVore, String[] pAliases, String[] pFoodType,
                 String[] pSubstrate, int pMinCurr, int pMaxCurr, int pMinSwimLvl, int pMaxSwimLvl,
@@ -40,7 +41,7 @@ public class Fish {
                 double pMaxAcidity, double pMinGenHard, double pMaxGenHard, double pMinCarbHard,
                 double pMaxCarbHard, double pSize, double pEdibleSize, double pLifeExp,
                 boolean pFinNipper, boolean pLongFins, boolean pAggressive, boolean pHardy,
-                boolean pTerritorial, boolean pFast, Bitmap pImage)
+                boolean pTerritorial, boolean pFast, Drawable pImage)
     {
         name = pName;
         sciName = pSciName;
@@ -104,5 +105,5 @@ public class Fish {
     public boolean isHardy() { return hardy; }
     public boolean isTerritorial() { return territorial; }
     public boolean isFast() { return fast; }
-    public Bitmap getImage() { return image; }
+    public Drawable getImage() { return image; }
 }
