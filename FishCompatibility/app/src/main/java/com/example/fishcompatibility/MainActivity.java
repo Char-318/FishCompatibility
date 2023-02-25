@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 
 import org.json.JSONArray;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     /** Called when the search button is clicked */
     public void openSearch(View view) {
         Intent openSearchIntent = new Intent(getApplicationContext(), SearchActivity.class);
+        openSearchIntent.putExtra("fishes", fishes);
         startActivity(openSearchIntent);
     }
 
