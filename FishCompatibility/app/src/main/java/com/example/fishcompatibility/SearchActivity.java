@@ -3,11 +3,8 @@ package com.example.fishcompatibility;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.os.Parcel;
 import android.os.Parcelable;
 import android.widget.ListView;
-
-import java.util.ArrayList;
 
 public class SearchActivity extends AppCompatActivity {
     Fish[] fishes;
@@ -26,10 +23,11 @@ public class SearchActivity extends AppCompatActivity {
             fishes[i] = fish;
         }
 
-        ViewAdapter adapter = new ViewAdapter(fishes, getApplicationContext());
+        FishViewAdapter adapter = new FishViewAdapter(fishes, getApplicationContext());
 
         listView.setAdapter(adapter);
 
+        // TODO: Create list of diseases - DiseaseViewAdapter.java - disease_list_item.xml
         // TODO: onClickListener
     }
 }

@@ -12,11 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.content.res.AppCompatResources;
-import androidx.core.content.res.ResourcesCompat;
 
-import java.util.ArrayList;
-
-public class ViewAdapter extends ArrayAdapter<Fish> implements View.OnClickListener {
+public class FishViewAdapter extends ArrayAdapter<Fish> implements View.OnClickListener {
     private Fish[] fishes;
     Context mContext;
 
@@ -27,7 +24,7 @@ public class ViewAdapter extends ArrayAdapter<Fish> implements View.OnClickListe
         TextView aliases;
     }
 
-    public ViewAdapter(Fish[] pFishes, Context pContext) {
+    public FishViewAdapter(Fish[] pFishes, Context pContext) {
         super(pContext, R.layout.fish_list_item, pFishes);
         this.fishes = pFishes;
         this.mContext = pContext;
@@ -58,6 +55,7 @@ public class ViewAdapter extends ArrayAdapter<Fish> implements View.OnClickListe
             result = convertView;
         }
 
+        // TODO: Fix list appearance
         String aliasList = "";
 
         for (int i = 0; i < fish.getAliases().length; i++) {
