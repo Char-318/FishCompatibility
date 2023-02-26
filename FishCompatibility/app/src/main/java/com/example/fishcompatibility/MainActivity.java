@@ -80,8 +80,6 @@ public class MainActivity extends AppCompatActivity {
                 String vore = fishObject.getString("vore");
                 String imageUrl = fishObject.getString("image");
 
-                Drawable image = urlToDrawable(imageUrl);
-
                 JSONArray jsonAliases = fishObject.getJSONArray("aliases");
                 String[] aliases = new String[jsonAliases.length()];
                 for (int j = 0; j < aliases.length; j++) {
@@ -127,11 +125,11 @@ public class MainActivity extends AppCompatActivity {
                 boolean fast = fishObject.getBoolean("fast");
 
                 // Populating fishes array
-                Fish fish = new Fish(name, sciName, vore, aliases, foodTypes, substrates, minCurr, 
+                Fish fish = new Fish(name, sciName, vore, imageUrl, aliases, foodTypes, substrates, minCurr,
                         maxCurr, minSwimLvl, maxSwimLvl, minPop, maxPop, minTemp, maxTemp, 
                         minAcidity, maxAcidity, minGenHard, maxGenHard, minCarbHard, maxCarbHard, 
                         size, edibleSize, lifeExp, finNipper, longFins, aggressive, hardy, 
-                        territorial, fast, image);
+                        territorial, fast);
                 fishes[i] = fish;
             }
 

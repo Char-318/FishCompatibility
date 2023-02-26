@@ -3,6 +3,8 @@ package com.example.fishcompatibility;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -16,7 +18,13 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
         ListView listView = (ListView) findViewById(R.id.list);
-        fishes = (Fish[]) getIntent().getExtras().getParcelableArray("fishes");
+        Parcelable[] parcelable = getIntent().getExtras().getParcelableArray("fishes");
+        fishes = new Fish[parcelable.length];
+
+        for (int i = 0; i < parcelable.length; i++) {
+            Fish fish = (Fish) parcelable[i];
+            fishes[i] = fish;
+        }
 
         ViewAdapter adapter = new ViewAdapter(fishes, getApplicationContext());
 

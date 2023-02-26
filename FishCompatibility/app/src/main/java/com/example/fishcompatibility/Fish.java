@@ -1,6 +1,7 @@
 package com.example.fishcompatibility;
 
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,6 +10,8 @@ public class Fish implements Parcelable {
     private String name;
     private String sciName;
     private String vore;
+
+    private String imageUrl;
     private String[] aliases;
     private String[] foodType;
     private String[] substrate;
@@ -35,19 +38,19 @@ public class Fish implements Parcelable {
     private boolean hardy;
     private boolean territorial;
     private boolean fast;
-    private Drawable image;
 
-    public Fish(String pName, String pSciName, String pVore, String[] pAliases, String[] pFoodType,
-                String[] pSubstrate, int pMinCurr, int pMaxCurr, int pMinSwimLvl, int pMaxSwimLvl,
-                int pMinPop, int pMaxPop, double pMinTemp, double pMaxTemp, double pMinAcidity,
-                double pMaxAcidity, double pMinGenHard, double pMaxGenHard, double pMinCarbHard,
-                double pMaxCarbHard, double pSize, double pEdibleSize, double pLifeExp,
-                boolean pFinNipper, boolean pLongFins, boolean pAggressive, boolean pHardy,
-                boolean pTerritorial, boolean pFast, Drawable pImage)
+    public Fish(String pName, String pSciName, String pVore, String pImageUrl, String[] pAliases,
+                String[] pFoodType, String[] pSubstrate, int pMinCurr, int pMaxCurr,
+                int pMinSwimLvl, int pMaxSwimLvl, int pMinPop, int pMaxPop, double pMinTemp,
+                double pMaxTemp, double pMinAcidity, double pMaxAcidity, double pMinGenHard,
+                double pMaxGenHard, double pMinCarbHard, double pMaxCarbHard, double pSize,
+                double pEdibleSize, double pLifeExp, boolean pFinNipper, boolean pLongFins,
+                boolean pAggressive, boolean pHardy, boolean pTerritorial, boolean pFast)
     {
         name = pName;
         sciName = pSciName;
         vore = pVore;
+        imageUrl = pImageUrl;
         aliases = pAliases;
         foodType = pFoodType;
         substrate = pSubstrate;
@@ -74,13 +77,13 @@ public class Fish implements Parcelable {
         hardy = pHardy;
         territorial = pTerritorial;
         fast = pFast;
-        image = pImage;
     }
 
     // Getters
     public String getName() { return name; }
     public String getSciName() { return sciName; }
     public String getVore() { return vore; }
+    public String getImageUrl() { return imageUrl; }
     public String[] getAliases() { return aliases; }
     public String[] getFoodType() { return foodType; }
     public String[] getSubstrate() { return substrate; }
@@ -107,7 +110,6 @@ public class Fish implements Parcelable {
     public boolean isHardy() { return hardy; }
     public boolean isTerritorial() { return territorial; }
     public boolean isFast() { return fast; }
-    public Drawable getImage() { return image; }
 
     @Override
     public int describeContents() {
@@ -119,6 +121,7 @@ public class Fish implements Parcelable {
         dest.writeString(this.name);
         dest.writeString(this.sciName);
         dest.writeString(this.vore);
+        dest.writeString(this.imageUrl);
         dest.writeStringArray(this.aliases);
         dest.writeStringArray(this.foodType);
         dest.writeStringArray(this.substrate);
@@ -145,13 +148,13 @@ public class Fish implements Parcelable {
         dest.writeByte(this.hardy ? (byte) 1 : (byte) 0);
         dest.writeByte(this.territorial ? (byte) 1 : (byte) 0);
         dest.writeByte(this.fast ? (byte) 1 : (byte) 0);
-        dest.writeParcelable((Parcelable) this.image, flags);
     }
 
     public void readFromParcel(Parcel source) {
         this.name = source.readString();
         this.sciName = source.readString();
         this.vore = source.readString();
+        this.imageUrl = source.readString();
         this.aliases = source.createStringArray();
         this.foodType = source.createStringArray();
         this.substrate = source.createStringArray();
@@ -178,13 +181,13 @@ public class Fish implements Parcelable {
         this.hardy = source.readByte() != 0;
         this.territorial = source.readByte() != 0;
         this.fast = source.readByte() != 0;
-        this.image = source.readParcelable(Drawable.class.getClassLoader());
     }
 
     protected Fish(Parcel in) {
         this.name = in.readString();
         this.sciName = in.readString();
         this.vore = in.readString();
+        this.imageUrl = in.readString();
         this.aliases = in.createStringArray();
         this.foodType = in.createStringArray();
         this.substrate = in.createStringArray();
@@ -211,7 +214,6 @@ public class Fish implements Parcelable {
         this.hardy = in.readByte() != 0;
         this.territorial = in.readByte() != 0;
         this.fast = in.readByte() != 0;
-        this.image = in.readParcelable(Drawable.class.getClassLoader());
     }
 
     public static final Parcelable.Creator<Fish> CREATOR = new Parcelable.Creator<Fish>() {

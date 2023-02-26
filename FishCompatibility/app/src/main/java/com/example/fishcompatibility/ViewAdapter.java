@@ -1,6 +1,7 @@
 package com.example.fishcompatibility;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.core.content.res.ResourcesCompat;
 
 import java.util.ArrayList;
 
@@ -42,6 +45,7 @@ public class ViewAdapter extends ArrayAdapter<Fish> implements View.OnClickListe
         if (convertView == null) {
             elements = new ViewElements();
             LayoutInflater inflater = LayoutInflater.from(getContext());
+            convertView = inflater.inflate(R.layout.fish_list_item, parent, false);
             elements.name = (TextView) convertView.findViewById(R.id.fishName);
             elements.aliases = (TextView) convertView.findViewById(R.id.alias);
             elements.sciName = (TextView) convertView.findViewById(R.id.scientificName);
@@ -64,7 +68,11 @@ public class ViewAdapter extends ArrayAdapter<Fish> implements View.OnClickListe
             }
         }
 
-        elements.image.setImageDrawable(fish.getImage());
+        String imageUrl = fish.getImageUrl();
+        String drawableSource = "@drawable/" + imageUrl;
+        int imageRes = mContext.getResources().getIdentifier(drawableSource, null, mContext.getPackageName());
+        Drawable drawable = AppCompatResources.getDrawable(mContext, imageRes);
+        elements.image.setImageDrawable(drawable);
         elements.name.setText(fish.getName());
         elements.sciName.setText(fish.getSciName());
         elements.aliases.setText(aliasList);
