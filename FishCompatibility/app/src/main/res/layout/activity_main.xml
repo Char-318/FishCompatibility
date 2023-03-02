@@ -51,11 +51,19 @@
             android:text="@string/virtual_tank_button" />
 
         <Button
-            android:id="@+id/searchButton"
+            android:id="@+id/searchFishButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/teal_700"
-            android:onClick="openSearch"
-            android:text="@string/search_button" />
+            android:onClick="openFishSearch"
+            android:text="@string/search_fish_button" />
+
+        <Button
+            android:id="@+id/searchDiseaseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/teal_700"
+            android:onClick="openDiseaseSearch"
+            android:text="@string/search_diseases_button" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

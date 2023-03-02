@@ -2,13 +2,10 @@ package com.example.fishcompatibility;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
-import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 
 import org.json.JSONArray;
@@ -18,7 +15,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private Fish[] fishes;
@@ -32,13 +28,17 @@ public class MainActivity extends AppCompatActivity {
         getDataFromJson();
     }
 
-    /** Called when the search button is clicked */
-    public void openSearch(View view) {
-        Intent openSearchIntent = new Intent(getApplicationContext(), SearchActivity.class);
-        Bundle extras = new Bundle();
-        extras.putParcelableArray("fishes", fishes);
-        extras.putParcelableArray("diseases", diseases);
-        openSearchIntent.putExtras(extras);
+    /** Called when the fish search button is clicked */
+    public void openFishSearch(View view) {
+        Intent openSearchIntent = new Intent(getApplicationContext(), FishSearchActivity.class);
+        openSearchIntent.putExtra("fishes", fishes);
+        startActivity(openSearchIntent);
+    }
+
+    /** Called when the disease search button is clicked */
+    public void openDiseaseSearch(View view) {
+        Intent openSearchIntent = new Intent(getApplicationContext(), DiseaseSearchActivity.class);
+        openSearchIntent.putExtra("diseases", diseases);
         startActivity(openSearchIntent);
     }
 
