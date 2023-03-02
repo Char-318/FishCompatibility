@@ -48,11 +48,11 @@ public class DiseaseViewAdapter extends ArrayAdapter<Disease> implements View.On
 
         elements.name.setText(disease.getName());
 
-        return result;
+        return convertView;
     }
 
     @Override
     public void onClick(View view) {
-        // TODO: Open fish profile page
+        // TODO: Open disease profile page
     }
 }

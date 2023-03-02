@@ -42,7 +42,6 @@ public class SearchActivity extends AppCompatActivity {
 
         diseaseListView.setAdapter(diseaseAdapter);
 
-        // TODO: Create list of diseases - DiseaseViewAdapter.java - disease_list_item.xml
         // TODO: onClickListener
     }
 }

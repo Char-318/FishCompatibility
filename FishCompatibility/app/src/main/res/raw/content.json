@@ -455,6 +455,7 @@
             "minSwimLevel":0,
             "maxSwimLevel":2,
             "finNipper":true,
+            "longFins":false,
             "aggressive":false,
             "hardy":true,
             "territorial":true,
