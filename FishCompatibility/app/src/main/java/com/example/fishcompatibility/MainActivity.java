@@ -35,7 +35,10 @@ public class MainActivity extends AppCompatActivity {
     /** Called when the search button is clicked */
     public void openSearch(View view) {
         Intent openSearchIntent = new Intent(getApplicationContext(), SearchActivity.class);
-        openSearchIntent.putExtra("fishes", fishes);
+        Bundle extras = new Bundle();
+        extras.putParcelableArray("fishes", fishes);
+        extras.putParcelableArray("diseases", diseases);
+        openSearchIntent.putExtras(extras);
         startActivity(openSearchIntent);
     }
 
