@@ -8,6 +8,8 @@ import android.os.Parcelable;
 import android.view.View;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 public class DiseaseSearchActivity extends AppCompatActivity {
     Disease[] diseases;
 
@@ -35,5 +37,29 @@ public class DiseaseSearchActivity extends AppCompatActivity {
     public void openMain(View view) {
         Intent openMainIntent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(openMainIntent);
+    }
+
+    /**
+     * Searches the disease data to check if a disease matches the searchText.
+     * @param searchText Contains the input into the search text box in lower-case.
+     * @return A list of all diseases that match the input string.
+     */
+    public ArrayList<Disease> searchDisease(String searchText) {
+        ArrayList<Disease> resultArray = new ArrayList<>();
+
+        for (Disease disease : diseases) {
+            if (disease.getName().toLowerCase().contains(searchText)) {
+                resultArray.add(disease);
+            } else {
+                for (String alias : disease.getAliases()) {
+                    if (alias.toLowerCase().contains(searchText)) {
+                        resultArray.add(disease);
+                        break;
+                    }
+                }
+            }
+        }
+
+        return resultArray;
     }
 }

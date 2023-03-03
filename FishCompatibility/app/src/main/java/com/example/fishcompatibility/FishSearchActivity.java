@@ -8,6 +8,8 @@ import android.os.Parcelable;
 import android.view.View;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 public class FishSearchActivity extends AppCompatActivity {
     Fish[] fishes;
     Disease[] diseases;
@@ -36,5 +38,30 @@ public class FishSearchActivity extends AppCompatActivity {
     public void openMain(View view) {
         Intent openMainIntent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(openMainIntent);
+    }
+
+    /**
+     * Searches the fish data to check if a fish matches the searchText.
+     * @param searchText Contains the input into the search text box in lower-case.
+     * @return A list of all fish that match the input string.
+     */
+    public ArrayList<Fish> searchFish(String searchText) {
+        ArrayList<Fish> resultArray = new ArrayList<>();
+
+        for (Fish fish : fishes) {
+            if (fish.getName().toLowerCase().contains(searchText)
+                    || fish.getSciName().toLowerCase().contains(searchText)) {
+                resultArray.add(fish);
+            } else {
+                for (String alias : fish.getAliases()) {
+                    if (alias.toLowerCase().contains(searchText)) {
+                        resultArray.add(fish);
+                        break;
+                    }
+                }
+            }
+        }
+
+        return resultArray;
     }
 }
