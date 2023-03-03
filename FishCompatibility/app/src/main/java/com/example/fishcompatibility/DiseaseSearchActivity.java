@@ -2,8 +2,10 @@ package com.example.fishcompatibility;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.view.View;
 import android.widget.ListView;
 
 public class DiseaseSearchActivity extends AppCompatActivity {
@@ -28,5 +30,10 @@ public class DiseaseSearchActivity extends AppCompatActivity {
         listView.setAdapter(diseaseAdapter);
 
         // TODO: onClickListener
+    }
+
+    public void openMain(View view) {
+        Intent openMainIntent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(openMainIntent);
     }
 }

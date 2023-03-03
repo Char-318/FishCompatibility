@@ -27,6 +27,7 @@
                 android:backgroundTint="@color/teal_700"
                 android:insetLeft="6dp"
                 android:insetRight="6dp"
+                android:onClick="openMain"
                 android:text="@string/home_button" />
 
             <TextView
