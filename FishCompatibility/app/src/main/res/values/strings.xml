@@ -10,6 +10,18 @@
     <string name="search_disease_page_title">Search Diseases</string>
     <string name="search_placeholder">Enter text here</string>
     <string name="fish_view_name">Fish name</string>
-    <string name="fish_view_sci_name">Scientific name</string>
-    <string name="fish_view_alias">Alias</string>
+    <string name="sci_name">Scientific name</string>
+    <string name="alias">Alias</string>
+    <string name="temp">Temperature</string>
+    <string name="acidity">Acidity</string>
+    <string name="gen_hard">General hardness</string>
+    <string name="carb_hard">Carbonate hardness</string>
+    <string name="vore">Vore</string>
+    <string name="food_type">Food type</string>
+    <string name="avg_size">Average size</string>
+    <string name="life_exp">Life expectancy</string>
+    <string name="curr">Water current</string>
+    <string name="substrate">Substrate</string>
+    <string name="swim_lvl">Swim level</string>
+    <string name="pop">Population</string>
 </resources>

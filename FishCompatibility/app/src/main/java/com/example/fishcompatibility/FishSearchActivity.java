@@ -44,7 +44,6 @@ public class FishSearchActivity extends AppCompatActivity implements SearchView.
         searchView.setOnQueryTextListener(this);
         searchView.setOnCloseListener(this);
 
-        // TODO: onClickListener
         listView.setOnItemClickListener(this);
     }
 
