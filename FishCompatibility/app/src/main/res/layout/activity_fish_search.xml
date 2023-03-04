@@ -47,8 +47,10 @@
             android:orientation="horizontal">
 
             <SearchView
+                android:id="@+id/fishSearch"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:queryHint="Enter text here"/>
 
         </LinearLayout>
 

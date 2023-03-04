@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.content.res.AppCompatResources;
 
+import java.util.ArrayList;
+
 public class FishViewAdapter extends ArrayAdapter<Fish> implements View.OnClickListener {
     private Fish[] fishes;
     Context mContext;

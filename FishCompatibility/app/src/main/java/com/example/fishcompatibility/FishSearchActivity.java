@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import java.util.ArrayList;
 
-public class FishSearchActivity extends AppCompatActivity {
+public class FishSearchActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     Fish[] fishes;
-    Disease[] diseases;
+    ListView listView;
+    FishViewAdapter fishAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +22,7 @@ public class FishSearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fish_search);
 
         // Populating fish list view
-        ListView listView = (ListView) findViewById(R.id.list);
+        listView = (ListView) findViewById(R.id.list);
         Parcelable[] parcelable = getIntent().getExtras().getParcelableArray("fishes");
         fishes = new Fish[parcelable.length];
 
@@ -29,10 +31,39 @@ public class FishSearchActivity extends AppCompatActivity {
             fishes[i] = fish;
         }
 
-        FishViewAdapter fishAdapter = new FishViewAdapter(fishes, getApplicationContext());
+        fishAdapter = new FishViewAdapter(fishes, getApplicationContext());
         listView.setAdapter(fishAdapter);
 
+        SearchView searchView = (SearchView) findViewById(R.id.fishSearch);
+        searchView.setSubmitButtonEnabled(true);
+        searchView.setOnQueryTextListener(this);
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                fishAdapter = new FishViewAdapter(fishes, getApplicationContext());
+                listView.setAdapter(fishAdapter);
+
+                return false;
+            }
+        });
+
         // TODO: onClickListener
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        ArrayList<Fish> fishArrayList = searchFish(s.toLowerCase());
+        Fish[] fishArray = fishArrayList.toArray(new Fish[0]);
+        fishAdapter = new FishViewAdapter(fishArray, getApplicationContext());
+        listView.setAdapter(fishAdapter);
+
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+
+        return false;
     }
 
     public void openMain(View view) {
