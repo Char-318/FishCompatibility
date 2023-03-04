@@ -1,6 +1,7 @@
 package com.example.fishcompatibility;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +16,8 @@ import androidx.appcompat.content.res.AppCompatResources;
 
 import java.util.ArrayList;
 
-public class FishViewAdapter extends ArrayAdapter<Fish> implements View.OnClickListener {
-    private Fish[] fishes;
+public class FishViewAdapter extends ArrayAdapter<Fish>  {
+    private Fish fish;
     Context mContext;
 
     private static class ViewElements {
@@ -28,14 +29,13 @@ public class FishViewAdapter extends ArrayAdapter<Fish> implements View.OnClickL
 
     public FishViewAdapter(Fish[] pFishes, Context pContext) {
         super(pContext, R.layout.fish_list_item, pFishes);
-        this.fishes = pFishes;
         this.mContext = pContext;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        Fish fish = getItem(position);
+        fish = getItem(position);
         ViewElements elements;
 
         final View result;
@@ -57,7 +57,6 @@ public class FishViewAdapter extends ArrayAdapter<Fish> implements View.OnClickL
             result = convertView;
         }
 
-        // TODO: Fix list appearance
         String aliasList = "";
 
         for (int i = 0; i < fish.getAliases().length; i++) {
@@ -80,8 +79,7 @@ public class FishViewAdapter extends ArrayAdapter<Fish> implements View.OnClickL
         return convertView;
     }
 
-    @Override
-    public void onClick(View view) {
-        // TODO: Open fish profile page
+    public Fish getFish() {
+        return fish;
     }
 }

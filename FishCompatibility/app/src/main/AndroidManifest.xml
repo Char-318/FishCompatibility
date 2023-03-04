@@ -12,6 +12,9 @@
         android:theme="@style/Theme.FishCompatibility"
         tools:targetApi="31">
         <activity
+            android:name=".FishActivity"
+            android:exported="false" />
+        <activity
             android:name=".DiseaseSearchActivity"
             android:exported="false" />
         <activity
