@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/search_page_title"
+                android:text="@string/search_fish_page_title"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
         </LinearLayout>
 
@@ -47,8 +47,10 @@
             android:orientation="horizontal">
 
             <SearchView
+                android:id="@+id/diseaseSearch"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:queryHint="@string/search_placeholder" />
 
         </LinearLayout>
 

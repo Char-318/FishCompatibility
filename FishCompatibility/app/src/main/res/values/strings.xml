@@ -6,8 +6,10 @@
     <string name="search_diseases_button">Search Diseases</string>
     <string name="logo_content_desc">Logo for Fish Compatibility</string>
     <string name="home_button">Home</string>
-    <string name="search_page_title">Search</string>
-    <string name="fish_fragment_name">Fish name</string>
-    <string name="fish_fragment_sci_name">Scientific name</string>
-    <string name="fish_fragment_alias">Alias</string>
+    <string name="search_fish_page_title">Search Fish</string>
+    <string name="search_disease_page_title">Search Diseases</string>
+    <string name="search_placeholder">Enter text here</string>
+    <string name="fish_view_name">Fish name</string>
+    <string name="fish_view_sci_name">Scientific name</string>
+    <string name="fish_view_alias">Alias</string>
 </resources>

@@ -27,19 +27,19 @@
                 android:id="@+id/fishName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/fish_fragment_name" />
+                android:text="@string/fish_view_name" />
 
             <TextView
                 android:id="@+id/scientificName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/fish_fragment_sci_name" />
+                android:text="@string/fish_view_sci_name" />
 
             <TextView
                 android:id="@+id/alias"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/fish_fragment_alias" />
+                android:text="@string/fish_view_alias" />
         </LinearLayout>
     </LinearLayout>
 
