@@ -2,8 +2,10 @@ package com.example.fishcompatibility;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.view.View;
 import android.widget.TextView;
 
 public class DiseaseActivity extends AppCompatActivity {
@@ -20,6 +22,14 @@ public class DiseaseActivity extends AppCompatActivity {
         setData();
     }
 
+    public void openMain(View view) {
+        Intent openMainIntent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(openMainIntent);
+    }
+
+    /**
+     * Uses data contained in Disease object to populate TextViews.
+     */
     private void setData() {
         TextView title = findViewById(R.id.diseaseTitle);
         title.setText(mDisease.getName());
