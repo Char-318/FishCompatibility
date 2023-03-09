@@ -22,6 +22,8 @@
     <string name="life_exp">Life expectancy</string>
     <string name="curr">Water current</string>
     <string name="substrate">Substrate</string>
-    <string name="swim_lvl">Swim level</string>
+    <string name="swim_lvl">Where it swims</string>
     <string name="pop">Population</string>
+    <string name="fin_nipper">Fin nipper?</string>
+    <string name="aggressive">Aggressive?</string>
 </resources>

@@ -157,5 +157,23 @@ public class FishActivity extends AppCompatActivity {
         TextView pop = findViewById(R.id.pop);
         String popText = mFish.getMinPop() + " - " + mFish.getMaxPop();
         pop.setText(popText);
+
+        TextView finNipper = findViewById(R.id.fin_nipper);
+        String finNipperText;
+        if (mFish.isFinNipper()) {
+            finNipperText = "Yes";
+        } else {
+            finNipperText = "No";
+        }
+        finNipper.setText(finNipperText);
+
+        TextView aggressive = findViewById(R.id.aggressive);
+        String aggressiveText;
+        if (mFish.isAggressive()) {
+            aggressiveText = "Yes";
+        } else {
+            aggressiveText = "No";
+        }
+        aggressive.setText(aggressiveText);
     }
 }
