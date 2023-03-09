@@ -6,13 +6,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
-public class DiseaseSearchActivity extends AppCompatActivity implements SearchView.OnQueryTextListener  {
+public class DiseaseSearchActivity extends AppCompatActivity implements
+        SearchView.OnQueryTextListener, SearchView.OnCloseListener, ListView.OnItemClickListener   {
     Disease[] diseases;
+    ArrayList<Disease> resultArray = new ArrayList<>();
     DiseaseViewAdapter diseaseAdapter;
     ListView listView;
 
@@ -29,6 +33,7 @@ public class DiseaseSearchActivity extends AppCompatActivity implements SearchVi
         for (int i = 0; i < parcelable.length; i++) {
             Disease disease = (Disease) parcelable[i];
             diseases[i] = disease;
+            resultArray.add(disease);
         }
 
         diseaseAdapter = new DiseaseViewAdapter(diseases, getApplicationContext());
@@ -37,23 +42,15 @@ public class DiseaseSearchActivity extends AppCompatActivity implements SearchVi
         SearchView searchView = (SearchView) findViewById(R.id.diseaseSearch);
         searchView.setSubmitButtonEnabled(true);
         searchView.setOnQueryTextListener(this);
-        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
-            @Override
-            public boolean onClose() {
-                diseaseAdapter = new DiseaseViewAdapter(diseases, getApplicationContext());
-                listView.setAdapter(diseaseAdapter);
+        searchView.setOnCloseListener(this);
 
-                return false;
-            }
-        });
-
-        // TODO: onClickListener
+        listView.setOnItemClickListener(this);
     }
 
     @Override
     public boolean onQueryTextSubmit(String s) {
-        ArrayList<Disease> diseaseArrayList = searchDisease(s.toLowerCase());
-        Disease[] diseaseArray = diseaseArrayList.toArray(new Disease[0]);
+        resultArray = searchDisease(s.toLowerCase());
+        Disease[] diseaseArray = resultArray.toArray(new Disease[0]);
         diseaseAdapter = new DiseaseViewAdapter(diseaseArray, getApplicationContext());
         listView.setAdapter(diseaseAdapter);
 
@@ -64,6 +61,23 @@ public class DiseaseSearchActivity extends AppCompatActivity implements SearchVi
     public boolean onQueryTextChange(String s) {
 
         return false;
+    }
+
+    @Override
+    public boolean onClose() {
+        diseaseAdapter = new DiseaseViewAdapter(diseases, getApplicationContext());
+        listView.setAdapter(diseaseAdapter);
+        resultArray.clear();
+        resultArray.addAll(Arrays.asList(diseases));
+
+        return false;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent openDiseaseIntent = new Intent(getApplicationContext(), DiseaseActivity.class);
+        openDiseaseIntent.putExtra("disease", resultArray.get(position));
+        startActivity(openDiseaseIntent);
     }
 
     public void openMain(View view) {

@@ -26,4 +26,8 @@
     <string name="pop">Population</string>
     <string name="fin_nipper">Fin nipper?</string>
     <string name="aggressive">Aggressive?</string>
+    <string name="symptoms">Symptoms</string>
+    <string name="causes">Causes</string>
+    <string name="treatments">Treatments</string>
+    <string name="prevention">Prevention</string>
 </resources>
