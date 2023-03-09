@@ -67,6 +67,8 @@ public class FishSearchActivity extends AppCompatActivity implements SearchView.
     public boolean onClose() {
         fishAdapter = new FishViewAdapter(fishes, getApplicationContext());
         listView.setAdapter(fishAdapter);
+        resultArray.clear();
+        resultArray.addAll(Arrays.asList(fishes));
 
         return false;
     }
