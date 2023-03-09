@@ -52,8 +52,10 @@ public class FishActivity extends AppCompatActivity {
         for (String alias : mFish.getAliases()) {
             aliasText = aliasText + "\n" + alias;
         }
-        aliasText = aliasText.substring(1);
-        aliases.setText(aliasText);
+        if (aliasText.length() > 0) {
+            aliasText = aliasText.substring(1);
+            aliases.setText(aliasText);
+        }
 
         TextView temp = findViewById(R.id.temp);
         String tempText = mFish.getMinTemp() + " \u00B0C - " + mFish.getMaxTemp() + " \u00B0C";
@@ -79,8 +81,10 @@ public class FishActivity extends AppCompatActivity {
         for (String food : mFish.getFoodType()) {
             foodText = foodText + "\n" + food;
         }
-        foodText = foodText.substring(1);
-        foodType.setText(foodText);
+        if (foodText.length() > 0) {
+            foodText = foodText.substring(1);
+            foodType.setText(foodText);
+        }
 
         TextView avgSize = findViewById(R.id.avg_size);
         String sizeText = mFish.getSize() + " cm";
@@ -126,8 +130,10 @@ public class FishActivity extends AppCompatActivity {
         for (String substrate : mFish.getSubstrate()) {
             substrateText = substrateText + "\n" + substrate;
         }
-        substrateText = substrateText.substring(1);
-        substrates.setText(substrateText);
+        if (substrateText.length() > 0) {
+            substrateText = substrateText.substring(1);
+            substrates.setText(substrateText);
+        }
 
         TextView swimLvl = findViewById(R.id.swim_lvl);
         String swimText;
