@@ -51,7 +51,7 @@
                     android:padding="5dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/alias"
@@ -59,7 +59,7 @@
 
                     <TextView
                         android:id="@+id/aliases"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
                 </TableRow>
@@ -68,7 +68,7 @@
                     android:padding="5dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/symptoms"
@@ -76,7 +76,7 @@
 
                     <TextView
                         android:id="@+id/symptoms"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
                 </TableRow>
@@ -85,7 +85,7 @@
                     android:padding="5dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/causes"
@@ -93,7 +93,7 @@
 
                     <TextView
                         android:id="@+id/causes"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
                 </TableRow>
@@ -102,7 +102,7 @@
                     android:padding="5dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/treatments"
@@ -110,7 +110,7 @@
 
                     <TextView
                         android:id="@+id/treatments"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
                 </TableRow>
@@ -119,7 +119,7 @@
                     android:padding="5dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/prevention"
@@ -127,7 +127,7 @@
 
                     <TextView
                         android:id="@+id/prevention"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"/>
                 </TableRow>
