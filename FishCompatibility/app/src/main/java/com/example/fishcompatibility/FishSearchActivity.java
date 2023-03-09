@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -50,6 +51,15 @@ public class FishSearchActivity extends AppCompatActivity implements SearchView.
     @Override
     public boolean onQueryTextSubmit(String s) {
         resultArray = searchFish(s.toLowerCase());
+        TextView noResult = findViewById(R.id.no_results);
+
+        if (resultArray.size() == 0) {
+            String text = "No fish match your search";
+            noResult.setText(text);
+        } else {
+            noResult.setText("");
+        }
+
         Fish[] fishArray = resultArray.toArray(new Fish[0]);
         fishAdapter = new FishViewAdapter(fishArray, getApplicationContext());
         listView.setAdapter(fishAdapter);
@@ -69,6 +79,9 @@ public class FishSearchActivity extends AppCompatActivity implements SearchView.
         listView.setAdapter(fishAdapter);
         resultArray.clear();
         resultArray.addAll(Arrays.asList(fishes));
+
+        TextView noResult = findViewById(R.id.no_results);
+        noResult.setText("");
 
         return false;
     }

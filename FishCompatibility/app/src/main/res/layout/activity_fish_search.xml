@@ -60,6 +60,12 @@
             android:layout_height="wrap_content"
             android:dividerHeight="5dp" />
 
+        <TextView
+            android:id="@+id/no_results"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

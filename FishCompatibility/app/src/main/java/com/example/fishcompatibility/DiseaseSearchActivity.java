@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -50,6 +51,15 @@ public class DiseaseSearchActivity extends AppCompatActivity implements
     @Override
     public boolean onQueryTextSubmit(String s) {
         resultArray = searchDisease(s.toLowerCase());
+        TextView noResult = findViewById(R.id.no_results);
+
+        if (resultArray.size() == 0) {
+            String text = "No diseases match your search";
+            noResult.setText(text);
+        } else {
+            noResult.setText("");
+        }
+
         Disease[] diseaseArray = resultArray.toArray(new Disease[0]);
         diseaseAdapter = new DiseaseViewAdapter(diseaseArray, getApplicationContext());
         listView.setAdapter(diseaseAdapter);
@@ -69,6 +79,9 @@ public class DiseaseSearchActivity extends AppCompatActivity implements
         listView.setAdapter(diseaseAdapter);
         resultArray.clear();
         resultArray.addAll(Arrays.asList(diseases));
+
+        TextView noResult = findViewById(R.id.no_results);
+        noResult.setText("");
 
         return false;
     }
