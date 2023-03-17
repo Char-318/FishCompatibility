@@ -42,6 +42,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(openSearchIntent);
     }
 
+    public void openCompare(View view) {
+        Intent openCompareIntent = new Intent(getApplicationContext(), CompareActivity.class);
+        openCompareIntent.putExtra("fishes", fishes);
+        startActivity(openCompareIntent);
+    }
+
     /**
      * Uses an InputStream to read data in from the json file.
      * @return String containing the contents of the json file.
