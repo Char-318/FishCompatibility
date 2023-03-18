@@ -88,7 +88,7 @@ public class CompareActivity extends AppCompatActivity {
 
         // Checks if fish swim at the same level and if they are territorial
         int swimDiffA = fishA.getMaxSwimLvl() - fishB.getMinSwimLvl();
-        double swimDiffB = fishB.getMaxSwimLvl() - fishA.getMinSwimLvl();
+        int swimDiffB = fishB.getMaxSwimLvl() - fishA.getMinSwimLvl();
 
         if (swimDiffA < swimDiffB) {
             if (swimDiffA >= 0 && (fishA.isTerritorial() || fishB.isTerritorial())) {
@@ -102,7 +102,7 @@ public class CompareActivity extends AppCompatActivity {
 
         // Checks if fish can swim in the same current strength
         int currDiffA = fishA.getMaxCurr() - fishB.getMinCurr();
-        double currDiffB = fishB.getMaxCurr() - fishA.getMinCurr();
+        int currDiffB = fishB.getMaxCurr() - fishA.getMinCurr();
 
         if (currDiffA < currDiffB) {
             if (currDiffA < 0) {
