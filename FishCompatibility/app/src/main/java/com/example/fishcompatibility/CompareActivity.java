@@ -1,6 +1,8 @@
 package com.example.fishcompatibility;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -55,8 +57,38 @@ public class CompareActivity extends AppCompatActivity implements AdapterView.On
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         if (adapterView.getAdapter() == arrayAdapterA) {
             fishA = fishes[i];
+
+            FishFragment fragmentA = (FishFragment) getSupportFragmentManager()
+                    .findFragmentByTag("fishAFragment");
+
+            if (fragmentA == null) {
+                fragmentA = new FishFragment();
+            }
+
+            Bundle bundleA = new Bundle();
+            bundleA.putParcelable("fish", fishA);
+            fragmentA.setArguments(bundleA);
+
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.fishAFrament, fragmentA).commit();
         } else {
             fishB = fishes[i];
+
+            FishFragment fragmentB = (FishFragment) getSupportFragmentManager()
+                    .findFragmentByTag("fishBFragment");
+
+            if (fragmentB == null) {
+                fragmentB = new FishFragment();
+            }
+
+            Bundle bundleB = new Bundle();
+            bundleB.putParcelable("fish", fishB);
+            fragmentB.setArguments(bundleB);
+
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.fishBFrament, fragmentB).commit();
         }
     }
 

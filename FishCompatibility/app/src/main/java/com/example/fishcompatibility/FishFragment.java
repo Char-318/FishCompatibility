@@ -1,12 +1,16 @@
 package com.example.fishcompatibility;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,12 +20,12 @@ import android.view.ViewGroup;
 public class FishFragment extends Fragment {
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_INDEX = "index";
+    private static final String ARG_FISH = "fish";
 
-    private int mIndex;
+    private Fish mFish;
 
-    public int getShownIndex() {
-        return mIndex;
+    public Fish getShownFish() {
+        return mFish;
     }
     public FishFragment() {
         // Required empty public constructor
@@ -31,13 +35,13 @@ public class FishFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param index index of the fish data that needs to be displayed.
+     * @param fish fish that needs to be displayed.
      * @return A new instance of fragment FishFragment.
      */
-    public static FishFragment newInstance(int index) {
+    public static FishFragment newInstance(Fish fish) {
         FishFragment fragment = new FishFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_INDEX, index);
+        args.putParcelable(ARG_FISH, fish);
         fragment.setArguments(args);
         return fragment;
     }
@@ -46,7 +50,7 @@ public class FishFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mIndex = getArguments().getInt(ARG_INDEX);
+            mFish = getArguments().getParcelable(ARG_FISH);
         }
     }
 
@@ -54,6 +58,23 @@ public class FishFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fish, container, false);
+        View inflatedView = inflater.inflate(R.layout.fragment_fish, container, false);
+
+        if (mFish != null) {
+            TextView fishName = (TextView) inflatedView.findViewById(R.id.fishName);
+            fishName.setText(mFish.getName());
+
+            TextView sciName = (TextView) inflatedView.findViewById(R.id.scientificName);
+            sciName.setText(mFish.getSciName());
+
+            ImageView image = (ImageView) inflatedView.findViewById(R.id.fishImage);
+            String imageUrl = mFish.getImageUrl();
+            String drawableSource = "@drawable/" + imageUrl;
+            int imageRes = getActivity().getResources().getIdentifier(drawableSource, null, getActivity().getPackageName());
+            Drawable drawable = AppCompatResources.getDrawable(getActivity(), imageRes);
+            image.setImageDrawable(drawable);
+        }
+
+        return inflatedView;
     }
 }
