@@ -33,4 +33,6 @@
     <string name="compare_title">Compare Fish</string>
     <string name="compare_instructions">Select two fish to check if they are compatible:</string>
     <string name="select_placeholder">Select a fish…</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
