@@ -1,6 +1,7 @@
 package com.example.fishcompatibility;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -12,6 +13,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class CompareActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     Fish[] fishes;
@@ -102,7 +105,20 @@ public class CompareActivity extends AppCompatActivity implements AdapterView.On
         startActivity(openMainIntent);
     }
 
-    private boolean areFishCompatible(Fish fishA, Fish fishB) {
+    public void compareFish(View view) {
+        boolean isCompatible = areFishCompatible();
+        TextView textView = (TextView) findViewById(R.id.compatibleText);
+
+        if (isCompatible) {
+            textView.setTextColor(ContextCompat.getColor(this, R.color.green));
+            textView.setText("Fish are compatible");
+        } else {
+            textView.setTextColor(ContextCompat.getColor(this, R.color.red));
+            textView.setText("Fish are incompatible");
+        }
+    }
+
+    private boolean areFishCompatible() {
         // Checks if there is at least 3 degrees of overlapping temperatures that satisfy each fish
         double tempDiffA = fishA.getMaxTemp() - fishB.getMinTemp();
         double tempDiffB = fishB.getMaxTemp() - fishA.getMinTemp();

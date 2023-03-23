@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FishActivity">
+    tools:context=".CompareActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -65,6 +65,19 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fishBFrament"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/compareFish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/teal_700"
+            android:text="@string/compare_title"
+            android:onClick="compareFish" />
+
+        <TextView
+            android:id="@+id/compatibleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
