@@ -220,13 +220,9 @@ public class CompareActivity extends AppCompatActivity implements AdapterView.On
             }
         }
 
-        // Checks if fish eat the same type of food and if one is faster than the other
-        for (String fishAFood : fishA.getFoodType()) {
-            for (String fishBFood : fishB.getFoodType()) {
-                if (fishAFood.equalsIgnoreCase(fishBFood) && fishA.isFast() != fishB.isFast()) {
-                    return false;
-                }
-            }
+        // Checks if one fish is fast and the other is slow
+        if (fishA.isFast() != fishB.isFast()) {
+            return false;
         }
 
         return true;
