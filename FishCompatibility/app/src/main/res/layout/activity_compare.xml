@@ -37,7 +37,27 @@
                 android:gravity="center"
                 android:text="@string/compare_title"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/compare_instructions"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <Spinner
+            android:id="@+id/fishASpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:id="@+id/fishBSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

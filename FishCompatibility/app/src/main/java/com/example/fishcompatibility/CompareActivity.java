@@ -4,14 +4,65 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.TextView;
 
-public class CompareActivity extends AppCompatActivity {
+public class CompareActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    Fish[] fishes;
+    String[] fishNames;
+    ArrayAdapter<String> arrayAdapterA;
+    ArrayAdapter<String> arrayAdapterB;
+    Fish fishA;
+    Fish fishB;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compare);
+
+        Spinner spinnerA = findViewById(R.id.fishASpinner);
+        spinnerA.setOnItemSelectedListener(this);
+        Spinner spinnerB = findViewById(R.id.fishBSpinner);
+        spinnerB.setOnItemSelectedListener(this);
+
+        // Populating arrays
+        Parcelable[] parcelable = getIntent().getExtras().getParcelableArray("fishes");
+        fishes = new Fish[parcelable.length];
+        fishNames = new String[parcelable.length];
+
+        for (int i = 0; i < parcelable.length; i++) {
+            Fish fish = (Fish) parcelable[i];
+            String fishName = fish.getName();
+            fishes[i] = fish;
+            fishNames[i] = fishName;
+        }
+
+        arrayAdapterA = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, fishNames);
+        arrayAdapterB = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, fishNames);
+        arrayAdapterA.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        arrayAdapterB.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerA.setAdapter(arrayAdapterA);
+        spinnerB.setAdapter(arrayAdapterB);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        if (adapterView.getAdapter() == arrayAdapterA) {
+            fishA = fishes[i];
+        } else {
+            fishB = fishes[i];
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 
     public void openMain(View view) {

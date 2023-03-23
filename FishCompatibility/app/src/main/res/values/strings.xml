@@ -31,4 +31,6 @@
     <string name="treatments">Treatments</string>
     <string name="prevention">Prevention</string>
     <string name="compare_title">Compare Fish</string>
+    <string name="compare_instructions">Select two fish to check if they are compatible:</string>
+    <string name="select_placeholder">Select a fish…</string>
 </resources>
