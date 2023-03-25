@@ -48,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(openCompareIntent);
     }
 
+    public void openTank(View view) {
+        Intent openTankIntent = new Intent(getApplicationContext(), TankActivity.class);
+        openTankIntent.putExtra("fishes", fishes);
+        startActivity(openTankIntent);
+    }
+
     /**
      * Uses an InputStream to read data in from the json file.
      * @return String containing the contents of the json file.
