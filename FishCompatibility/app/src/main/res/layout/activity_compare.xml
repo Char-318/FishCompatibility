@@ -54,7 +54,7 @@
             android:layout_height="wrap_content" />
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fishAFrament"
+            android:id="@+id/fishAFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content" />
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fishBFrament"
+            android:id="@+id/fishBFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

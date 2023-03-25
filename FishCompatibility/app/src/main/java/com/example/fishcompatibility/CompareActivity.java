@@ -74,7 +74,7 @@ public class CompareActivity extends AppCompatActivity implements AdapterView.On
 
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.add(R.id.fishAFrament, fragmentA).commit();
+            fragmentTransaction.add(R.id.fishAFragment, fragmentA).commit();
         } else {
             fishB = fishes[i];
 
@@ -91,7 +91,7 @@ public class CompareActivity extends AppCompatActivity implements AdapterView.On
 
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.add(R.id.fishBFrament, fragmentB).commit();
+            fragmentTransaction.add(R.id.fishBFragment, fragmentB).commit();
         }
     }
 
