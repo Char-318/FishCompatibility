@@ -34,4 +34,5 @@
     <string name="compare_instructions">Select two fish to check if they are compatible:</string>
     <string name="select_placeholder">Select a fish…</string>
     <string name="tank_title">Virtual Tank</string>
+    <string name="select_instructions">Select a fish to add to the virtual tank: </string>
 </resources>
