@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -26,7 +27,7 @@ public class FishFragment extends Fragment implements View.OnClickListener {
     private static final String ARG_IS_TANK = "isTank";
 
     private Fish mFish;
-    private int mCounter = 0;
+    private int mCounter = 1;
     private boolean mIsTank = false;
     TextView mCounterText;
     Button mPlusButton;
@@ -114,11 +115,15 @@ public class FishFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.minusButton:
                 mCounter--;
+
                 if (mCounter == 0) {
-                    // TODO: Remove from list
+                    ((TankActivity) getActivity())
+                            .removeFragment(getParentFragmentManager(), getId());
                 } else {
                     mCounterText.setText(String.valueOf(mCounter));
                 }
+
+                break;
             default:
                 break;
         }

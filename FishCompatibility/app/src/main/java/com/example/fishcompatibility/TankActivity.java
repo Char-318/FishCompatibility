@@ -1,6 +1,7 @@
  package com.example.fishcompatibility;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -19,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
  public class TankActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
      ArrayList<Fish> tankFish = new ArrayList<>();
@@ -89,5 +91,15 @@ import java.util.ArrayList;
      public void openMain(View view) {
          Intent openMainIntent = new Intent(getApplicationContext(), MainActivity.class);
          startActivity(openMainIntent);
+     }
+
+     public void removeFragment(FragmentManager fragmentManager, int id) {
+        Fragment fragment = fragmentManager.findFragmentById(id);
+        FishFragment fishFrag = (FishFragment) fragment;
+        Fish fish = fishFrag.getShownFish();
+        tankFish.removeAll(Collections.singleton(fish));
+
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.remove(fragment).commit();
      }
 }
