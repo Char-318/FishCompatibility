@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
@@ -17,15 +19,18 @@ import android.widget.TextView;
  * Use the {@link FishFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FishFragment extends Fragment {
+public class FishFragment extends Fragment implements View.OnClickListener {
 
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    // the fragment initialization parameters
     private static final String ARG_FISH = "fish";
     private static final String ARG_IS_TANK = "isTank";
 
     private Fish mFish;
     private int mCounter = 0;
     private boolean mIsTank = false;
+    TextView mCounterText;
+    Button mPlusButton;
+    Button mMinusButton;
 
     public Fish getShownFish() {
         return mFish;
@@ -43,6 +48,7 @@ public class FishFragment extends Fragment {
      * @param fish fish that needs to be displayed.
      * @return A new instance of fragment FishFragment.
      */
+
     public static FishFragment newInstance(Fish fish, boolean isTank) {
         FishFragment fragment = new FishFragment();
         Bundle args = new Bundle();
@@ -57,10 +63,7 @@ public class FishFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mFish = getArguments().getParcelable(ARG_FISH);
-
-            if (mIsTank) {
-                mIsTank = getArguments().getBoolean(ARG_IS_TANK);
-            }
+            mIsTank = getArguments().getBoolean(ARG_IS_TANK);
         }
     }
 
@@ -86,12 +89,39 @@ public class FishFragment extends Fragment {
         }
 
         if (mIsTank) {
-            // TODO: Display number of fish
-            // TODO: Display + - buttons
+            LinearLayout counterLayout = (LinearLayout) inflatedView
+                    .findViewById(R.id.counterLayout);
+            counterLayout.setVisibility(View.VISIBLE);
+
+            mCounterText = (TextView) inflatedView.findViewById(R.id.counter);
+            mCounterText.setText(String.valueOf(mCounter));
+
+            mPlusButton = (Button) inflatedView.findViewById(R.id.plusButton);
+            mPlusButton.setOnClickListener(this);
+            mMinusButton = (Button) inflatedView.findViewById(R.id.minusButton);
+            mMinusButton.setOnClickListener(this);
         }
 
         return inflatedView;
     }
 
-    // TODO: Create method/s to increase and decrease the counter when buttons are clicked
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.plusButton:
+                mCounter++;
+                mCounterText.setText(String.valueOf(mCounter));
+                break;
+            case R.id.minusButton:
+                mCounter--;
+                if (mCounter == 0) {
+                    // TODO: Remove from list
+                } else {
+                    mCounterText.setText(String.valueOf(mCounter));
+                }
+            default:
+                break;
+        }
+
+    }
 }

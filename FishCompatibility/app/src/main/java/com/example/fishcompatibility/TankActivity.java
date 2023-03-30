@@ -66,6 +66,7 @@ import java.util.ArrayList;
 
              Bundle bundle = new Bundle();
              bundle.putParcelable("fish", fishes[i - 1]);
+             bundle.putBoolean("isTank", true);
              fragment.setArguments(bundle);
 
              LinearLayout listLayout = findViewById(R.id.fragmentLayout);
