@@ -21,12 +21,17 @@ public class FishFragment extends Fragment {
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_FISH = "fish";
+    private static final String ARG_IS_TANK = "isTank";
 
     private Fish mFish;
+    private int mCounter = 0;
+    private boolean mIsTank = false;
 
     public Fish getShownFish() {
         return mFish;
     }
+    public int getCounter() { return mCounter; }
+
     public FishFragment() {
         // Required empty public constructor
     }
@@ -38,10 +43,11 @@ public class FishFragment extends Fragment {
      * @param fish fish that needs to be displayed.
      * @return A new instance of fragment FishFragment.
      */
-    public static FishFragment newInstance(Fish fish) {
+    public static FishFragment newInstance(Fish fish, boolean isTank) {
         FishFragment fragment = new FishFragment();
         Bundle args = new Bundle();
         args.putParcelable(ARG_FISH, fish);
+        args.putBoolean(ARG_IS_TANK, isTank);
         fragment.setArguments(args);
         return fragment;
     }
@@ -51,6 +57,10 @@ public class FishFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mFish = getArguments().getParcelable(ARG_FISH);
+
+            if (mIsTank) {
+                mIsTank = getArguments().getBoolean(ARG_IS_TANK);
+            }
         }
     }
 
@@ -75,6 +85,13 @@ public class FishFragment extends Fragment {
             image.setImageDrawable(drawable);
         }
 
+        if (mIsTank) {
+            // TODO: Display number of fish
+            // TODO: Display + - buttons
+        }
+
         return inflatedView;
     }
+
+    // TODO: Create method/s to increase and decrease the counter when buttons are clicked
 }
