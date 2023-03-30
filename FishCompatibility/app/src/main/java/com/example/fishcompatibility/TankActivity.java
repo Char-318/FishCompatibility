@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -57,29 +58,40 @@ import java.util.Collections;
      @Override
      public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
          if (i != 0) {
-             tankFish.add(fishes[i - 1]);
+             TextView fishAddedText = (TextView) findViewById(R.id.fishAdded);
 
-             FishFragment fragment = (FishFragment) getSupportFragmentManager()
-                     .findFragmentByTag("fishFragment");
+             if (tankFish.contains(fishes[i - 1])) {
+                 fishAddedText.setVisibility(View.VISIBLE);
+             } else {
+                 tankFish.add(fishes[i - 1]);
+                 fishAddedText.setVisibility(View.INVISIBLE);
 
-             if (fragment == null) {
-                 fragment = new FishFragment();
+                 FishFragment fragment = (FishFragment) getSupportFragmentManager()
+                         .findFragmentByTag("fishFragment");
+
+                 if (fragment == null) {
+                     fragment = new FishFragment();
+                 }
+
+                 Bundle bundle = new Bundle();
+                 bundle.putParcelable("fish", fishes[i - 1]);
+                 bundle.putBoolean("isTank", true);
+                 fragment.setArguments(bundle);
+
+                 LinearLayout listLayout = findViewById(R.id.fragmentLayout);
+                 LinearLayout fragLayout = new LinearLayout(this);
+                 int fragId = View.generateViewId();
+                 fragLayout.setId(fragId);
+                 listLayout.addView(fragLayout);
+
+                 FragmentManager manager = getSupportFragmentManager();
+                 FragmentTransaction transaction = manager.beginTransaction();
+                 transaction.replace(fragId, fragment).commit();
+
+                 // Sets selection to 'select fish...' so 'Fish already added' message can be
+                 // displayed when the same fish is selected.
+                 adapterView.setSelection(0);
              }
-
-             Bundle bundle = new Bundle();
-             bundle.putParcelable("fish", fishes[i - 1]);
-             bundle.putBoolean("isTank", true);
-             fragment.setArguments(bundle);
-
-             LinearLayout listLayout = findViewById(R.id.fragmentLayout);
-             LinearLayout fragLayout = new LinearLayout(this);
-             int fragId = View.generateViewId();
-             fragLayout.setId(fragId);
-             listLayout.addView(fragLayout);
-
-             FragmentManager manager = getSupportFragmentManager();
-             FragmentTransaction transaction = manager.beginTransaction();
-             transaction.replace(fragId, fragment).commit();
          }
      }
 
