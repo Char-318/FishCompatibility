@@ -227,4 +227,114 @@ public class Fish implements Parcelable {
             return new Fish[size];
         }
     };
+
+    public boolean areFishCompatible(Fish fishB) {
+        // Checks if there is at least 3 degrees of overlapping temperatures that satisfy each fish
+        double tempDiffA = maxTemp - fishB.getMinTemp();
+        double tempDiffB = fishB.getMaxTemp() - minTemp;
+
+        if (tempDiffA < tempDiffB) {
+            if (tempDiffA < 3) {
+                return false;
+            }
+        } else {
+            if (tempDiffB < 3) {
+                return false;
+            }
+        }
+
+        // Checks if there is a pH level that satisfies both fish
+        double acidityDiffA = maxAcidity - fishB.getMinAcidity();
+        double acidityDiffB = fishB.getMaxAcidity() - minAcidity;
+
+        if (acidityDiffA < acidityDiffB) {
+            if (acidityDiffA < 0) {
+                return false;
+            }
+        } else {
+            if (acidityDiffB < 0) {
+                return false;
+            }
+        }
+
+        // Checks if there is a degree of general hardness that satisfies each fish
+        double genDiffA = maxGenHard - fishB.getMinGenHard();
+        double genDiffB = fishB.getMaxGenHard() - minGenHard;
+
+        if (genDiffA < genDiffB) {
+            if (genDiffA < 0) {
+                return false;
+            }
+        } else {
+            if (genDiffB < 0) {
+                return false;
+            }
+        }
+
+        // Checks that there is a degree of carbonate hardness that satisfies each fish
+        double carbDiffA = maxCarbHard - fishB.getMinCarbHard();
+        double carbDiffB = fishB.getMaxCarbHard() - minCarbHard;
+
+        if (carbDiffA < carbDiffB) {
+            if (carbDiffA < 0) {
+                return false;
+            }
+        } else {
+            if (carbDiffB < 0) {
+                return false;
+            }
+        }
+
+        // Checks if one fish may get eaten by the other
+        if (size < fishB.getEdibleSize() || fishB.getSize() < edibleSize) {
+            return false;
+        }
+
+        // Checks if one fish will nip the fins of the other
+        if ((finNipper && fishB.isLongFins()) ||
+                (fishB.isFinNipper() && longFins)) {
+            return false;
+        }
+
+        // Checks if one fish will attack and injure the other
+        if ((aggressive && !fishB.isHardy()) ||
+                (fishB.isAggressive() && !hardy)) {
+            return false;
+        }
+
+        // Checks if fish swim at the same level and if they are territorial
+        int swimDiffA = maxSwimLvl - fishB.getMinSwimLvl();
+        int swimDiffB = fishB.getMaxSwimLvl() - minSwimLvl;
+
+        if (swimDiffA < swimDiffB) {
+            if (swimDiffA >= 0 && (territorial || fishB.isTerritorial())) {
+                return false;
+            }
+        } else {
+            if (swimDiffB >= 0 && (territorial || fishB.isTerritorial())) {
+                return false;
+            }
+        }
+
+        // Checks if fish can swim in the same current strength
+        int currDiffA = maxCurr - fishB.getMinCurr();
+        int currDiffB = fishB.getMaxCurr() - minCurr;
+
+        if (currDiffA < currDiffB) {
+            if (currDiffA < 0) {
+                return false;
+            }
+        } else {
+            if (currDiffB < 0) {
+                return false;
+            }
+        }
+
+        // Checks if one fish is fast and the other is slow
+        if (fast != fishB.isFast()) {
+            return false;
+        }
+
+        return true;
+    }
 }
