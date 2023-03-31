@@ -1,6 +1,8 @@
  package com.example.fishcompatibility;
 
+import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentManager;
@@ -27,6 +29,7 @@ import java.util.Collections;
      ArrayList<Fish> tankFish = new ArrayList<>();
      Fish[] fishes;
      String[] fishNames;
+     TextView notCompText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,12 +62,20 @@ import java.util.Collections;
      public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
          if (i != 0) {
              TextView fishAddedText = (TextView) findViewById(R.id.fishAdded);
+             TextView isCompatText = (TextView) findViewById(R.id.fishIsCompat);
+             Fish selectedFish = fishes[i - 1];
 
              if (tankFish.contains(fishes[i - 1])) {
                  fishAddedText.setVisibility(View.VISIBLE);
              } else {
-                 tankFish.add(fishes[i - 1]);
+                 tankFish.add(selectedFish);
                  fishAddedText.setVisibility(View.INVISIBLE);
+                 isCompatText.setVisibility(View.INVISIBLE);
+
+                 if (notCompText != null) {
+                     ((ViewGroup) notCompText.getParent()).removeView(notCompText);
+                     notCompText = null;
+                 }
 
                  FishFragment fragment = (FishFragment) getSupportFragmentManager()
                          .findFragmentByTag("fishFragment");
@@ -74,7 +85,7 @@ import java.util.Collections;
                  }
 
                  Bundle bundle = new Bundle();
-                 bundle.putParcelable("fish", fishes[i - 1]);
+                 bundle.putParcelable("fish", selectedFish);
                  bundle.putBoolean("isTank", true);
                  fragment.setArguments(bundle);
 
@@ -87,6 +98,25 @@ import java.util.Collections;
                  FragmentManager manager = getSupportFragmentManager();
                  FragmentTransaction transaction = manager.beginTransaction();
                  transaction.replace(fragId, fragment).commit();
+
+                 Boolean isCompatible = true;
+
+                 for (Fish fishB : tankFish) {
+                     if (!selectedFish.areFishCompatible(fishB)) {
+                         isCompatible = false;
+
+                         notCompText = new TextView(this);
+                         notCompText.setText("This fish is not compatible with " + fishB.getName());
+                         notCompText.setTextColor(ContextCompat.getColor(this, R.color.red));
+                         listLayout.addView(notCompText);
+
+                         break;
+                     }
+                 }
+
+                 if (isCompatible) {
+                    isCompatText.setVisibility(View.VISIBLE);
+                 }
 
                  // Sets selection to 'select fish...' so 'Fish already added' message can be
                  // displayed when the same fish is selected.
@@ -113,5 +143,8 @@ import java.util.Collections;
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.remove(fragment).commit();
+
+         ((ViewGroup) notCompText.getParent()).removeView(notCompText);
+         notCompText = null;
      }
 }

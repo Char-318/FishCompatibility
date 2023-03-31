@@ -68,6 +68,14 @@
                     android:textColor="@color/red"
                     android:visibility="invisible" />
 
+                <TextView
+                    android:id="@+id/fishIsCompat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fish_compat"
+                    android:textColor="@color/green"
+                    android:visibility="invisible" />
+
                 <Spinner
                     android:id="@+id/fishSpinner"
                     android:layout_width="wrap_content"
