@@ -144,7 +144,9 @@ import java.util.Collections;
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.remove(fragment).commit();
 
-         ((ViewGroup) notCompText.getParent()).removeView(notCompText);
-         notCompText = null;
+        if (notCompText != null) {
+            ((ViewGroup) notCompText.getParent()).removeView(notCompText);
+            notCompText = null;
+        }
      }
 }

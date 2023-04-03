@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.appcompat.content.res.AppCompatResources;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -30,6 +31,7 @@ public class FishFragment extends Fragment implements View.OnClickListener {
     private int mCounter = 1;
     private boolean mIsTank = false;
     TextView mCounterText;
+    TextView mPopText;
     Button mPlusButton;
     Button mMinusButton;
 
@@ -101,6 +103,9 @@ public class FishFragment extends Fragment implements View.OnClickListener {
             mPlusButton.setOnClickListener(this);
             mMinusButton = (Button) inflatedView.findViewById(R.id.minusButton);
             mMinusButton.setOnClickListener(this);
+
+            mPopText = (TextView) inflatedView.findViewById(R.id.popError);
+            checkPopulation();
         }
 
         return inflatedView;
@@ -108,6 +113,8 @@ public class FishFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+        mPopText.setVisibility(View.INVISIBLE);
+
         switch (view.getId()) {
             case R.id.plusButton:
                 mCounter++;
@@ -128,5 +135,19 @@ public class FishFragment extends Fragment implements View.OnClickListener {
                 break;
         }
 
+        checkPopulation();
+    }
+
+    /**
+     *  Checks if counter is within the population range
+     */
+    private void checkPopulation() {
+        if (mCounter != 0 && mCounter < mFish.getMinPop()) {
+            mPopText.setText("Not enough of this fish in the tank");
+            mPopText.setVisibility(View.VISIBLE);
+        } else if (mFish.getMaxPop() != 0 && mCounter > mFish.getMaxPop()) {
+            mPopText.setText("Too many of this fish in the tank");
+            mPopText.setVisibility(View.VISIBLE);
+        }
     }
 }
