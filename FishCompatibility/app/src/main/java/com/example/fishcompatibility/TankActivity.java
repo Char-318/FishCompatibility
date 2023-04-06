@@ -99,7 +99,7 @@ import java.util.Collections;
                  FragmentTransaction transaction = manager.beginTransaction();
                  transaction.replace(fragId, fragment).commit();
 
-                 Boolean isCompatible = true;
+                 boolean isCompatible = true;
 
                  for (Fish fishB : tankFish) {
                      if (!selectedFish.areFishCompatible(fishB)) {
@@ -149,4 +149,15 @@ import java.util.Collections;
             notCompText = null;
         }
      }
-}
+
+     public void clearList(View view) {
+         LinearLayout listLayout = findViewById(R.id.fragmentLayout);
+         listLayout.removeAllViews();
+         tankFish.clear();
+         notCompText = null;
+         TextView fishAddedText = (TextView) findViewById(R.id.fishAdded);
+         TextView isCompatText = (TextView) findViewById(R.id.fishIsCompat);
+         fishAddedText.setVisibility(View.INVISIBLE);
+         isCompatText.setVisibility(View.INVISIBLE);
+     }
+ }
