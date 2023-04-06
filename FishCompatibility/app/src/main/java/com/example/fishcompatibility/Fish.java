@@ -229,6 +229,11 @@ public class Fish implements Parcelable {
     };
 
     public boolean areFishCompatible(Fish fishB) {
+        // If two fish are the same, check if more than one can be kept together
+        if (this == fishB) {
+            return maxPop != 1;
+        }
+
         // Checks if there is at least 3 degrees of overlapping temperatures that satisfy each fish
         double tempDiffA = maxTemp - fishB.getMinTemp();
         double tempDiffB = fishB.getMaxTemp() - minTemp;
