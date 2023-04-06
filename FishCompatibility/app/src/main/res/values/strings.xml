@@ -39,4 +39,5 @@
     <string name="minus">-</string>
     <string name="fish_added">Fish already added</string>
     <string name="fish_compat">All fish are compatible</string>
+    <string name="clear_button">Clear</string>
 </resources>
