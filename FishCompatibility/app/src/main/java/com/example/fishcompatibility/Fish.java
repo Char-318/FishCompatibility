@@ -6,6 +6,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Objects;
+
 public class Fish implements Parcelable {
     private String name;
     private String sciName;
@@ -340,6 +342,15 @@ public class Fish implements Parcelable {
             return false;
         }
 
-        return true;
+        // Checks if there is a matching substrate
+        for (String subA: substrate) {
+            for (String subB : fishB.substrate) {
+                if (Objects.equals(subA, subB)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
