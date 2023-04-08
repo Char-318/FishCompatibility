@@ -267,7 +267,7 @@
             "averageSize":12.5,
             "edibleSize":3,
             "lifeExpectancy":7.5,
-            "minWaterCurrent":2,
+            "minWaterCurrent":1,
             "maxWaterCurrent":2,
             "substrate":[
                     "Fine gravel",
@@ -356,7 +356,7 @@
             "minSwimLevel":0,
             "maxSwimLevel":0,
             "finNipper":false,
-            "longFins":true,
+            "longFins":false,
             "aggressive":false,
             "hardy":true,
             "territorial":false,
@@ -463,7 +463,7 @@
             "averageSize":10,
             "edibleSize":0,
             "lifeExpectancy":4,
-            "minWaterCurrent":2,
+            "minWaterCurrent":1,
             "maxWaterCurrent":2,
             "substrate":[
                     "Sand",
@@ -503,7 +503,7 @@
             "edibleSize":4,
             "lifeExpectancy":3.5,
             "minWaterCurrent":0,
-            "maxWaterCurrent":0,
+            "maxWaterCurrent":1,
             "substrate":[
                     "gravel",
                     "Sand"
@@ -518,7 +518,7 @@
             "territorial":true,
             "minPopulation":3,
             "maxPopulation":0,
-            "fast":false
+            "fast":true
         },
         {
             "name":"Dwarf Cichlid",
@@ -556,7 +556,7 @@
             "territorial":true,
             "minPopulation":2,
             "maxPopulation":0,
-            "fast":false
+            "fast":true
         },
         {
             "name":"Angelfish",
@@ -581,7 +581,7 @@
             "edibleSize":2.5,
             "lifeExpectancy":11,
             "minWaterCurrent":1,
-            "maxWaterCurrent":1,
+            "maxWaterCurrent":2,
             "substrate":[
                     "Sand",
                     "Mud"

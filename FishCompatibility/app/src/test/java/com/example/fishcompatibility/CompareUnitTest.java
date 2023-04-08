@@ -37,7 +37,7 @@ public class CompareUnitTest {
                 emptyArray, new String[]{"Gravel", "Sand"}, 0, 2, 0,
                 2, 3, 0, 22.0, 28.0, 7.0,
                 8.0, 8.0, 18.0, 5.0, 15.0,
-                20.0, 7.0, 12.5, false, true,
+                2.5, 0.0, 2.5, false, false,
                 false, true, false, true);
         Fish hillstreamLoach = new Fish("", "", "", "", emptyArray,
                 emptyArray, new String[]{"Sand", "Fine gravel"}, 2, 3,
@@ -58,7 +58,7 @@ public class CompareUnitTest {
                 7.0, 2.0, 3.5, true, true,
                 true, false, true, false);
         Fish glassCatfish = new Fish("", "", "", "", emptyArray,
-                emptyArray, new String[]{"Fine gravel", "Sand"}, 2, 2,
+                emptyArray, new String[]{"Fine gravel", "Sand"}, 1, 2,
                 1, 1, 5, 0, 22.0, 27.0,
                 6.0, 8.0, 4.0, 18.0, 3.0,
                 15.0, 12.5, 3.0, 7.5, false,
@@ -74,7 +74,7 @@ public class CompareUnitTest {
                 0, 0, 5, 0, 17.0, 27.0,
                 6.0, 8.0, 4.0, 12.0, 3.0,
                 10.0, 6.0, 0.0, 10.0, false,
-                true, false, true, false, true);
+                false, false, true, false, true);
         Fish molly = new Fish("", "", "", "", emptyArray,
                 emptyArray, new String[]{"Gravel", "Sand"}, 0, 1, 0,
                 2, 3, 0, 20.0, 28.0, 7.0,
@@ -88,7 +88,7 @@ public class CompareUnitTest {
                 5.0, 1.0, 3.5, true, false,
                 false, true, true, true);
         Fish swordtail = new Fish("", "", "", "", emptyArray,
-                emptyArray, new String[]{"Gravel", "Sand"}, 2, 2, 0,
+                emptyArray, new String[]{"Gravel", "Sand"}, 1, 2, 0,
                 2, 3, 0, 22.0, 27.0, 7.0,
                 8.0, 4.0, 12.0, 3.0, 10.0,
                 10.0, 0.0, 4.0, false, false,
@@ -104,9 +104,9 @@ public class CompareUnitTest {
                 0, 2, 0, 22.0, 27.0, 6.0,
                 8.0, 4.0, 12.0, 3.0, 10.0,
                 7.5, 2.0, 7.5, true, true,
-                true, true, true, false);
+                true, true, true, true);
         Fish angelfish = new Fish("", "", "", "", emptyArray,
-                emptyArray, new String[]{"Sand", "Mud"}, 1, 1, 1,
+                emptyArray, new String[]{"Sand", "Mud"}, 1, 2, 1,
                 1, 2, 0, 25.0, 28.0, 6.8,
                 7.0, 4.0, 12.0, 3.0, 10.0,
                 9.0, 2.5, 11.0, true, true,
@@ -164,7 +164,7 @@ public class CompareUnitTest {
         assertFalse("fancy goldfish-gourami", fancyGoldfish.areFishCompatible(fishes[12]));
         assertFalse("fancy goldfish-dwarf cichlid", fancyGoldfish.areFishCompatible(fishes[13]));
         assertFalse("fancy goldfish-angelfish", fancyGoldfish.areFishCompatible(fishes[14]));
-        assertTrue("fancy goldfish-platy", fancyGoldfish.areFishCompatible(fishes[15]));
+        assertFalse("fancy goldfish-platy", fancyGoldfish.areFishCompatible(fishes[15]));
     }
 
     @Test
@@ -176,15 +176,15 @@ public class CompareUnitTest {
         assertTrue("endler guppy-endler guppy", endler.areFishCompatible(endler));
         assertFalse("endler guppy-hillstream loach", endler.areFishCompatible(fishes[3]));
         assertFalse("endler guppy-weather loach", endler.areFishCompatible(fishes[4]));
-        assertTrue("endler guppy-betta", endler.areFishCompatible(fishes[5]));
+        assertFalse("endler guppy-betta", endler.areFishCompatible(fishes[5]));
         assertFalse("endler guppy-glass catfish", endler.areFishCompatible(fishes[6]));
         assertFalse("endler guppy-pleco", endler.areFishCompatible(fishes[7]));
         assertTrue("endler guppy-bronze corydora", endler.areFishCompatible(fishes[8]));
         assertTrue("endler guppy-molly", endler.areFishCompatible(fishes[9]));
         assertTrue("endler guppy-danio", endler.areFishCompatible(fishes[10]));
         assertTrue("endler guppy-swordtail", endler.areFishCompatible(fishes[11]));
-        assertTrue("endler guppy-gourami", endler.areFishCompatible(fishes[12]));
-        assertFalse("endler guppy-dwarf cichlid", endler.areFishCompatible(fishes[13]));
+        assertFalse("endler guppy-gourami", endler.areFishCompatible(fishes[12]));
+        assertTrue("endler guppy-dwarf cichlid", endler.areFishCompatible(fishes[13]));
         assertFalse("endler guppy-angelfish", endler.areFishCompatible(fishes[14]));
         assertTrue("endler guppy-platy", endler.areFishCompatible(fishes[15]));
     }
@@ -203,7 +203,7 @@ public class CompareUnitTest {
         assertFalse("hillstream loach-pleco", hillstream.areFishCompatible(fishes[7]));
         assertFalse("hillstream loach-bronze corydora", hillstream.areFishCompatible(fishes[8]));
         assertFalse("hillstream loach-molly", hillstream.areFishCompatible(fishes[9]));
-        assertTrue("hillstream loach-danio", hillstream.areFishCompatible(fishes[10]));
+        assertFalse("hillstream loach-danio", hillstream.areFishCompatible(fishes[10]));
         assertFalse("hillstream loach-swordtail", hillstream.areFishCompatible(fishes[11]));
         assertFalse("hillstream loach-gourami", hillstream.areFishCompatible(fishes[12]));
         assertFalse("hillstream loach-dwarf cichlid", hillstream.areFishCompatible(fishes[13]));
@@ -239,20 +239,20 @@ public class CompareUnitTest {
 
         assertFalse("betta-goldfish", betta.areFishCompatible(fishes[0]));
         assertFalse("betta-fancy goldfish", betta.areFishCompatible(fishes[1]));
-        assertTrue("betta-endler guppy", betta.areFishCompatible(fishes[2]));
+        assertFalse("betta-endler guppy", betta.areFishCompatible(fishes[2]));
         assertFalse("betta-hillstream loach", betta.areFishCompatible(fishes[3]));
         assertFalse("betta-weather loach", betta.areFishCompatible(fishes[4]));
-        assertTrue("betta-betta", betta.areFishCompatible(betta));
-        assertTrue("betta-glass catfish", betta.areFishCompatible(fishes[6]));
-        assertTrue("betta-pleco", betta.areFishCompatible(fishes[7]));
+        assertFalse("betta-betta", betta.areFishCompatible(betta));
+        assertFalse("betta-glass catfish", betta.areFishCompatible(fishes[6]));
+        assertFalse("betta-pleco", betta.areFishCompatible(fishes[7]));
         assertTrue("betta-bronze corydora", betta.areFishCompatible(fishes[8]));
-        assertTrue("betta-molly", betta.areFishCompatible(fishes[9]));
+        assertFalse("betta-molly", betta.areFishCompatible(fishes[9]));
         assertFalse("betta-danio", betta.areFishCompatible(fishes[10]));
-        assertTrue("betta-swordtail", betta.areFishCompatible(fishes[11]));
+        assertFalse("betta-swordtail", betta.areFishCompatible(fishes[11]));
         assertFalse("betta-gourami", betta.areFishCompatible(fishes[12]));
         assertFalse("betta-dwarf cichlid", betta.areFishCompatible(fishes[13]));
         assertFalse("betta-angelfish", betta.areFishCompatible(fishes[14]));
-        assertTrue("betta-platy", betta.areFishCompatible(fishes[15]));
+        assertFalse("betta-platy", betta.areFishCompatible(fishes[15]));
     }
 
     @Test
@@ -264,14 +264,14 @@ public class CompareUnitTest {
         assertFalse("glass catfish-endler guppy", glass.areFishCompatible(fishes[2]));
         assertFalse("glass catfish-hillstream loach", glass.areFishCompatible(fishes[3]));
         assertFalse("glass catfish-weather loach", glass.areFishCompatible(fishes[4]));
-        assertTrue("glass catfish-betta", glass.areFishCompatible(fishes[5]));
+        assertFalse("glass catfish-betta", glass.areFishCompatible(fishes[5]));
         assertTrue("glass catfish-glass catfish", glass.areFishCompatible(glass));
-        assertFalse("glass catfish-pleco", glass.areFishCompatible(fishes[7]));
+        assertTrue("glass catfish-pleco", glass.areFishCompatible(fishes[7]));
         assertTrue("glass catfish-bronze corydora", glass.areFishCompatible(fishes[8]));
         assertTrue("glass catfish-molly", glass.areFishCompatible(fishes[9]));
         assertTrue("glass catfish-danio", glass.areFishCompatible(fishes[10]));
         assertTrue("glass catfish-swordtail", glass.areFishCompatible(fishes[11]));
-        assertTrue("glass catfish-gourami", glass.areFishCompatible(fishes[12]));
+        assertFalse("glass catfish-gourami", glass.areFishCompatible(fishes[12]));
         assertFalse("glass catfish-dwarf cichlid", glass.areFishCompatible(fishes[13]));
         assertFalse("glass catfish-angelfish", glass.areFishCompatible(fishes[14]));
         assertTrue("glass catfish-platy", glass.areFishCompatible(fishes[15]));
@@ -286,17 +286,17 @@ public class CompareUnitTest {
         assertFalse("pleco-endler guppy", pleco.areFishCompatible(fishes[2]));
         assertFalse("pleco-hillstream loach", pleco.areFishCompatible(fishes[3]));
         assertFalse("pleco-weather loach", pleco.areFishCompatible(fishes[4]));
-        assertTrue("pleco-betta", pleco.areFishCompatible(fishes[5]));
-        assertFalse("pleco-glass catfish", pleco.areFishCompatible(fishes[6]));
+        assertFalse("pleco-betta", pleco.areFishCompatible(fishes[5]));
+        assertTrue("pleco-glass catfish", pleco.areFishCompatible(fishes[6]));
         assertFalse("pleco-pleco", pleco.areFishCompatible(pleco));
-        assertTrue("pleco-bronze corydora", pleco.areFishCompatible(fishes[8]));
-        assertTrue("pleco-molly", pleco.areFishCompatible(fishes[9]));
-        assertTrue("pleco-danio", pleco.areFishCompatible(fishes[10]));
-        assertTrue("pleco-swordtail", pleco.areFishCompatible(fishes[11]));
-        assertTrue("pleco-gourami", pleco.areFishCompatible(fishes[12]));
-        assertTrue("pleco-dwarf cichlid", pleco.areFishCompatible(fishes[13]));
-        assertTrue("pleco-angelfish", pleco.areFishCompatible(fishes[14]));
-        assertTrue("pleco-platy", pleco.areFishCompatible(fishes[15]));
+        assertFalse("pleco-bronze corydora", pleco.areFishCompatible(fishes[8]));
+        assertFalse("pleco-molly", pleco.areFishCompatible(fishes[9]));
+        assertFalse("pleco-danio", pleco.areFishCompatible(fishes[10]));
+        assertFalse("pleco-swordtail", pleco.areFishCompatible(fishes[11]));
+        assertFalse("pleco-gourami", pleco.areFishCompatible(fishes[12]));
+        assertFalse("pleco-dwarf cichlid", pleco.areFishCompatible(fishes[13]));
+        assertFalse("pleco-angelfish", pleco.areFishCompatible(fishes[14]));
+        assertFalse("pleco-platy", pleco.areFishCompatible(fishes[15]));
     }
 
     @Test
@@ -310,13 +310,13 @@ public class CompareUnitTest {
         assertFalse("bronze corydora-weather loach", cory.areFishCompatible(fishes[4]));
         assertTrue("bronze corydora-betta", cory.areFishCompatible(fishes[5]));
         assertTrue("bronze corydora-glass catfish", cory.areFishCompatible(fishes[6]));
-        assertTrue("bronze corydora-pleco", cory.areFishCompatible(fishes[7]));
+        assertFalse("bronze corydora-pleco", cory.areFishCompatible(fishes[7]));
         assertTrue("bronze corydora-bronze corydora", cory.areFishCompatible(cory));
         assertTrue("bronze corydora-molly", cory.areFishCompatible(fishes[9]));
-        assertTrue("bronze corydora-danio", cory.areFishCompatible(fishes[10]));
+        assertFalse("bronze corydora-danio", cory.areFishCompatible(fishes[10]));
         assertTrue("bronze corydora-swordtail", cory.areFishCompatible(fishes[11]));
         assertTrue("bronze corydora-gourami", cory.areFishCompatible(fishes[12]));
-        assertTrue("bronze corydora-dwarf cichlid", cory.areFishCompatible(fishes[13]));
+        assertFalse("bronze corydora-dwarf cichlid", cory.areFishCompatible(fishes[13]));
         assertFalse("bronze corydora-angelfish", cory.areFishCompatible(fishes[14]));
         assertTrue("bronze corydora-platy", cory.areFishCompatible(fishes[15]));
     }
@@ -330,16 +330,16 @@ public class CompareUnitTest {
         assertTrue("molly-endler guppy", molly.areFishCompatible(fishes[2]));
         assertFalse("molly-hillstream loach", molly.areFishCompatible(fishes[3]));
         assertFalse("molly-weather loach", molly.areFishCompatible(fishes[4]));
-        assertTrue("molly-betta", molly.areFishCompatible(fishes[5]));
+        assertFalse("molly-betta", molly.areFishCompatible(fishes[5]));
         assertTrue("molly-glass catfish", molly.areFishCompatible(fishes[6]));
-        assertTrue("molly-pleco", molly.areFishCompatible(fishes[7]));
+        assertFalse("molly-pleco", molly.areFishCompatible(fishes[7]));
         assertTrue("molly-bronze corydora", molly.areFishCompatible(fishes[8]));
         assertTrue("molly-molly", molly.areFishCompatible(molly));
-        assertTrue("molly-danio", molly.areFishCompatible(fishes[10]));
+        assertFalse("molly-danio", molly.areFishCompatible(fishes[10]));
         assertTrue("molly-swordtail", molly.areFishCompatible(fishes[11]));
-        assertTrue("molly-gourami", molly.areFishCompatible(fishes[12]));
-        assertTrue("molly-dwarf cichlid", molly.areFishCompatible(fishes[13]));
-        assertTrue("molly-angelfish", molly.areFishCompatible(fishes[14]));
+        assertFalse("molly-gourami", molly.areFishCompatible(fishes[12]));
+        assertFalse("molly-dwarf cichlid", molly.areFishCompatible(fishes[13]));
+        assertFalse("molly-angelfish", molly.areFishCompatible(fishes[14]));
         assertTrue("molly-platy", molly.areFishCompatible(fishes[15]));
     }
 
@@ -350,13 +350,13 @@ public class CompareUnitTest {
         assertFalse("danio-goldfish", danio.areFishCompatible(fishes[0]));
         assertFalse("danio-fancy goldfish", danio.areFishCompatible(fishes[1]));
         assertTrue("danio-endler guppy", danio.areFishCompatible(fishes[2]));
-        assertTrue("danio-hillstream loach", danio.areFishCompatible(fishes[3]));
+        assertFalse("danio-hillstream loach", danio.areFishCompatible(fishes[3]));
         assertFalse("danio-weather loach", danio.areFishCompatible(fishes[4]));
         assertFalse("danio-betta", danio.areFishCompatible(fishes[5]));
         assertTrue("danio-glass catfish", danio.areFishCompatible(fishes[6]));
-        assertTrue("danio-pleco", danio.areFishCompatible(fishes[7]));
-        assertTrue("danio-bronze corydora", danio.areFishCompatible(fishes[8]));
-        assertTrue("danio-molly", danio.areFishCompatible(fishes[9]));
+        assertFalse("danio-pleco", danio.areFishCompatible(fishes[7]));
+        assertFalse("danio-bronze corydora", danio.areFishCompatible(fishes[8]));
+        assertFalse("danio-molly", danio.areFishCompatible(fishes[9]));
         assertTrue("danio-danio", danio.areFishCompatible(danio));
         assertTrue("danio-swordtail", danio.areFishCompatible(fishes[11]));
         assertFalse("danio-gourami", danio.areFishCompatible(fishes[12]));
@@ -374,16 +374,16 @@ public class CompareUnitTest {
         assertTrue("swordtail-endler guppy", swordtail.areFishCompatible(fishes[2]));
         assertFalse("swordtail-hillstream loach", swordtail.areFishCompatible(fishes[3]));
         assertFalse("swordtail-weather loach", swordtail.areFishCompatible(fishes[4]));
-        assertTrue("swordtail-betta", swordtail.areFishCompatible(fishes[5]));
+        assertFalse("swordtail-betta", swordtail.areFishCompatible(fishes[5]));
         assertTrue("swordtail-glass catfish", swordtail.areFishCompatible(fishes[6]));
-        assertTrue("swordtail-pleco", swordtail.areFishCompatible(fishes[7]));
+        assertFalse("swordtail-pleco", swordtail.areFishCompatible(fishes[7]));
         assertTrue("swordtail-bronze corydora", swordtail.areFishCompatible(fishes[8]));
         assertTrue("swordtail-molly", swordtail.areFishCompatible(fishes[9]));
         assertTrue("swordtail-danio", swordtail.areFishCompatible(fishes[10]));
         assertTrue("swordtail-swordtail", swordtail.areFishCompatible(swordtail));
-        assertTrue("swordtail-gourami", swordtail.areFishCompatible(fishes[12]));
-        assertFalse("swordtail-dwarf cichlid", swordtail.areFishCompatible(fishes[13]));
-        assertTrue("swordtail-angelfish", swordtail.areFishCompatible(fishes[14]));
+        assertFalse("swordtail-gourami", swordtail.areFishCompatible(fishes[12]));
+        assertTrue("swordtail-dwarf cichlid", swordtail.areFishCompatible(fishes[13]));
+        assertFalse("swordtail-angelfish", swordtail.areFishCompatible(fishes[14]));
         assertTrue("swordtail-platy", swordtail.areFishCompatible(fishes[15]));
     }
 
@@ -393,20 +393,20 @@ public class CompareUnitTest {
 
         assertFalse("gourami-goldfish", gourami.areFishCompatible(fishes[0]));
         assertFalse("gourami-fancy goldfish", gourami.areFishCompatible(fishes[1]));
-        assertTrue("gourami-endler guppy", gourami.areFishCompatible(fishes[2]));
+        assertFalse("gourami-endler guppy", gourami.areFishCompatible(fishes[2]));
         assertFalse("gourami-hillstream loach", gourami.areFishCompatible(fishes[3]));
         assertFalse("gourami-weather loach", gourami.areFishCompatible(fishes[4]));
         assertFalse("gourami-betta", gourami.areFishCompatible(fishes[5]));
-        assertTrue("gourami-glass catfish", gourami.areFishCompatible(fishes[6]));
-        assertTrue("gourami-pleco", gourami.areFishCompatible(fishes[7]));
+        assertFalse("gourami-glass catfish", gourami.areFishCompatible(fishes[6]));
+        assertFalse("gourami-pleco", gourami.areFishCompatible(fishes[7]));
         assertTrue("gourami-bronze corydora", gourami.areFishCompatible(fishes[8]));
-        assertTrue("gourami-molly", gourami.areFishCompatible(fishes[9]));
+        assertFalse("gourami-molly", gourami.areFishCompatible(fishes[9]));
         assertFalse("gourami-danio", gourami.areFishCompatible(fishes[10]));
-        assertTrue("gourami-swordtail", gourami.areFishCompatible(fishes[11]));
+        assertFalse("gourami-swordtail", gourami.areFishCompatible(fishes[11]));
         assertTrue("gourami-gourami", gourami.areFishCompatible(gourami));
         assertFalse("gourami-dwarf cichlid", gourami.areFishCompatible(fishes[13]));
-        assertTrue("gourami-angelfish", gourami.areFishCompatible(fishes[14]));
-        assertTrue("gourami-platy", gourami.areFishCompatible(fishes[15]));
+        assertFalse("gourami-angelfish", gourami.areFishCompatible(fishes[14]));
+        assertFalse("gourami-platy", gourami.areFishCompatible(fishes[15]));
     }
 
     @Test
@@ -415,19 +415,19 @@ public class CompareUnitTest {
 
         assertFalse("dwarf cichlid-goldfish", cichlid.areFishCompatible(fishes[0]));
         assertFalse("dwarf cichlid-fancy goldfish", cichlid.areFishCompatible(fishes[1]));
-        assertFalse("dwarf cichlid-endler guppy", cichlid.areFishCompatible(fishes[2]));
+        assertTrue("dwarf cichlid-endler guppy", cichlid.areFishCompatible(fishes[2]));
         assertFalse("dwarf cichlid-hillstream loach", cichlid.areFishCompatible(fishes[3]));
         assertFalse("dwarf cichlid-weather loach", cichlid.areFishCompatible(fishes[4]));
         assertFalse("dwarf cichlid-betta", cichlid.areFishCompatible(fishes[5]));
         assertFalse("dwarf cichlid-glass catfish", cichlid.areFishCompatible(fishes[6]));
-        assertTrue("dwarf cichlid-pleco", cichlid.areFishCompatible(fishes[7]));
-        assertTrue("dwarf cichlid-bronze corydora", cichlid.areFishCompatible(fishes[8]));
-        assertTrue("dwarf cichlid-molly", cichlid.areFishCompatible(fishes[9]));
+        assertFalse("dwarf cichlid-pleco", cichlid.areFishCompatible(fishes[7]));
+        assertFalse("dwarf cichlid-bronze corydora", cichlid.areFishCompatible(fishes[8]));
+        assertFalse("dwarf cichlid-molly", cichlid.areFishCompatible(fishes[9]));
         assertFalse("dwarf cichlid-danio", cichlid.areFishCompatible(fishes[10]));
-        assertFalse("dwarf cichlid-swordtail", cichlid.areFishCompatible(fishes[11]));
+        assertTrue("dwarf cichlid-swordtail", cichlid.areFishCompatible(fishes[11]));
         assertFalse("dwarf cichlid-gourami", cichlid.areFishCompatible(fishes[12]));
         assertTrue("dwarf cichlid-dwarf cichlid", cichlid.areFishCompatible(cichlid));
-        assertTrue("dwarf cichlid-angelfish", cichlid.areFishCompatible(fishes[14]));
+        assertFalse("dwarf cichlid-angelfish", cichlid.areFishCompatible(fishes[14]));
         assertFalse("dwarf cichlid-platy", cichlid.areFishCompatible(fishes[15]));
     }
 
@@ -442,13 +442,13 @@ public class CompareUnitTest {
         assertFalse("angelfish-weather loach", angelfish.areFishCompatible(fishes[4]));
         assertFalse("angelfish-betta", angelfish.areFishCompatible(fishes[5]));
         assertFalse("angelfish-glass catfish", angelfish.areFishCompatible(fishes[6]));
-        assertTrue("angelfish-pleco", angelfish.areFishCompatible(fishes[7]));
+        assertFalse("angelfish-pleco", angelfish.areFishCompatible(fishes[7]));
         assertFalse("angelfish-bronze corydora", angelfish.areFishCompatible(fishes[8]));
-        assertTrue("angelfish-molly", angelfish.areFishCompatible(fishes[9]));
+        assertFalse("angelfish-molly", angelfish.areFishCompatible(fishes[9]));
         assertFalse("angelfish-danio", angelfish.areFishCompatible(fishes[10]));
-        assertTrue("angelfish-swordtail", angelfish.areFishCompatible(fishes[11]));
-        assertTrue("angelfish-gourami", angelfish.areFishCompatible(fishes[12]));
-        assertTrue("angelfish-dwarf cichlid", angelfish.areFishCompatible(fishes[13]));
+        assertFalse("angelfish-swordtail", angelfish.areFishCompatible(fishes[11]));
+        assertFalse("angelfish-gourami", angelfish.areFishCompatible(fishes[12]));
+        assertFalse("angelfish-dwarf cichlid", angelfish.areFishCompatible(fishes[13]));
         assertTrue("angelfish-angelfish", angelfish.areFishCompatible(angelfish));
         assertFalse("angelfish-platy", angelfish.areFishCompatible(fishes[15]));
     }
@@ -458,18 +458,18 @@ public class CompareUnitTest {
         Fish platy = fishes[15];
 
         assertTrue("platy-goldfish", platy.areFishCompatible(fishes[0]));
-        assertTrue("platy-fancy goldfish", platy.areFishCompatible(fishes[1]));
+        assertFalse("platy-fancy goldfish", platy.areFishCompatible(fishes[1]));
         assertTrue("platy-endler guppy", platy.areFishCompatible(fishes[2]));
         assertFalse("platy-hillstream loach", platy.areFishCompatible(fishes[3]));
         assertFalse("platy-weather loach", platy.areFishCompatible(fishes[4]));
-        assertTrue("platy-betta", platy.areFishCompatible(fishes[5]));
+        assertFalse("platy-betta", platy.areFishCompatible(fishes[5]));
         assertTrue("platy-glass catfish", platy.areFishCompatible(fishes[6]));
-        assertTrue("platy-pleco", platy.areFishCompatible(fishes[7]));
+        assertFalse("platy-pleco", platy.areFishCompatible(fishes[7]));
         assertTrue("platy-bronze corydora", platy.areFishCompatible(fishes[8]));
         assertTrue("platy-molly", platy.areFishCompatible(fishes[9]));
         assertTrue("platy-danio", platy.areFishCompatible(fishes[10]));
         assertTrue("platy-swordtail", platy.areFishCompatible(fishes[11]));
-        assertTrue("platy-gourami", platy.areFishCompatible(fishes[12]));
+        assertFalse("platy-gourami", platy.areFishCompatible(fishes[12]));
         assertFalse("platy-dwarf cichlid", platy.areFishCompatible(fishes[13]));
         assertFalse("platy-angelfish", platy.areFishCompatible(fishes[14]));
         assertTrue("platy-platy", platy.areFishCompatible(platy));

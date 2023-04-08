@@ -313,12 +313,12 @@ public class Fish implements Parcelable {
         int swimDiffA = maxSwimLvl - fishB.getMinSwimLvl();
         int swimDiffB = fishB.getMaxSwimLvl() - minSwimLvl;
 
-        if (swimDiffA < swimDiffB) {
-            if (swimDiffA >= 0 && (territorial || fishB.isTerritorial())) {
+        if (swimDiffA > swimDiffB) {
+            if (swimDiffA == 0 && (territorial || fishB.isTerritorial())) {
                 return false;
             }
         } else {
-            if (swimDiffB >= 0 && (territorial || fishB.isTerritorial())) {
+            if (swimDiffB == 0 && (territorial || fishB.isTerritorial())) {
                 return false;
             }
         }
@@ -337,9 +337,15 @@ public class Fish implements Parcelable {
             }
         }
 
-        // Checks if one fish is fast and the other is slow
-        if (fast != fishB.isFast()) {
-            return false;
+        // Checks if one fish is fast and the other is slow and they swim at the same level
+        if (swimDiffA < swimDiffB) {
+            if (swimDiffA >= 0 && (fast != fishB.isFast())) {
+                return false;
+            }
+        } else {
+            if (swimDiffB >= 0 && (fast != fishB.isFast())) {
+                return false;
+            }
         }
 
         // Checks if there is a matching substrate
