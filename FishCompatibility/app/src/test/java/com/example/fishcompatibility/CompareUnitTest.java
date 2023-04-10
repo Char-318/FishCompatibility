@@ -1,5 +1,6 @@
 package com.example.fishcompatibility;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -473,5 +474,10 @@ public class CompareUnitTest {
         assertFalse("platy-dwarf cichlid", platy.areFishCompatible(fishes[13]));
         assertFalse("platy-angelfish", platy.areFishCompatible(fishes[14]));
         assertTrue("platy-platy", platy.areFishCompatible(platy));
+    }
+
+    @AfterClass
+    public static void clear() {
+        fishes = null;
     }
 }
