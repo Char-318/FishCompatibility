@@ -27,9 +27,11 @@ import java.util.Collections;
 
  public class TankActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
      ArrayList<Fish> tankFish = new ArrayList<>();
+     ArrayList<Integer> notCompTextIds = new ArrayList<>();
+     ArrayList<Integer> fragIds = new ArrayList<>();
+
      Fish[] fishes;
      String[] fishNames;
-     TextView notCompText;
      LinearLayout listLayout;
 
     @Override
@@ -73,11 +75,6 @@ import java.util.Collections;
                  fishAddedText.setVisibility(View.INVISIBLE);
                  isCompatText.setVisibility(View.INVISIBLE);
 
-                 if (notCompText != null) {
-                     ((ViewGroup) notCompText.getParent()).removeView(notCompText);
-                     notCompText = null;
-                 }
-
                  FishFragment fragment = (FishFragment) getSupportFragmentManager()
                          .findFragmentByTag("fishFragment");
 
@@ -93,6 +90,7 @@ import java.util.Collections;
                  listLayout = findViewById(R.id.fragmentLayout);
                  LinearLayout fragLayout = new LinearLayout(this);
                  int fragId = View.generateViewId();
+                 fragIds.add(fragId);
                  fragLayout.setId(fragId);
                  listLayout.addView(fragLayout);
 
@@ -124,25 +122,45 @@ import java.util.Collections;
      }
 
      public void removeFragment(FragmentManager fragmentManager, int id) {
-        Fragment fragment = fragmentManager.findFragmentById(id);
-        FishFragment fishFrag = (FishFragment) fragment;
-        Fish fish = fishFrag.getShownFish();
-        tankFish.removeAll(Collections.singleton(fish));
+         TextView isCompatText = (TextView) findViewById(R.id.fishIsCompat);
+         isCompatText.setVisibility(View.INVISIBLE);
 
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.remove(fragment).commit();
+         Fragment fragment = fragmentManager.findFragmentById(id);
+         FishFragment fishFrag = (FishFragment) fragment;
+         Fish fish = fishFrag.getShownFish();
+         tankFish.removeAll(Collections.singleton(fish));
+         fragIds.removeAll(Collections.singleton(id));
+         listLayout.removeView(listLayout.findViewById(id));
 
-        if (notCompText != null) {
-            ((ViewGroup) notCompText.getParent()).removeView(notCompText);
-            notCompText = null;
-        }
+         // Removing all TextViews that say which fish aren't compatible
+         for (int textId : notCompTextIds) {
+             TextView notCompText = (TextView) listLayout.findViewById(textId);
+             listLayout.removeView(notCompText);
+         }
+
+         notCompTextIds.clear();
+         boolean isCompatible = true;
+
+         // Checks if all remaining fish are compatible
+         for (int i = 0; i < tankFish.size(); i++) {
+             boolean thisCompatible = checkAllFish(tankFish.get(i));
+
+             if (isCompatible) {
+                 isCompatible = thisCompatible;
+             }
+         }
+
+         if (tankFish.size() != 0 && isCompatible) {
+             isCompatText.setVisibility(View.VISIBLE);
+         }
      }
 
      public void clearList(View view) {
          listLayout = findViewById(R.id.fragmentLayout);
          listLayout.removeAllViews();
          tankFish.clear();
-         notCompText = null;
+         notCompTextIds.clear();
+         fragIds.clear();
          TextView fishAddedText = (TextView) findViewById(R.id.fishAdded);
          TextView isCompatText = (TextView) findViewById(R.id.fishIsCompat);
          fishAddedText.setVisibility(View.INVISIBLE);
@@ -152,19 +170,39 @@ import java.util.Collections;
      public boolean checkAllFish(Fish selectedFish) {
          boolean isCompatible = true;
 
-         for (Fish fishB : tankFish) {
+         for (int i = 0; i < tankFish.size(); i++) {
+             Fish fishB = tankFish.get(i);
+
+             if (fishB == selectedFish) {
+                 break;
+             }
+
              if (!selectedFish.areFishCompatible(fishB)) {
                  isCompatible = false;
 
-                 notCompText = new TextView(this);
-                 notCompText.setText("This fish is not compatible with " + fishB.getName());
-                 notCompText.setTextColor(ContextCompat.getColor(this, R.color.red));
-                 listLayout.addView(notCompText);
+                 int selectedFishIndex = tankFish.indexOf(selectedFish);
+                 int selectedFragId = fragIds.get(selectedFishIndex);
+                 View selectedFragView = listLayout.findViewById(selectedFragId);
+                 int selectedPosition = listLayout.indexOfChild(selectedFragView) + 1;
+                 createNotCompText(fishB, selectedPosition);
 
-                 break;
+                 int fishBFragId = fragIds.get(i);
+                 View fishBFragView = listLayout.findViewById(fishBFragId);
+                 int fishBPosition = listLayout.indexOfChild(fishBFragView) + 1;
+                 createNotCompText(selectedFish, fishBPosition);
              }
          }
 
          return isCompatible;
+     }
+
+     private void createNotCompText(Fish fish, int position) {
+         TextView notCompText = new TextView(this);
+         int textId = View.generateViewId();
+         notCompTextIds.add(textId);
+         notCompText.setId(textId);
+         notCompText.setText("This fish is not compatible with " + fish.getName());
+         notCompText.setTextColor(ContextCompat.getColor(this, R.color.red));
+         listLayout.addView(notCompText, position);
      }
  }
