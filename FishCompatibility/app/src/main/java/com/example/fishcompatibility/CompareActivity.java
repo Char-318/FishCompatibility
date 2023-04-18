@@ -58,6 +58,9 @@ public class CompareActivity extends AppCompatActivity implements AdapterView.On
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        TextView textView = (TextView) findViewById(R.id.compatibleText);
+        textView.setText("");
+
         if (adapterView.getAdapter() == arrayAdapterA) {
             fishA = fishes[i];
 

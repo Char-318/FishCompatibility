@@ -43,95 +43,71 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TableLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <TableRow
-                    android:padding="5dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/alias"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/alias"
-                        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/aliases"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-                    <TextView
-                        android:id="@+id/aliases"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"/>
-                </TableRow>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/symptoms"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textStyle="bold" />
 
-                <TableRow
-                    android:padding="5dp">
+                <TextView
+                    android:id="@+id/symptoms"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/symptoms"
-                        android:textStyle="bold" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/causes"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/symptoms"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"/>
-                </TableRow>
+                <TextView
+                    android:id="@+id/causes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-                <TableRow
-                    android:padding="5dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/treatments"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/causes"
-                        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/treatments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-                    <TextView
-                        android:id="@+id/causes"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"/>
-                </TableRow>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/prevention"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textStyle="bold" />
 
-                <TableRow
-                    android:padding="5dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/treatments"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/treatments"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"/>
-                </TableRow>
-
-                <TableRow
-                    android:padding="5dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/prevention"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/prevention"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"/>
-                </TableRow>
-            </TableLayout>
+                <TextView
+                    android:id="@+id/prevention"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
         </ScrollView>
     </LinearLayout>
 

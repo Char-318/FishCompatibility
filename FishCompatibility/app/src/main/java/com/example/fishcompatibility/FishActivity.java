@@ -158,10 +158,16 @@ public class FishActivity extends AppCompatActivity {
                     break;
             }
         }
+        swimText = swimText + " of the tank";
         swimLvl.setText(swimText);
 
         TextView pop = findViewById(R.id.pop);
-        String popText = mFish.getMinPop() + " - " + mFish.getMaxPop();
+        String popText;
+        if (mFish.getMaxPop() != 0) {
+            popText = mFish.getMinPop() + " - " + mFish.getMaxPop();
+        } else {
+            popText = mFish.getMinPop() + "+";
+        }
         pop.setText(popText);
 
         TextView finNipper = findViewById(R.id.fin_nipper);

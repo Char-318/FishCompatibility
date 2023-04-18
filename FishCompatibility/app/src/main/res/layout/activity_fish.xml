@@ -71,7 +71,8 @@
                             android:id="@+id/sci_name"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1" />
+                            android:layout_weight="1"
+                            android:textStyle="italic" />
                     </TableRow>
 
                     <TableRow
@@ -324,10 +325,11 @@
 
                         <TextView
                             android:id="@+id/aggressive"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"/>
                     </TableRow>
+
                 </TableLayout>
             </LinearLayout>
         </ScrollView>

@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Fish Compatibility</string>
-    <string name="compare_fish_button">Compare Fish</string>
+    <string name="app_name">My Aquarium</string>
+    <string name="compare_fish_button">Fish Compatibility</string>
     <string name="virtual_tank_button">Virtual Tank</string>
     <string name="search_fish_button">Search Fish</string>
     <string name="search_diseases_button">Search Diseases</string>
@@ -16,7 +16,7 @@
     <string name="acidity">Acidity</string>
     <string name="gen_hard">General hardness</string>
     <string name="carb_hard">Carbonate hardness</string>
-    <string name="vore">Vore</string>
+    <string name="vore">-Vore</string>
     <string name="food_type">Food type</string>
     <string name="avg_size">Average size</string>
     <string name="life_exp">Life expectancy</string>

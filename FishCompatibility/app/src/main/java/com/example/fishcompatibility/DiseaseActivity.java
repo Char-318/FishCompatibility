@@ -37,51 +37,36 @@ public class DiseaseActivity extends AppCompatActivity {
         TextView aliases = findViewById(R.id.aliases);
         String aliasText = "";
         for (String alias : mDisease.getAliases()) {
-            aliasText = aliasText + "\n" + alias;
+            aliasText = aliasText + alias + "\n\n";
         }
-        if (aliasText.length() > 0) {
-            aliasText = aliasText.substring(1);
-            aliases.setText(aliasText);
-        }
+        aliases.setText(aliasText);
 
         TextView symptoms = findViewById(R.id.symptoms);
         String symptomText = "";
         for (String symptom : mDisease.getSymptoms()) {
-            symptomText = symptomText + "\n" + symptom;
+            symptomText = symptomText + symptom + "\n\n";
         }
-        if (symptomText.length() > 0) {
-            symptomText = symptomText.substring(1);
-            symptoms.setText(symptomText);
-        }
+        symptoms.setText(symptomText);
 
         TextView causes = findViewById(R.id.causes);
         String causesText = "";
         for (String cause : mDisease.getCauses()) {
-            causesText = causesText + "\n" + cause;
+            causesText = causesText + cause + "\n\n";
         }
-        if (causesText.length() > 0) {
-            causesText = causesText.substring(1);
-            causes.setText(causesText);
-        }
+        causes.setText(causesText);
 
         TextView treatments = findViewById(R.id.treatments);
         String treatmentsText = "";
         for (String treatment : mDisease.getTreatment()) {
-            treatmentsText = treatmentsText + "\n" + treatment;
+            treatmentsText = treatmentsText + treatment + "\n\n";
         }
-        if (treatmentsText.length() > 0) {
-            treatmentsText = treatmentsText.substring(1);
-            treatments.setText(treatmentsText);
-        }
+        treatments.setText(treatmentsText);
 
         TextView preventions = findViewById(R.id.prevention);
         String preventionText = "";
         for (String prevention : mDisease.getPrevention()) {
-            preventionText = preventionText + "\n" + prevention;
+            preventionText = preventionText + prevention + "\n\n";
         }
-        if (preventionText.length() > 0) {
-            preventionText = preventionText.substring(1);
-            preventions.setText(preventionText);
-        }
+        preventions.setText(preventionText);
     }
 }
