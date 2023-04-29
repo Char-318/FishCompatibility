@@ -16,10 +16,10 @@ import java.util.Arrays;
 
 public class FishSearchActivity extends AppCompatActivity implements SearchView.OnQueryTextListener,
         SearchView.OnCloseListener, ListView.OnItemClickListener {
-    Fish[] fishes;
-    ArrayList<Fish> resultArray = new ArrayList<>();
-    ListView listView;
-    FishViewAdapter fishAdapter;
+    private Fish[] fishes;
+    private ArrayList<Fish> resultArray = new ArrayList<>();
+    private ListView listView;
+    private FishViewAdapter fishAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,7 +103,7 @@ public class FishSearchActivity extends AppCompatActivity implements SearchView.
      * @param searchText Contains the input into the search text box in lower-case.
      * @return A list of all fish that match the input string.
      */
-    public ArrayList<Fish> searchFish(String searchText) {
+    private ArrayList<Fish> searchFish(String searchText) {
         ArrayList<Fish> resultArray = new ArrayList<>();
 
         for (Fish fish : fishes) {

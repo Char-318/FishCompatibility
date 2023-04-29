@@ -16,10 +16,10 @@ import java.util.Arrays;
 
 public class DiseaseSearchActivity extends AppCompatActivity implements
         SearchView.OnQueryTextListener, SearchView.OnCloseListener, ListView.OnItemClickListener   {
-    Disease[] diseases;
-    ArrayList<Disease> resultArray = new ArrayList<>();
-    DiseaseViewAdapter diseaseAdapter;
-    ListView listView;
+    private Disease[] diseases;
+    private ArrayList<Disease> resultArray = new ArrayList<>();
+    private DiseaseViewAdapter diseaseAdapter;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,7 +103,7 @@ public class DiseaseSearchActivity extends AppCompatActivity implements
      * @param searchText Contains the input into the search text box in lower-case.
      * @return A list of all diseases that match the input string.
      */
-    public ArrayList<Disease> searchDisease(String searchText) {
+    private ArrayList<Disease> searchDisease(String searchText) {
         ArrayList<Disease> resultArray = new ArrayList<>();
 
         for (Disease disease : diseases) {

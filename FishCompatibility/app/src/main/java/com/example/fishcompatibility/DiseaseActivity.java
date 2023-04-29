@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 public class DiseaseActivity extends AppCompatActivity {
-    Disease mDisease;
+    private Disease disease;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +17,7 @@ public class DiseaseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_disease);
 
         Parcelable parcelable = getIntent().getExtras().getParcelable("disease");
-        mDisease = (Disease) parcelable;
+        disease = (Disease) parcelable;
 
         setData();
     }
@@ -32,39 +32,39 @@ public class DiseaseActivity extends AppCompatActivity {
      */
     private void setData() {
         TextView title = findViewById(R.id.diseaseTitle);
-        title.setText(mDisease.getName());
+        title.setText(disease.getName());
 
         TextView aliases = findViewById(R.id.aliases);
         String aliasText = "";
-        for (String alias : mDisease.getAliases()) {
+        for (String alias : disease.getAliases()) {
             aliasText = aliasText + alias + "\n\n";
         }
         aliases.setText(aliasText);
 
         TextView symptoms = findViewById(R.id.symptoms);
         String symptomText = "";
-        for (String symptom : mDisease.getSymptoms()) {
+        for (String symptom : disease.getSymptoms()) {
             symptomText = symptomText + symptom + "\n\n";
         }
         symptoms.setText(symptomText);
 
         TextView causes = findViewById(R.id.causes);
         String causesText = "";
-        for (String cause : mDisease.getCauses()) {
+        for (String cause : disease.getCauses()) {
             causesText = causesText + cause + "\n\n";
         }
         causes.setText(causesText);
 
         TextView treatments = findViewById(R.id.treatments);
         String treatmentsText = "";
-        for (String treatment : mDisease.getTreatment()) {
+        for (String treatment : disease.getTreatment()) {
             treatmentsText = treatmentsText + treatment + "\n\n";
         }
         treatments.setText(treatmentsText);
 
         TextView preventions = findViewById(R.id.prevention);
         String preventionText = "";
-        for (String prevention : mDisease.getPrevention()) {
+        for (String prevention : disease.getPrevention()) {
             preventionText = preventionText + prevention + "\n\n";
         }
         preventions.setText(preventionText);

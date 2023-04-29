@@ -14,15 +14,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 public class CompareActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    Fish[] fishes;
-    String[] fishNames;
-    ArrayAdapter<String> arrayAdapterA;
-    ArrayAdapter<String> arrayAdapterB;
-    Fish fishA;
-    Fish fishB;
+    private Fish[] fishes;
+    private ArrayAdapter<String> arrayAdapterA;
+    private Fish fishA;
+    private Fish fishB;
 
 
     @Override
@@ -38,7 +34,7 @@ public class CompareActivity extends AppCompatActivity implements AdapterView.On
         // Populating arrays
         Parcelable[] parcelable = getIntent().getExtras().getParcelableArray("fishes");
         fishes = new Fish[parcelable.length];
-        fishNames = new String[parcelable.length];
+        String[] fishNames = new String[parcelable.length];
 
         for (int i = 0; i < parcelable.length; i++) {
             Fish fish = (Fish) parcelable[i];
@@ -48,7 +44,7 @@ public class CompareActivity extends AppCompatActivity implements AdapterView.On
         }
 
         arrayAdapterA = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, fishNames);
-        arrayAdapterB = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, fishNames);
+        ArrayAdapter<String> arrayAdapterB = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, fishNames);
         arrayAdapterA.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         arrayAdapterB.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -58,7 +54,7 @@ public class CompareActivity extends AppCompatActivity implements AdapterView.On
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        TextView textView = (TextView) findViewById(R.id.compatibleText);
+        TextView textView = findViewById(R.id.compatibleText);
         textView.setText("");
 
         if (adapterView.getAdapter() == arrayAdapterA) {
@@ -110,7 +106,7 @@ public class CompareActivity extends AppCompatActivity implements AdapterView.On
 
     public void compareFish(View view) {
         boolean isCompatible = fishA.areFishCompatible(fishB);
-        TextView textView = (TextView) findViewById(R.id.compatibleText);
+        TextView textView = findViewById(R.id.compatibleText);
 
         if (isCompatible) {
             textView.setTextColor(ContextCompat.getColor(this, R.color.green));

@@ -26,13 +26,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 
  public class TankActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-     ArrayList<Fish> tankFish = new ArrayList<>();
-     ArrayList<Integer> notCompTextIds = new ArrayList<>();
-     ArrayList<Integer> fragIds = new ArrayList<>();
-
-     Fish[] fishes;
-     String[] fishNames;
-     LinearLayout listLayout;
+     private final ArrayList<Fish> tankFish = new ArrayList<>();
+     private final ArrayList<Integer> notCompTextIds = new ArrayList<>();
+     private final ArrayList<Integer> fragIds = new ArrayList<>();
+     private Fish[] fishes;
+     private LinearLayout listLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +43,7 @@ import java.util.Collections;
         // Populating arrays
         Parcelable[] parcelable = getIntent().getExtras().getParcelableArray("fishes");
         fishes = new Fish[parcelable.length];
-        fishNames = new String[parcelable.length + 1];
+        String[] fishNames = new String[parcelable.length + 1];
         fishNames[0] = "Select a fish...";
 
         for (int i = 0; i < parcelable.length; i++) {
@@ -167,7 +165,7 @@ import java.util.Collections;
          isCompatText.setVisibility(View.INVISIBLE);
      }
 
-     public boolean checkAllFish(Fish selectedFish) {
+     private boolean checkAllFish(Fish selectedFish) {
          boolean isCompatible = true;
 
          for (int i = 0; i < tankFish.size(); i++) {

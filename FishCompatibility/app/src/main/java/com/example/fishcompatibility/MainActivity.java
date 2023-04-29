@@ -197,15 +197,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Uses image url to select a .png image from the resource file.
-     * @param pUrl Url of the image to be selected. Comes from the json file.
-     * @return Drawable of the image.
-     */
-    private Drawable urlToDrawable(String pUrl) {
-        int imageResource = getResources().getIdentifier(
-                "@drawable/" + pUrl, null, getPackageName());
-
-        return AppCompatResources.getDrawable(getApplicationContext(), imageResource);
-    }
 }

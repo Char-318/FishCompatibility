@@ -26,19 +26,15 @@ public class FishFragment extends Fragment implements View.OnClickListener {
     // the fragment initialization parameters
     private static final String ARG_FISH = "fish";
     private static final String ARG_IS_TANK = "isTank";
-
     private Fish mFish;
     private int mCounter = 1;
     private boolean mIsTank = false;
-    TextView mCounterText;
-    TextView mPopText;
-    Button mPlusButton;
-    Button mMinusButton;
+    private TextView mCounterText;
+    private TextView mPopText;
 
     public Fish getShownFish() {
         return mFish;
     }
-    public int getCounter() { return mCounter; }
 
     public FishFragment() {
         // Required empty public constructor
@@ -99,9 +95,9 @@ public class FishFragment extends Fragment implements View.OnClickListener {
             mCounterText = (TextView) inflatedView.findViewById(R.id.counter);
             mCounterText.setText(String.valueOf(mCounter));
 
-            mPlusButton = (Button) inflatedView.findViewById(R.id.plusButton);
+            Button mPlusButton = (Button) inflatedView.findViewById(R.id.plusButton);
             mPlusButton.setOnClickListener(this);
-            mMinusButton = (Button) inflatedView.findViewById(R.id.minusButton);
+            Button mMinusButton = (Button) inflatedView.findViewById(R.id.minusButton);
             mMinusButton.setOnClickListener(this);
 
             mPopText = (TextView) inflatedView.findViewById(R.id.popError);

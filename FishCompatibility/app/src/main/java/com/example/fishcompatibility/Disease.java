@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Disease implements Parcelable {
-    private String name;
-    private String[] aliases;
-    private String[] symptoms;
-    private String[] causes;
-    private String[] prevention;
-    private String[] treatment;
+    private final String name;
+    private final String[] aliases;
+    private final String[] symptoms;
+    private final String[] causes;
+    private final String[] prevention;
+    private final String[] treatment;
 
     public Disease(String pName, String[] pAliases, String[] pSymptoms, String[] pCauses,
                    String[] pPrevention, String[] pTreatment) {
@@ -42,15 +42,6 @@ public class Disease implements Parcelable {
         dest.writeStringArray(this.symptoms);
         dest.writeStringArray(this.causes);
         dest.writeStringArray(this.prevention);
-    }
-
-    public void readFromParcel(Parcel source) {
-        this.treatment = source.createStringArray();
-        this.name = source.readString();
-        this.aliases = source.createStringArray();
-        this.symptoms = source.createStringArray();
-        this.causes = source.createStringArray();
-        this.prevention = source.createStringArray();
     }
 
     protected Disease(Parcel in) {

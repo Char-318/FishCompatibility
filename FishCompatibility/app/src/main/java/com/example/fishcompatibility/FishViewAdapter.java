@@ -1,7 +1,6 @@
 package com.example.fishcompatibility;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,11 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.content.res.AppCompatResources;
 
-import java.util.ArrayList;
-
 public class FishViewAdapter extends ArrayAdapter<Fish>  {
-    private Fish fish;
-    Context mContext;
+    private Fish mFish;
+    private final Context mContext;
 
     private static class ViewElements {
         ImageView image;
@@ -35,7 +32,7 @@ public class FishViewAdapter extends ArrayAdapter<Fish>  {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        fish = getItem(position);
+        mFish = getItem(position);
         ViewElements elements;
 
         final View result;
@@ -59,27 +56,27 @@ public class FishViewAdapter extends ArrayAdapter<Fish>  {
 
         String aliasList = "";
 
-        for (int i = 0; i < fish.getAliases().length; i++) {
-            aliasList = aliasList + fish.getAliases()[i];
+        for (int i = 0; i < mFish.getAliases().length; i++) {
+            aliasList = aliasList + mFish.getAliases()[i];
 
-            if (i != fish.getAliases().length - 1) {
+            if (i != mFish.getAliases().length - 1) {
                 aliasList = aliasList + ", ";
             }
         }
 
-        String imageUrl = fish.getImageUrl();
+        String imageUrl = mFish.getImageUrl();
         String drawableSource = "@drawable/" + imageUrl;
         int imageRes = mContext.getResources().getIdentifier(drawableSource, null, mContext.getPackageName());
         Drawable drawable = AppCompatResources.getDrawable(mContext, imageRes);
         elements.image.setImageDrawable(drawable);
-        elements.name.setText(fish.getName());
-        elements.sciName.setText(fish.getSciName());
+        elements.name.setText(mFish.getName());
+        elements.sciName.setText(mFish.getSciName());
         elements.aliases.setText(aliasList);
 
         return convertView;
     }
 
     public Fish getFish() {
-        return fish;
+        return mFish;
     }
 }

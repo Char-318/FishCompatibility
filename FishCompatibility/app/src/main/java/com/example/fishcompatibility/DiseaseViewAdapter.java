@@ -11,8 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public class DiseaseViewAdapter extends ArrayAdapter<Disease> implements View.OnClickListener {
-    private Disease[] diseases;
-    Context mContext;
 
     private static class ViewElements {
         TextView name;
@@ -20,8 +18,6 @@ public class DiseaseViewAdapter extends ArrayAdapter<Disease> implements View.On
 
     public DiseaseViewAdapter(Disease[] pDiseases, Context pContext) {
         super(pContext, R.layout.disease_list_item, pDiseases);
-        this.diseases = pDiseases;
-        this.mContext = pContext;
     }
 
     @NonNull
@@ -53,6 +49,5 @@ public class DiseaseViewAdapter extends ArrayAdapter<Disease> implements View.On
 
     @Override
     public void onClick(View view) {
-        // TODO: Open disease profile page
     }
 }
