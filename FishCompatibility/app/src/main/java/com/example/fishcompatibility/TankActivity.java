@@ -1,23 +1,17 @@
  package com.example.fishcompatibility;
 
-import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -165,7 +159,7 @@ import java.util.Collections;
          isCompatText.setVisibility(View.INVISIBLE);
      }
 
-     private boolean checkAllFish(Fish selectedFish) {
+     public boolean checkAllFish(Fish selectedFish) {
          boolean isCompatible = true;
 
          for (int i = 0; i < tankFish.size(); i++) {
