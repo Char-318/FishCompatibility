@@ -50,7 +50,8 @@ public class DiseaseSearchActivity extends AppCompatActivity implements
 
     @Override
     public boolean onQueryTextSubmit(String s) {
-        resultArray = searchDisease(s.toLowerCase());
+        Search search = new Search();
+        resultArray = search.searchDisease(s.toLowerCase(), diseases);
         TextView noResult = findViewById(R.id.no_results);
 
         if (resultArray.size() == 0) {
@@ -96,29 +97,5 @@ public class DiseaseSearchActivity extends AppCompatActivity implements
     public void openMain(View view) {
         Intent openMainIntent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(openMainIntent);
-    }
-
-    /**
-     * Searches the disease data to check if a disease matches the searchText.
-     * @param searchText Contains the input into the search text box in lower-case.
-     * @return A list of all diseases that match the input string.
-     */
-    private ArrayList<Disease> searchDisease(String searchText) {
-        ArrayList<Disease> resultArray = new ArrayList<>();
-
-        for (Disease disease : diseases) {
-            if (disease.getName().toLowerCase().contains(searchText)) {
-                resultArray.add(disease);
-            } else {
-                for (String alias : disease.getAliases()) {
-                    if (alias.toLowerCase().contains(searchText)) {
-                        resultArray.add(disease);
-                        break;
-                    }
-                }
-            }
-        }
-
-        return resultArray;
     }
 }
