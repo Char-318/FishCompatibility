@@ -574,7 +574,7 @@
             "maxCarbHard":10,
             "vore":"Omnivore",
             "foodType":[
-                    "Protien flakes",
+                    "Protein flakes",
                     "Protein pellets"
             ],
             "averageSize":9,
@@ -694,9 +694,9 @@
             "name":"Gas Bubble Poisoning",
             "alias":[],
             "symptoms":[
-                    "Blindness",
-                    "Bubbles on the fish, particularly around the gills",
-                    "Lethargy"
+                "Blindness",
+                "Bubbles on the fish, particularly around the gills",
+                "Lethargy"
             ],
             "causes":[
                     "Partial water changes with cold water"
