@@ -51,7 +51,7 @@ public class FishSearchActivity extends AppCompatActivity implements SearchView.
     @Override
     public boolean onQueryTextSubmit(String s) {
         Search search = new Search();
-        resultArray = search.searchFish(s.toLowerCase(), fishes);
+        resultArray = search.searchFish(s, fishes);
         TextView noResult = findViewById(R.id.no_results);
 
         if (resultArray.size() == 0) {

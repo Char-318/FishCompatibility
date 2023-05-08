@@ -11,6 +11,7 @@ public class Search {
      * @return A list of all diseases that match the input string.
      */
     public ArrayList<Disease> searchDisease(String searchText, Disease[] diseases) {
+        searchText = searchText.toLowerCase();
         ArrayList<Disease> resultArray = new ArrayList<>();
 
         for (Disease disease : diseases) {
@@ -35,6 +36,7 @@ public class Search {
      * @return A list of all fish that match the input string.
      */
     public ArrayList<Fish> searchFish(String searchText, Fish[] fishes) {
+        searchText = searchText.toLowerCase();
         ArrayList<Fish> resultArray = new ArrayList<>();
 
         for (Fish fish : fishes) {

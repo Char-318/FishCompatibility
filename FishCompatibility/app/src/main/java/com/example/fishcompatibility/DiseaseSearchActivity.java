@@ -51,7 +51,7 @@ public class DiseaseSearchActivity extends AppCompatActivity implements
     @Override
     public boolean onQueryTextSubmit(String s) {
         Search search = new Search();
-        resultArray = search.searchDisease(s.toLowerCase(), diseases);
+        resultArray = search.searchDisease(s, diseases);
         TextView noResult = findViewById(R.id.no_results);
 
         if (resultArray.size() == 0) {
