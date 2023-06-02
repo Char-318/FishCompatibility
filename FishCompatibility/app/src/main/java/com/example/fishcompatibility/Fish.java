@@ -230,10 +230,17 @@ public class Fish implements Parcelable {
         }
     };
 
-    public boolean areFishCompatible(Fish fishB) {
+    public Compatibility areFishCompatible(Fish fishB) {
         // If two fish are the same, check if more than one can be kept together
+        Compatibility comp;
         if (this == fishB) {
-            return maxPop != 1;
+            if (maxPop == 1) {
+                comp = new Compatibility("Only one can be in a tank", false);
+                return comp;
+            } else {
+                comp = new Compatibility("n/a", true);
+                return comp;
+            }
         }
 
         // Checks if there is at least 3 degrees of overlapping temperatures that satisfy each fish
@@ -242,11 +249,15 @@ public class Fish implements Parcelable {
 
         if (tempDiffA < tempDiffB) {
             if (tempDiffA < 3) {
-                return false;
+                comp = new Compatibility(
+                        "Fish require different temperatures", false);
+                return comp;
             }
         } else {
             if (tempDiffB < 3) {
-                return false;
+                comp = new Compatibility(
+                        "Fish require different temperatures", false);
+                return comp;
             }
         }
 
@@ -256,11 +267,15 @@ public class Fish implements Parcelable {
 
         if (acidityDiffA < acidityDiffB) {
             if (acidityDiffA < 0) {
-                return false;
+                comp = new Compatibility(
+                        "Fish require different levels of acidity", false);
+                return comp;
             }
         } else {
             if (acidityDiffB < 0) {
-                return false;
+                comp = new Compatibility(
+                        "Fish require different levels of acidity", false);
+                return comp;
             }
         }
 
@@ -270,11 +285,15 @@ public class Fish implements Parcelable {
 
         if (genDiffA < genDiffB) {
             if (genDiffA < 0) {
-                return false;
+                comp = new Compatibility(
+                        "Fish require different levels of general hardness", false);
+                return comp;
             }
         } else {
             if (genDiffB < 0) {
-                return false;
+                comp = new Compatibility(
+                        "Fish require different levels of general hardness", false);
+                return comp;
             }
         }
 
@@ -284,42 +303,69 @@ public class Fish implements Parcelable {
 
         if (carbDiffA < carbDiffB) {
             if (carbDiffA < 0) {
-                return false;
+                comp = new Compatibility(
+                        "Fish require different levels of carbonate hardness", false);
+                return comp;
             }
         } else {
             if (carbDiffB < 0) {
-                return false;
+                comp = new Compatibility(
+                        "Fish require different levels of carbonate hardness", false);
+                return comp;
             }
         }
 
         // Checks if one fish may get eaten by the other
-        if (size < fishB.getEdibleSize() || fishB.getSize() < edibleSize) {
-            return false;
+        if (size < fishB.getEdibleSize()) {
+            comp = new Compatibility(
+                    name + " may get eaten by " + fishB.getName(), false);
+            return comp;
+        }
+        if (fishB.getSize() < edibleSize) {
+            comp = new Compatibility(
+                    fishB.getName() + " may get eaten by " + name, false);
+            return comp;
         }
 
         // Checks if one fish will nip the fins of the other
-        if ((finNipper && fishB.isLongFins()) ||
-                (fishB.isFinNipper() && longFins)) {
-            return false;
+        if (finNipper && fishB.isLongFins()) {
+            comp = new Compatibility(
+                    name + " may nip the fins of " + fishB.getName(), false);
+            return comp;
+        }
+        if (fishB.isFinNipper() && longFins) {
+            comp = new Compatibility(
+                    fishB.getName() + " may nip the fins of " + name, false);
+            return comp;
         }
 
         // Checks if one fish will attack and injure the other
-        if ((aggressive && !fishB.isHardy()) ||
-                (fishB.isAggressive() && !hardy)) {
-            return false;
+        if (aggressive && !fishB.isHardy()) {
+            comp = new Compatibility(
+                    name + " is too aggressive for " + fishB.getName(), false);
+            return comp;
+        }
+        if (fishB.isAggressive() && !hardy) {
+            comp = new Compatibility(
+                    fishB.getName() + " is too aggressive for " + name, false);
+            return comp;
         }
 
         // Checks if fish swim at the same level and if they are territorial
         int swimDiffA = maxSwimLvl - fishB.getMinSwimLvl();
         int swimDiffB = fishB.getMaxSwimLvl() - minSwimLvl;
 
-        if (swimDiffA > swimDiffB) {
-            if (swimDiffA == 0 && (territorial || fishB.isTerritorial())) {
-                return false;
+        if ((swimDiffA > swimDiffB && swimDiffA == 0)
+                || (swimDiffA <= swimDiffB && swimDiffB == 0)) {
+            if (fishB.isTerritorial()) {
+                comp = new Compatibility(
+                        fishB.getName() + " is too territorial", false);
+                return comp;
             }
-        } else {
-            if (swimDiffB == 0 && (territorial || fishB.isTerritorial())) {
-                return false;
+            if (territorial) {
+                comp = new Compatibility(
+                        name + " is too territorial", false);
+                return comp;
             }
         }
 
@@ -329,22 +375,32 @@ public class Fish implements Parcelable {
 
         if (currDiffA < currDiffB) {
             if (currDiffA < 0) {
-                return false;
+                comp = new Compatibility(
+                        "Fish require different water currents", false);
+                return comp;
             }
         } else {
             if (currDiffB < 0) {
-                return false;
+                comp = new Compatibility(
+                        "Fish require different water currents", false);
+                return comp;
             }
         }
 
         // Checks if one fish is fast and the other is slow and they swim at the same level
-        if (swimDiffA < swimDiffB) {
-            if (swimDiffA >= 0 && (fast != fishB.isFast())) {
-                return false;
+        if ((swimDiffA < swimDiffB && swimDiffA >= 0)
+                || (swimDiffA >= swimDiffB && swimDiffB >= 0)) {
+            if (fast && !fishB.isFast()) {
+                comp = new Compatibility(
+                        name + " may eat the food before " + fishB.getName() + " can get to it",
+                        false);
+                return comp;
             }
-        } else {
-            if (swimDiffB >= 0 && (fast != fishB.isFast())) {
-                return false;
+            if (!fast && fishB.isFast()) {
+                comp = new Compatibility(
+                        fishB.getName() + " may eat the food before " + name + " can get to it",
+                        false);
+                return comp;
             }
         }
 
@@ -352,11 +408,13 @@ public class Fish implements Parcelable {
         for (String subA: substrate) {
             for (String subB : fishB.substrate) {
                 if (Objects.equals(subA, subB)) {
-                    return true;
+                    comp = new Compatibility("n/a", true);
+                    return comp;
                 }
             }
         }
 
-        return false;
+        comp = new Compatibility("Fish require different substrates", false);
+        return comp;
     }
 }

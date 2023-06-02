@@ -169,31 +169,33 @@ import java.util.Collections;
                  break;
              }
 
-             if (!selectedFish.areFishCompatible(fishB)) {
+             Compatibility comp = selectedFish.areFishCompatible(fishB);
+
+             if (!comp.getIsComp()) {
                  isCompatible = false;
 
                  int selectedFishIndex = tankFish.indexOf(selectedFish);
                  int selectedFragId = fragIds.get(selectedFishIndex);
                  View selectedFragView = listLayout.findViewById(selectedFragId);
                  int selectedPosition = listLayout.indexOfChild(selectedFragView) + 1;
-                 createNotCompText(fishB, selectedPosition);
+                 createNotCompText(fishB, selectedPosition, comp.getReason());
 
                  int fishBFragId = fragIds.get(i);
                  View fishBFragView = listLayout.findViewById(fishBFragId);
                  int fishBPosition = listLayout.indexOfChild(fishBFragView) + 1;
-                 createNotCompText(selectedFish, fishBPosition);
+                 createNotCompText(selectedFish, fishBPosition, comp.getReason());
              }
          }
 
          return isCompatible;
      }
 
-     private void createNotCompText(Fish fish, int position) {
+     private void createNotCompText(Fish fish, int position, String reason) {
          TextView notCompText = new TextView(this);
          int textId = View.generateViewId();
          notCompTextIds.add(textId);
          notCompText.setId(textId);
-         notCompText.setText("This fish is not compatible with " + fish.getName());
+         notCompText.setText("This fish is not compatible with " + fish.getName() + " - " + reason);
          notCompText.setTextColor(ContextCompat.getColor(this, R.color.red));
          listLayout.addView(notCompText, position);
      }

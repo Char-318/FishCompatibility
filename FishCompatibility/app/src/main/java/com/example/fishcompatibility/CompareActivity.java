@@ -105,7 +105,8 @@ public class CompareActivity extends AppCompatActivity implements AdapterView.On
     }
 
     public void compareFish(View view) {
-        boolean isCompatible = fishA.areFishCompatible(fishB);
+        Compatibility comp = fishA.areFishCompatible(fishB);
+        boolean isCompatible = comp.getIsComp();
         TextView textView = findViewById(R.id.compatibleText);
 
         if (isCompatible) {
@@ -113,7 +114,7 @@ public class CompareActivity extends AppCompatActivity implements AdapterView.On
             textView.setText("Fish are compatible");
         } else {
             textView.setTextColor(ContextCompat.getColor(this, R.color.red));
-            textView.setText("Fish are incompatible");
+            textView.setText("Fish are incompatible - " + comp.getReason());
         }
     }
 }
