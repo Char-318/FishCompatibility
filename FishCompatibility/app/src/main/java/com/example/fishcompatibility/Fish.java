@@ -318,36 +318,36 @@ public class Fish implements Parcelable {
         // Checks if one fish may get eaten by the other
         if (size < fishB.getEdibleSize()) {
             comp = new Compatibility(
-                    name + " may get eaten by " + fishB.getName(), false);
+                    name + " may get eaten", false);
             return comp;
         }
         if (fishB.getSize() < edibleSize) {
             comp = new Compatibility(
-                    fishB.getName() + " may get eaten by " + name, false);
+                    fishB.getName() + " may get eaten", false);
             return comp;
         }
 
         // Checks if one fish will nip the fins of the other
         if (finNipper && fishB.isLongFins()) {
             comp = new Compatibility(
-                    name + " may nip the fins of " + fishB.getName(), false);
+                    name + " may nip the fins", false);
             return comp;
         }
         if (fishB.isFinNipper() && longFins) {
             comp = new Compatibility(
-                    fishB.getName() + " may nip the fins of " + name, false);
+                    fishB.getName() + " may nip the fins", false);
             return comp;
         }
 
         // Checks if one fish will attack and injure the other
         if (aggressive && !fishB.isHardy()) {
             comp = new Compatibility(
-                    name + " is too aggressive for " + fishB.getName(), false);
+                    name + " is too aggressive", false);
             return comp;
         }
         if (fishB.isAggressive() && !hardy) {
             comp = new Compatibility(
-                    fishB.getName() + " is too aggressive for " + name, false);
+                    fishB.getName() + " is too aggressive", false);
             return comp;
         }
 

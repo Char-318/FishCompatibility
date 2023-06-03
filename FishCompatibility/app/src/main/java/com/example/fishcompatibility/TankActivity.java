@@ -226,6 +226,10 @@ import java.util.Collections;
 
              // Calculates minimum and maximum parameters for fish in the virtual tank
              if (!paramsChecked) {
+                 // paramsChecked used so code is not repeated for each fish in the tank when
+                 // removing a fish
+                 paramsChecked = true;
+
                  maxTemp = selectedFish.getMaxTemp();
                  minTemp = selectedFish.getMinTemp();
                  maxAcid = selectedFish.getMaxAcidity();
@@ -267,42 +271,6 @@ import java.util.Collections;
                  if (fishB.getMinCurr() > minCurr) {
                      minCurr = fishB.getMinCurr();
                  }
-
-                 LinearLayout linearLayout = findViewById(R.id.linearLayout);
-                 TextView isCompatText = (TextView) findViewById(R.id.fishIsCompat);
-                 int isCompatPos = linearLayout.indexOfChild(isCompatText) + 1;
-                 String reason;
-
-                 // Checks if all are possible - minimum is not larger than maximum
-                 if (minTemp > maxTemp) {
-                     isCompatible = false;
-                     reason = "There is no temperature suitable for this combination of fish";
-                     createNotCompText(selectedFish, isCompatPos, reason);
-                 }
-                 if (minAcid > maxAcid) {
-                     isCompatible = false;
-                     reason = "There is no acidity level suitable for this combination of fish";
-                     createNotCompText(selectedFish, isCompatPos, reason);
-                 }
-                 if (minCarb > maxCarb) {
-                     isCompatible = false;
-                     reason = "There is no carbonate hardness suitable for this combination of fish";
-                     createNotCompText(selectedFish, isCompatPos, reason);
-                 }
-                 if (minGen > maxGen) {
-                     isCompatible = false;
-                     reason = "There is no general hardness suitable for this combination of fish";
-                     createNotCompText(selectedFish, isCompatPos, reason);
-                 }
-                 if (minCurr > maxCurr) {
-                     isCompatible = false;
-                     reason = "There is no water current suitable for this combination of fish";
-                     createNotCompText(selectedFish, isCompatPos, reason);
-                 }
-
-                 // paramsChecked used so code is not repeated for each fish in the tank when
-                 // removing a fish
-                 paramsChecked = true;
              }
 
              if (fishB == selectedFish) {
@@ -335,15 +303,9 @@ import java.util.Collections;
          int textId = View.generateViewId();
          notCompTextIds.add(textId);
          notCompText.setId(textId);
-
-         if (paramsChecked) {
-             notCompText.setText(reason);
-             notCompParamIds.add(textId);
-         } else {
-             notCompText.setText("This fish is not compatible with " + fish.getName() + " - " + reason);
-         }
-
          notCompText.setTextColor(ContextCompat.getColor(this, R.color.red));
+
+         notCompText.setText("This fish is not compatible with " + fish.getName() + " - " + reason);
          listLayout.addView(notCompText, position);
      }
 
