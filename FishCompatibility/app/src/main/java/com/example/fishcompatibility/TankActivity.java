@@ -22,11 +22,24 @@ import java.util.Collections;
  public class TankActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
      private final ArrayList<Fish> tankFish = new ArrayList<>();
      private final ArrayList<Integer> notCompTextIds = new ArrayList<>();
+     private final ArrayList<Integer> notCompParamIds = new ArrayList<>();
+     private int paramId = -1;
      private final ArrayList<Integer> fragIds = new ArrayList<>();
      private Fish[] fishes;
      private LinearLayout listLayout;
+     private double maxTemp;
+     private double minTemp;
+     private double maxAcid;
+     private double minAcid;
+     private double maxCarb;
+     private double minCarb;
+     private double maxGen;
+     private double minGen;
+     private int maxCurr;
+     private int minCurr;
+     private boolean paramsChecked = false;
 
-    @Override
+     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tank);
@@ -66,6 +79,19 @@ import java.util.Collections;
                  tankFish.add(selectedFish);
                  fishAddedText.setVisibility(View.INVISIBLE);
                  isCompatText.setVisibility(View.INVISIBLE);
+                 LinearLayout linearLayout = findViewById(R.id.linearLayout);
+
+                 // Removing all TextViews that say which parameters aren't compatible
+                 for (int textId : notCompParamIds) {
+                     TextView notCompText = (TextView) linearLayout.findViewById(textId);
+                     linearLayout.removeView(notCompText);
+                 }
+
+                 if (paramId != -1) {
+                     TextView paramsTextView = (TextView) linearLayout.findViewById(paramId);
+                     linearLayout.removeView(paramsTextView);
+                     paramId = -1;
+                 }
 
                  FishFragment fragment = (FishFragment) getSupportFragmentManager()
                          .findFragmentByTag("fishFragment");
@@ -91,9 +117,11 @@ import java.util.Collections;
                  transaction.replace(fragId, fragment).commit();
 
                  boolean isCompatible = checkAllFish(selectedFish);
+                 paramsChecked = false;
 
                  if (isCompatible) {
-                    isCompatText.setVisibility(View.VISIBLE);
+                     isCompatText.setVisibility(View.VISIBLE);
+                     createParamsText();
                  }
 
                  // Sets selection to 'select fish...' so 'Fish already added' message can be
@@ -123,6 +151,7 @@ import java.util.Collections;
          tankFish.removeAll(Collections.singleton(fish));
          fragIds.removeAll(Collections.singleton(id));
          listLayout.removeView(listLayout.findViewById(id));
+         LinearLayout linearLayout = findViewById(R.id.linearLayout);
 
          // Removing all TextViews that say which fish aren't compatible
          for (int textId : notCompTextIds) {
@@ -130,7 +159,20 @@ import java.util.Collections;
              listLayout.removeView(notCompText);
          }
 
+         // Removing all TextViews that say which parameters aren't compatible
+         for (int textId : notCompParamIds) {
+             TextView notCompText = (TextView) linearLayout.findViewById(textId);
+             linearLayout.removeView(notCompText);
+         }
+
+         if (paramId != -1) {
+             TextView paramsTextView = (TextView) linearLayout.findViewById(paramId);
+             linearLayout.removeView(paramsTextView);
+             paramId = -1;
+         }
+
          notCompTextIds.clear();
+         notCompParamIds.clear();
          boolean isCompatible = true;
 
          // Checks if all remaining fish are compatible
@@ -141,18 +183,35 @@ import java.util.Collections;
                  isCompatible = thisCompatible;
              }
          }
+         paramsChecked = false;
 
          if (tankFish.size() != 0 && isCompatible) {
              isCompatText.setVisibility(View.VISIBLE);
+             createParamsText();
          }
      }
 
      public void clearList(View view) {
          listLayout = findViewById(R.id.fragmentLayout);
+         LinearLayout linearLayout = findViewById(R.id.linearLayout);
          listLayout.removeAllViews();
          tankFish.clear();
          notCompTextIds.clear();
          fragIds.clear();
+
+         // Removing all TextViews that say which parameters aren't compatible
+         for (int textId : notCompParamIds) {
+             TextView notCompText = (TextView) linearLayout.findViewById(textId);
+             linearLayout.removeView(notCompText);
+         }
+         notCompParamIds.clear();
+
+         if (paramId != -1) {
+             TextView paramsTextView = (TextView) linearLayout.findViewById(paramId);
+             linearLayout.removeView(paramsTextView);
+             paramId = -1;
+         }
+
          TextView fishAddedText = (TextView) findViewById(R.id.fishAdded);
          TextView isCompatText = (TextView) findViewById(R.id.fishIsCompat);
          fishAddedText.setVisibility(View.INVISIBLE);
@@ -164,6 +223,87 @@ import java.util.Collections;
 
          for (int i = 0; i < tankFish.size(); i++) {
              Fish fishB = tankFish.get(i);
+
+             // Calculates minimum and maximum parameters for fish in the virtual tank
+             if (!paramsChecked) {
+                 maxTemp = selectedFish.getMaxTemp();
+                 minTemp = selectedFish.getMinTemp();
+                 maxAcid = selectedFish.getMaxAcidity();
+                 minAcid = selectedFish.getMinAcidity();
+                 maxCarb = selectedFish.getMaxCarbHard();
+                 minCarb = selectedFish.getMinCarbHard();
+                 maxGen = selectedFish.getMaxGenHard();
+                 minGen = selectedFish.getMinGenHard();
+                 maxCurr = selectedFish.getMaxCurr();
+                 minCurr = selectedFish.getMinCurr();
+
+                 if (fishB.getMaxTemp() < maxTemp) {
+                     maxTemp = fishB.getMaxTemp();
+                 }
+                 if (fishB.getMinTemp() > minTemp) {
+                     minTemp = fishB.getMinTemp();
+                 }
+                 if (fishB.getMaxAcidity() < maxAcid) {
+                     maxAcid = fishB.getMaxAcidity();
+                 }
+                 if (fishB.getMinAcidity() > minAcid) {
+                     minAcid = fishB.getMinAcidity();
+                 }
+                 if (fishB.getMaxCarbHard() < maxCarb) {
+                     maxCarb = fishB.getMaxCarbHard();
+                 }
+                 if (fishB.getMinCarbHard() > minCarb) {
+                     minCarb = fishB.getMinCarbHard();
+                 }
+                 if (fishB.getMaxGenHard() < maxGen) {
+                     maxGen = fishB.getMaxGenHard();
+                 }
+                 if (fishB.getMinGenHard() > minGen) {
+                     minGen = fishB.getMinGenHard();
+                 }
+                 if (fishB.getMaxCurr() < maxCurr) {
+                     maxCurr = fishB.getMaxCurr();
+                 }
+                 if (fishB.getMinCurr() > minCurr) {
+                     minCurr = fishB.getMinCurr();
+                 }
+
+                 LinearLayout linearLayout = findViewById(R.id.linearLayout);
+                 TextView isCompatText = (TextView) findViewById(R.id.fishIsCompat);
+                 int isCompatPos = linearLayout.indexOfChild(isCompatText) + 1;
+                 String reason;
+
+                 // Checks if all are possible - minimum is not larger than maximum
+                 if (minTemp > maxTemp) {
+                     isCompatible = false;
+                     reason = "There is no temperature suitable for this combination of fish";
+                     createNotCompText(selectedFish, isCompatPos, reason);
+                 }
+                 if (minAcid > maxAcid) {
+                     isCompatible = false;
+                     reason = "There is no acidity level suitable for this combination of fish";
+                     createNotCompText(selectedFish, isCompatPos, reason);
+                 }
+                 if (minCarb > maxCarb) {
+                     isCompatible = false;
+                     reason = "There is no carbonate hardness suitable for this combination of fish";
+                     createNotCompText(selectedFish, isCompatPos, reason);
+                 }
+                 if (minGen > maxGen) {
+                     isCompatible = false;
+                     reason = "There is no general hardness suitable for this combination of fish";
+                     createNotCompText(selectedFish, isCompatPos, reason);
+                 }
+                 if (minCurr > maxCurr) {
+                     isCompatible = false;
+                     reason = "There is no water current suitable for this combination of fish";
+                     createNotCompText(selectedFish, isCompatPos, reason);
+                 }
+
+                 // paramsChecked used so code is not repeated for each fish in the tank when
+                 // removing a fish
+                 paramsChecked = true;
+             }
 
              if (fishB == selectedFish) {
                  break;
@@ -195,8 +335,85 @@ import java.util.Collections;
          int textId = View.generateViewId();
          notCompTextIds.add(textId);
          notCompText.setId(textId);
-         notCompText.setText("This fish is not compatible with " + fish.getName() + " - " + reason);
+
+         if (paramsChecked) {
+             notCompText.setText(reason);
+             notCompParamIds.add(textId);
+         } else {
+             notCompText.setText("This fish is not compatible with " + fish.getName() + " - " + reason);
+         }
+
          notCompText.setTextColor(ContextCompat.getColor(this, R.color.red));
          listLayout.addView(notCompText, position);
+     }
+
+     private void createParamsText() {
+         LinearLayout linearLayout = findViewById(R.id.linearLayout);
+         TextView isCompatText = (TextView) findViewById(R.id.fishIsCompat);
+         int isCompatPos = linearLayout.indexOfChild(isCompatText) + 1;
+
+         String params = "Water Parameters: \nTemperature: ";
+         if (maxTemp == minTemp) {
+             params = params + maxTemp + " \u00B0C \n";
+         } else {
+             params = params + minTemp + " \u00B0C - " + maxTemp + " \u00B0C \n";
+         }
+
+         params = params + "Acidity: ";
+         if (maxAcid == minAcid) {
+             params = params + maxAcid + " pH \n";
+         } else {
+             params = params + minAcid + " pH - " + maxAcid + " pH \n";
+         }
+
+         params = params + "General hardness: ";
+         if (minGen == maxGen) {
+             params = params + minGen + " dGH \n";
+         } else {
+             params = params + minGen + " dGH - " + maxGen + " dGH \n";
+         }
+
+         params = params + "Carbonate hardness: ";
+         if (minCarb == maxCarb) {
+             params = params + minCarb + " dKH \n";
+         } else {
+             params = params + minCarb + " dKH - " + maxCarb + " dKH \n";
+         }
+
+         params = params + "Water current: ";
+         switch (minCurr) {
+             case 1:
+                 params = params + "Low";
+                 break;
+             case 2:
+                 params = params + "Medium";
+                 break;
+             case 3:
+                 params = params + "High";
+                 break;
+             default:
+                 params = params + "None";
+                 break;
+         }
+         if (minCurr == maxCurr) {
+             switch (maxCurr) {
+                 case 1:
+                     params = params + " - low";
+                     break;
+                 case 2:
+                     params = params + " - medium";
+                     break;
+                 case 3:
+                     params = params + " - high";
+                     break;
+             }
+         }
+
+         TextView paramsTextView = new TextView(this);
+         paramId = View.generateViewId();
+         paramsTextView.setId(paramId);
+         paramsTextView.setText(params);
+         paramsTextView.setTextColor(ContextCompat.getColor(this, R.color.green));
+         linearLayout.addView(paramsTextView, isCompatPos);
      }
  }
