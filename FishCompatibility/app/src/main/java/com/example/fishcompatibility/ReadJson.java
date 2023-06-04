@@ -44,7 +44,7 @@ public class ReadJson {
     }
 
     /**
-     * Populates the global arrays fishes and diseases to contain the contents from the json file.
+     * Populates the global array fishes to contain the contents from the json file.
      */
     public Fish[] getFishFromJson() {
         Fish[] fishes;
@@ -122,6 +122,9 @@ public class ReadJson {
         return fishes;
     }
 
+    /**
+     * Populates the global array diseases to contain the contents from the json file.
+     */
     public Disease[] getDiseasesFromJson() {
         Disease[] diseases;
 

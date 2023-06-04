@@ -11,6 +11,15 @@ public class Disease implements Parcelable {
     private final String[] prevention;
     private final String[] treatment;
 
+    /**
+     * Constructor for the disease object.
+     * @param pName Name of the disease.
+     * @param pAliases List of any aliases for the disease.
+     * @param pSymptoms List of symptoms of the disease.
+     * @param pCauses List of the possible causes for the disease.
+     * @param pPrevention List of ways this disease can be prevented.
+     * @param pTreatment List of treatments that can be used.
+     */
     public Disease(String pName, String[] pAliases, String[] pSymptoms, String[] pCauses,
                    String[] pPrevention, String[] pTreatment) {
         name = pName;
@@ -22,6 +31,7 @@ public class Disease implements Parcelable {
 
     }
 
+    // Getters
     public String getName() { return name; }
     public String[] getAliases() { return aliases; }
     public String[] getSymptoms() { return symptoms; }
@@ -29,11 +39,17 @@ public class Disease implements Parcelable {
     public String[] getPrevention() { return prevention; }
     public String[] getTreatment() { return treatment; }
 
+    /**
+     * Function required to make this object parcelable.
+     */
     @Override
     public int describeContents() {
         return 0;
     }
 
+    /**
+     * Function to write the object to a parcel so it can be sent between activities.
+     */
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeStringArray(this.treatment);
@@ -44,6 +60,10 @@ public class Disease implements Parcelable {
         dest.writeStringArray(this.prevention);
     }
 
+    /**
+     * Creating a disease object from the parcel.
+     * @param in Parcel of the object.
+     */
     protected Disease(Parcel in) {
         this.treatment = in.createStringArray();
         this.name = in.readString();

@@ -11,6 +11,9 @@ import android.widget.TextView;
 public class DiseaseActivity extends AppCompatActivity {
     private Disease disease;
 
+    /**
+     * Initialises the activity by collecting the list of diseases.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +25,10 @@ public class DiseaseActivity extends AppCompatActivity {
         setData();
     }
 
+    /**
+     * Used to open the main activity to return the user to the home page.
+     * @param view Current View.
+     */
     public void openMain(View view) {
         Intent openMainIntent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(openMainIntent);

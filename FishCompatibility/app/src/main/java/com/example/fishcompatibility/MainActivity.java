@@ -20,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
     private Fish[] fishes;
     private Disease[] diseases;
 
+    /**
+     * Initialises application and reads data from JSON file.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,12 +47,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(openSearchIntent);
     }
 
+    /** Called when the compare button is clicked */
     public void openCompare(View view) {
         Intent openCompareIntent = new Intent(getApplicationContext(), CompareActivity.class);
         openCompareIntent.putExtra("fishes", fishes);
         startActivity(openCompareIntent);
     }
 
+    /** Called when the virtual tank button is clicked */
     public void openTank(View view) {
         Intent openTankIntent = new Intent(getApplicationContext(), TankActivity.class);
         openTankIntent.putExtra("fishes", fishes);

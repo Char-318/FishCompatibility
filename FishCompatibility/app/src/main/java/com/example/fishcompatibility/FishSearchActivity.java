@@ -21,6 +21,9 @@ public class FishSearchActivity extends AppCompatActivity implements SearchView.
     private ListView listView;
     private FishViewAdapter fishAdapter;
 
+    /**
+     * Initialises the fish search activity and populates the list.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +51,12 @@ public class FishSearchActivity extends AppCompatActivity implements SearchView.
         listView.setOnItemClickListener(this);
     }
 
+    /**
+     * Called when the submit button on the search bar is clicked.
+     * Calls the search algorithm and displays the results.
+     * @param s Text entered as the search query.
+     * @return False.
+     */
     @Override
     public boolean onQueryTextSubmit(String s) {
         Search search = new Search();
@@ -61,6 +70,7 @@ public class FishSearchActivity extends AppCompatActivity implements SearchView.
             noResult.setText("");
         }
 
+        // Updates list of diseases
         Fish[] fishArray = resultArray.toArray(new Fish[0]);
         fishAdapter = new FishViewAdapter(fishArray, getApplicationContext());
         listView.setAdapter(fishAdapter);
@@ -68,12 +78,19 @@ public class FishSearchActivity extends AppCompatActivity implements SearchView.
         return false;
     }
 
+    /**
+     * Necessary function to implement the search bar.
+     * @param s Text entered in the search bar.
+     * @return False.
+     */
     @Override
-    public boolean onQueryTextChange(String s) {
+    public boolean onQueryTextChange(String s) { return false; }
 
-        return false;
-    }
-
+    /**
+     * Called when the close button is clicked on the search bar.
+     * Resets the list of fish to contain all the fish.
+     * @return False.
+     */
     @Override
     public boolean onClose() {
         fishAdapter = new FishViewAdapter(fishes, getApplicationContext());
@@ -87,6 +104,13 @@ public class FishSearchActivity extends AppCompatActivity implements SearchView.
         return false;
     }
 
+    /**
+     * Called when a fish in the list is clicked.
+     * Opens the fish activity for the selected fish.
+     * @param parent AdapterView of the list.
+     * @param view Current view.
+     * @param position Index of the item selected in the list.
+     */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent openFishIntent = new Intent(getApplicationContext(), FishActivity.class);
@@ -94,6 +118,10 @@ public class FishSearchActivity extends AppCompatActivity implements SearchView.
         startActivity(openFishIntent);
     }
 
+    /**
+     * Used to open the main activity to return the user to the home page.
+     * @param view Current View.
+     */
     public void openMain(View view) {
         Intent openMainIntent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(openMainIntent);

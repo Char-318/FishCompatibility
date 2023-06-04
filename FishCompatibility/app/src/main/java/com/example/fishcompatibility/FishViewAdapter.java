@@ -17,6 +17,10 @@ public class FishViewAdapter extends ArrayAdapter<Fish>  {
     private Fish mFish;
     private final Context mContext;
 
+    /**
+     * Elements of the view adapter that will be used in the list.
+     * Image, name, scientific name and aliases of the fish.
+     */
     private static class ViewElements {
         ImageView image;
         TextView name;
@@ -24,18 +28,28 @@ public class FishViewAdapter extends ArrayAdapter<Fish>  {
         TextView aliases;
     }
 
+    /**
+     * Constructor for the view adapter.
+     * @param pFishes Array of fishes to be listed.
+     * @param pContext Current context of the application.
+     */
     public FishViewAdapter(Fish[] pFishes, Context pContext) {
         super(pContext, R.layout.fish_list_item, pFishes);
         this.mContext = pContext;
     }
 
+    /**
+     * Creates the view for each item in the list of fish.
+     * @param position Index of the item in the list.
+     * @param convertView View of the list item.
+     * @param parent View group this item is contained in.
+     * @return View of this fish for the search page.
+     */
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         mFish = getItem(position);
         ViewElements elements;
-
-        final View result;
 
         // Checks if View is being reused or not
         if (convertView == null) {
@@ -47,11 +61,9 @@ public class FishViewAdapter extends ArrayAdapter<Fish>  {
             elements.sciName = (TextView) convertView.findViewById(R.id.scientificName);
             elements.image = (ImageView) convertView.findViewById(R.id.fishImage);
 
-            result = convertView;
             convertView.setTag(elements);
         } else {
             elements = (ViewElements) convertView.getTag();
-            result = convertView;
         }
 
         String aliasList = "";
@@ -76,6 +88,7 @@ public class FishViewAdapter extends ArrayAdapter<Fish>  {
         return convertView;
     }
 
+    // Getter
     public Fish getFish() {
         return mFish;
     }

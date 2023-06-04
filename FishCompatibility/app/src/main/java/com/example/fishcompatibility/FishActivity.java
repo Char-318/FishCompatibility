@@ -14,6 +14,9 @@ import android.widget.TextView;
 public class FishActivity extends AppCompatActivity {
     private Fish fish;
 
+    /**
+     * Initialises the activity by collecting the list of fish.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +28,10 @@ public class FishActivity extends AppCompatActivity {
         setData();
     }
 
+    /**
+     * Used to open the main activity to return the user to the home page.
+     * @param view Current View.
+     */
     public void openMain(View view) {
         Intent openMainIntent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(openMainIntent);

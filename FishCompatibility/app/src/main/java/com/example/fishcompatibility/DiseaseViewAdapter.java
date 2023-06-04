@@ -12,21 +12,35 @@ import androidx.annotation.Nullable;
 
 public class DiseaseViewAdapter extends ArrayAdapter<Disease> implements View.OnClickListener {
 
+    /**
+     * Elements of the view adapter that will be used in the list.
+     * Name of the disease.
+     */
     private static class ViewElements {
         TextView name;
     }
 
+    /**
+     * Constructor for the view adapter.
+     * @param pDiseases Array of diseases to be listed.
+     * @param pContext Current context of the application.
+     */
     public DiseaseViewAdapter(Disease[] pDiseases, Context pContext) {
         super(pContext, R.layout.disease_list_item, pDiseases);
     }
 
+    /**
+     * Creates the view for each item in the list of diseases.
+     * @param position Index of the item in the list.
+     * @param convertView View of the list item.
+     * @param parent View group this item is contained in.
+     * @return View of this disease for the search page.
+     */
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         Disease disease = getItem(position);
         ViewElements elements;
-
-        final View result;
 
         // Checks if View is being reused or not
         if (convertView == null) {
@@ -35,11 +49,9 @@ public class DiseaseViewAdapter extends ArrayAdapter<Disease> implements View.On
             convertView = inflater.inflate(R.layout.disease_list_item, parent, false);
             elements.name = (TextView) convertView.findViewById(R.id.diseaseName);
 
-            result = convertView;
             convertView.setTag(elements);
         } else {
             elements = (ViewElements) convertView.getTag();
-            result = convertView;
         }
 
         elements.name.setText(disease.getName());
@@ -47,7 +59,9 @@ public class DiseaseViewAdapter extends ArrayAdapter<Disease> implements View.On
         return convertView;
     }
 
+    /**
+     * Necessary method to implement the array adapter.
+     */
     @Override
-    public void onClick(View view) {
-    }
+    public void onClick(View view) {}
 }

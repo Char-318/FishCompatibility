@@ -21,6 +21,9 @@ public class DiseaseSearchActivity extends AppCompatActivity implements
     private DiseaseViewAdapter diseaseAdapter;
     private ListView listView;
 
+    /**
+     * Initialises the disease search activity and creates a list of diseases.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +51,12 @@ public class DiseaseSearchActivity extends AppCompatActivity implements
         listView.setOnItemClickListener(this);
     }
 
+    /**
+     * Called when the submit button on the search bar is clicked.
+     * Calls the search algorithm and displays the results.
+     * @param s Text entered as the search query.
+     * @return False.
+     */
     @Override
     public boolean onQueryTextSubmit(String s) {
         Search search = new Search();
@@ -61,6 +70,7 @@ public class DiseaseSearchActivity extends AppCompatActivity implements
             noResult.setText("");
         }
 
+        // Updates list of diseases
         Disease[] diseaseArray = resultArray.toArray(new Disease[0]);
         diseaseAdapter = new DiseaseViewAdapter(diseaseArray, getApplicationContext());
         listView.setAdapter(diseaseAdapter);
@@ -68,12 +78,19 @@ public class DiseaseSearchActivity extends AppCompatActivity implements
         return false;
     }
 
+    /**
+     * Necessary function to implement the search bar.
+     * @param s Text entered in the search bar.
+     * @return False.
+     */
     @Override
-    public boolean onQueryTextChange(String s) {
+    public boolean onQueryTextChange(String s) { return false; }
 
-        return false;
-    }
-
+    /**
+     * Called when the close button is clicked on the search bar.
+     * Resets the list of diseases to contain all the diseases.
+     * @return False.
+     */
     @Override
     public boolean onClose() {
         diseaseAdapter = new DiseaseViewAdapter(diseases, getApplicationContext());
@@ -87,6 +104,13 @@ public class DiseaseSearchActivity extends AppCompatActivity implements
         return false;
     }
 
+    /**
+     * Called when a disease in the list is clicked.
+     * Opens the disease activity for the selected disease.
+     * @param parent AdapterView of the list.
+     * @param view Current view.
+     * @param position Index of the item selected in the list.
+     */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent openDiseaseIntent = new Intent(getApplicationContext(), DiseaseActivity.class);
@@ -94,6 +118,10 @@ public class DiseaseSearchActivity extends AppCompatActivity implements
         startActivity(openDiseaseIntent);
     }
 
+    /**
+     * Used to open the main activity to return the user to the home page.
+     * @param view Current View.
+     */
     public void openMain(View view) {
         Intent openMainIntent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(openMainIntent);

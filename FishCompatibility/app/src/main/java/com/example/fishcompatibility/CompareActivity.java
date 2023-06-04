@@ -14,13 +14,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class CompareActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class CompareActivity extends AppCompatActivity
+        implements AdapterView.OnItemSelectedListener {
     private Fish[] fishes;
     private ArrayAdapter<String> arrayAdapterA;
     private Fish fishA;
     private Fish fishB;
 
-
+    /**
+     * Initialising the compare activity.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,14 +55,23 @@ public class CompareActivity extends AppCompatActivity implements AdapterView.On
         spinnerB.setAdapter(arrayAdapterB);
     }
 
+    /**
+     * What happens when an item from a dropdown menu is selected - overview of selected fish is
+     * displayed.
+     * @param adapterView AdapterView of the dropdown menu an item has been selected from.
+     * @param view View of the current activity.
+     * @param i Index of the item selected.
+     */
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         TextView textView = findViewById(R.id.compatibleText);
         textView.setText("");
 
+        // Checks which dropdown menu has been used
         if (adapterView.getAdapter() == arrayAdapterA) {
             fishA = fishes[i];
 
+            // Displaying fragment of the selected fish
             FishFragment fragmentA = (FishFragment) getSupportFragmentManager()
                     .findFragmentByTag("fishAFragment");
 
@@ -77,6 +89,7 @@ public class CompareActivity extends AppCompatActivity implements AdapterView.On
         } else {
             fishB = fishes[i];
 
+            // Displaying fragment of selected fish
             FishFragment fragmentB = (FishFragment) getSupportFragmentManager()
                     .findFragmentByTag("fishBFragment");
 
@@ -94,16 +107,25 @@ public class CompareActivity extends AppCompatActivity implements AdapterView.On
         }
     }
 
+    /**
+     * Necessary method to implement OnItemSelectedListener.
+     */
     @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
+    public void onNothingSelected(AdapterView<?> adapterView) {}
 
-    }
-
+    /**
+     * Used to open the main activity to return the user to the home page.
+     * @param view Current View.
+     */
     public void openMain(View view) {
         Intent openMainIntent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(openMainIntent);
     }
 
+    /**
+     * Checks if two fish selected are compatible or not and informs the user with a text view.
+     * @param view Current View.
+     */
     public void compareFish(View view) {
         Compatibility comp = fishA.areFishCompatible(fishB);
         boolean isCompatible = comp.getIsComp();

@@ -16,11 +16,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FishFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class FishFragment extends Fragment implements View.OnClickListener {
 
     // the fragment initialization parameters
@@ -32,6 +27,7 @@ public class FishFragment extends Fragment implements View.OnClickListener {
     private TextView mCounterText;
     private TextView mPopText;
 
+    // Getter
     public Fish getShownFish() {
         return mFish;
     }
@@ -41,22 +37,8 @@ public class FishFragment extends Fragment implements View.OnClickListener {
     }
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param fish fish that needs to be displayed.
-     * @return A new instance of fragment FishFragment.
+     * Initialises fish fragment.
      */
-
-    public static FishFragment newInstance(Fish fish, boolean isTank) {
-        FishFragment fragment = new FishFragment();
-        Bundle args = new Bundle();
-        args.putParcelable(ARG_FISH, fish);
-        args.putBoolean(ARG_IS_TANK, isTank);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +48,15 @@ public class FishFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    /**
+     * Creates a view for the fragment.
+     * @param inflater The LayoutInflater object that can be used to inflate
+     * any views in the fragment,
+     * @param container If non-null, this is the parent view that the fragment's
+     * UI should be attached to. The fragment should not add the view itself,
+     * but this can be used to generate the LayoutParams of the view.
+     * @return View of this fragment.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -87,6 +78,7 @@ public class FishFragment extends Fragment implements View.OnClickListener {
             image.setImageDrawable(drawable);
         }
 
+        // If fragment is being created to be used in the virtual tank
         if (mIsTank) {
             LinearLayout counterLayout = (LinearLayout) inflatedView
                     .findViewById(R.id.counterLayout);
@@ -107,10 +99,15 @@ public class FishFragment extends Fragment implements View.OnClickListener {
         return inflatedView;
     }
 
+    /**
+     * When an item on the fragment is clicked.
+     * @param view View of the fragment.
+     */
     @Override
     public void onClick(View view) {
         mPopText.setVisibility(View.INVISIBLE);
 
+        // If either the plus or minus buttons are clicked
         switch (view.getId()) {
             case R.id.plusButton:
                 mCounter++;
@@ -135,7 +132,7 @@ public class FishFragment extends Fragment implements View.OnClickListener {
     }
 
     /**
-     *  Checks if counter is within the population range
+     *  Checks if counter is within the population range.
      */
     private void checkPopulation() {
         if (mCounter != 0 && mCounter < mFish.getMinPop()) {

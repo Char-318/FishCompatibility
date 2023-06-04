@@ -22,7 +22,6 @@ import java.util.Collections;
  public class TankActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
      private final ArrayList<Fish> tankFish = new ArrayList<>();
      private final ArrayList<Integer> notCompTextIds = new ArrayList<>();
-     private final ArrayList<Integer> notCompParamIds = new ArrayList<>();
      private int paramId = -1;
      private final ArrayList<Integer> fragIds = new ArrayList<>();
      private Fish[] fishes;
@@ -39,6 +38,9 @@ import java.util.Collections;
      private int minCurr;
      private boolean paramsChecked = false;
 
+     /**
+      * Initialises the virtual tank activity and creates the dropdown menus.
+      */
      @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,12 +62,20 @@ import java.util.Collections;
             fishNames[i + 1] = fishName;
         }
 
+        // Creating dropdown menus
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, fishNames);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinner.setAdapter(arrayAdapter);
     }
 
+     /**
+      * What happens when an item from the dropdown menu is selected - overview of selected fish is
+      * displayed, added to the virtual tank and the fish are compared.
+      * @param adapterView AdapterView of the dropdown menu an item has been selected from.
+      * @param view View of the current activity.
+      * @param i Index of the item selected.
+      */
      @Override
      public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
          if (i != 0) {
@@ -73,6 +83,7 @@ import java.util.Collections;
              TextView isCompatText = (TextView) findViewById(R.id.fishIsCompat);
              Fish selectedFish = fishes[i - 1];
 
+             // If virtual tank already contains the selected fish
              if (tankFish.contains(fishes[i - 1])) {
                  fishAddedText.setVisibility(View.VISIBLE);
              } else {
@@ -81,18 +92,14 @@ import java.util.Collections;
                  isCompatText.setVisibility(View.INVISIBLE);
                  LinearLayout linearLayout = findViewById(R.id.linearLayout);
 
-                 // Removing all TextViews that say which parameters aren't compatible
-                 for (int textId : notCompParamIds) {
-                     TextView notCompText = (TextView) linearLayout.findViewById(textId);
-                     linearLayout.removeView(notCompText);
-                 }
-
+                 // Removing water parameters
                  if (paramId != -1) {
                      TextView paramsTextView = (TextView) linearLayout.findViewById(paramId);
                      linearLayout.removeView(paramsTextView);
                      paramId = -1;
                  }
 
+                 // Creating the fragment
                  FishFragment fragment = (FishFragment) getSupportFragmentManager()
                          .findFragmentByTag("fishFragment");
 
@@ -105,6 +112,7 @@ import java.util.Collections;
                  bundle.putBoolean("isTank", true);
                  fragment.setArguments(bundle);
 
+                 // Displaying the fragment
                  listLayout = findViewById(R.id.fragmentLayout);
                  LinearLayout fragLayout = new LinearLayout(this);
                  int fragId = View.generateViewId();
@@ -116,6 +124,7 @@ import java.util.Collections;
                  FragmentTransaction transaction = manager.beginTransaction();
                  transaction.replace(fragId, fragment).commit();
 
+                 // Checking compatibility
                  boolean isCompatible = checkAllFish(selectedFish);
                  paramsChecked = false;
 
@@ -131,20 +140,32 @@ import java.util.Collections;
          }
      }
 
+     /**
+      * Necessary method to implement OnItemSelectedListener.
+      */
      @Override
-     public void onNothingSelected(AdapterView<?> adapterView) {
+     public void onNothingSelected(AdapterView<?> adapterView) {}
 
-     }
-
+     /**
+      * Used to open the main activity to return the user to the home page.
+      * @param view Current View.
+      */
      public void openMain(View view) {
          Intent openMainIntent = new Intent(getApplicationContext(), MainActivity.class);
          startActivity(openMainIntent);
      }
 
+     /**
+      * Removes a fish from the virtual tank by removing the fragment from the linear layout and
+      * removing it from the list of fish.
+      * @param fragmentManager Fragment manager containing the list of fragments in the virtual tank
+      * @param id ID of the fragment to be removed
+      */
      public void removeFragment(FragmentManager fragmentManager, int id) {
          TextView isCompatText = (TextView) findViewById(R.id.fishIsCompat);
          isCompatText.setVisibility(View.INVISIBLE);
 
+         // Removing fragment from list
          Fragment fragment = fragmentManager.findFragmentById(id);
          FishFragment fishFrag = (FishFragment) fragment;
          Fish fish = fishFrag.getShownFish();
@@ -159,12 +180,7 @@ import java.util.Collections;
              listLayout.removeView(notCompText);
          }
 
-         // Removing all TextViews that say which parameters aren't compatible
-         for (int textId : notCompParamIds) {
-             TextView notCompText = (TextView) linearLayout.findViewById(textId);
-             linearLayout.removeView(notCompText);
-         }
-
+         // Removing water parameters
          if (paramId != -1) {
              TextView paramsTextView = (TextView) linearLayout.findViewById(paramId);
              linearLayout.removeView(paramsTextView);
@@ -172,7 +188,6 @@ import java.util.Collections;
          }
 
          notCompTextIds.clear();
-         notCompParamIds.clear();
          boolean isCompatible = true;
 
          // Checks if all remaining fish are compatible
@@ -191,6 +206,9 @@ import java.util.Collections;
          }
      }
 
+     /**
+      * Removes all fish from the virtual tank by removing all fragments and text views.
+      */
      public void clearList(View view) {
          listLayout = findViewById(R.id.fragmentLayout);
          LinearLayout linearLayout = findViewById(R.id.linearLayout);
@@ -199,13 +217,7 @@ import java.util.Collections;
          notCompTextIds.clear();
          fragIds.clear();
 
-         // Removing all TextViews that say which parameters aren't compatible
-         for (int textId : notCompParamIds) {
-             TextView notCompText = (TextView) linearLayout.findViewById(textId);
-             linearLayout.removeView(notCompText);
-         }
-         notCompParamIds.clear();
-
+         // Removing water parameters
          if (paramId != -1) {
              TextView paramsTextView = (TextView) linearLayout.findViewById(paramId);
              linearLayout.removeView(paramsTextView);
@@ -218,6 +230,11 @@ import java.util.Collections;
          isCompatText.setVisibility(View.INVISIBLE);
      }
 
+     /**
+      * Calls comparison algorithm on every fish in the virtual tank
+      * @param selectedFish Fish that will be compared to all other fish.
+      * @return True if all fish are compatible, false if not.
+      */
      public boolean checkAllFish(Fish selectedFish) {
          boolean isCompatible = true;
 
@@ -279,6 +296,7 @@ import java.util.Collections;
 
              Compatibility comp = selectedFish.areFishCompatible(fishB);
 
+             // If fish are incompatible display error messages
              if (!comp.getIsComp()) {
                  isCompatible = false;
 
@@ -298,6 +316,13 @@ import java.util.Collections;
          return isCompatible;
      }
 
+     /**
+      * Create text views to contain the error messages.
+      * @param fish Fish that is incompatible - message should be displayed
+      *             after this fish's fragment.
+      * @param position Position in the layout where the text view should be added.
+      * @param reason String containing why the fish are incompatible.
+      */
      private void createNotCompText(Fish fish, int position, String reason) {
          TextView notCompText = new TextView(this);
          int textId = View.generateViewId();
@@ -309,6 +334,10 @@ import java.util.Collections;
          listLayout.addView(notCompText, position);
      }
 
+     /**
+      * Creating a text view that will display the possible water
+      * parameters the virtual tank can have.
+      */
      private void createParamsText() {
          LinearLayout linearLayout = findViewById(R.id.linearLayout);
          TextView isCompatText = (TextView) findViewById(R.id.fishIsCompat);
@@ -371,6 +400,7 @@ import java.util.Collections;
              }
          }
 
+         // Displaying the text view
          TextView paramsTextView = new TextView(this);
          paramId = View.generateViewId();
          paramsTextView.setId(paramId);

@@ -41,6 +41,42 @@ public class Fish implements Parcelable {
     private boolean territorial;
     private boolean fast;
 
+    /**
+     * Constructor for the fish object.
+     * @param pName Name of the fish.
+     * @param pSciName Scientific name of the fish.
+     * @param pVore Whether the fish is a herbivore, omnivore or carnivore.
+     * @param pImageUrl Name of the image of the fish in the resource file.
+     * @param pAliases List of any aliases the fish has.
+     * @param pFoodType List of the types of food the fish eats.
+     * @param pSubstrate List of substrates the fish can have.
+     * @param pMinCurr Minimum water current the fish can have. 0 - no water current, 1 - weak water
+     *                 current, 2 - medium water current, 3 - strong water current.
+     * @param pMaxCurr Maximum water current the fish can have. Same key as above.
+     * @param pMinSwimLvl Minimum level in the tank the fish will swim at. 0 - bottom of the tank,
+     *                    1 - middle of the tank, 2 - top of the tank.
+     * @param pMaxSwimLvl Maximum level in the tank the fish will swim at. Same key as above.
+     * @param pMinPop Minimum amount of fish that can be kept together.
+     * @param pMaxPop Maximum amount of fish that can be kept together. 0 if there is no maximum.
+     * @param pMinTemp Minimum temperature of the water in degrees Celsius.
+     * @param pMaxTemp Maximum temperature of the water in degrees Celsius.
+     * @param pMinAcidity Minimum acidity level of the water in pH.
+     * @param pMaxAcidity Maximum acidity level of the water in pH.
+     * @param pMinGenHard Minimum general hardness of the water in dGH.
+     * @param pMaxGenHard Maximum general hardness of the water in dGH.
+     * @param pMinCarbHard Minimum carbonate hardness of the water in dKH.
+     * @param pMaxCarbHard Maximum carbonate hardness of the water in dKH.
+     * @param pSize Average size of the fish in cm.
+     * @param pEdibleSize The maximum size this fish can eat in cm. Used to checks if this fish will be
+     *                    able to eat other fish in the tank.
+     * @param pLifeExp Average life expectancy of the fish in years.
+     * @param pFinNipper True if the fish is likely to nip long fins, false if not.
+     * @param pLongFins True if the fish has long fins, false if not.
+     * @param pAggressive True if the fish is likely to be aggressive, false if not.
+     * @param pHardy True if the fish can handle aggressive fish, false if not.
+     * @param pTerritorial True if the fish is likely to get territorial, false if not.
+     * @param pFast True if the fish is a fast swimmer, false if not.
+     */
     public Fish(String pName, String pSciName, String pVore, String pImageUrl, String[] pAliases,
                 String[] pFoodType, String[] pSubstrate, int pMinCurr, int pMaxCurr,
                 int pMinSwimLvl, int pMaxSwimLvl, int pMinPop, int pMaxPop, double pMinTemp,
@@ -113,11 +149,15 @@ public class Fish implements Parcelable {
     public boolean isTerritorial() { return territorial; }
     public boolean isFast() { return fast; }
 
+    /**
+     * Function required to make this object parcelable.
+     */
     @Override
-    public int describeContents() {
-        return 0;
-    }
+    public int describeContents() { return 0; }
 
+    /**
+     * Function to write the object to a parcel so it can be sent between activities.
+     */
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.name);
@@ -152,39 +192,10 @@ public class Fish implements Parcelable {
         dest.writeByte(this.fast ? (byte) 1 : (byte) 0);
     }
 
-    public void readFromParcel(Parcel source) {
-        this.name = source.readString();
-        this.sciName = source.readString();
-        this.vore = source.readString();
-        this.imageUrl = source.readString();
-        this.aliases = source.createStringArray();
-        this.foodType = source.createStringArray();
-        this.substrate = source.createStringArray();
-        this.minCurr = source.readInt();
-        this.maxCurr = source.readInt();
-        this.minSwimLvl = source.readInt();
-        this.maxSwimLvl = source.readInt();
-        this.minPop = source.readInt();
-        this.maxPop = source.readInt();
-        this.minTemp = source.readDouble();
-        this.maxTemp = source.readDouble();
-        this.minAcidity = source.readDouble();
-        this.maxAcidity = source.readDouble();
-        this.minGenHard = source.readDouble();
-        this.maxGenHard = source.readDouble();
-        this.minCarbHard = source.readDouble();
-        this.maxCarbHard = source.readDouble();
-        this.size = source.readDouble();
-        this.edibleSize = source.readDouble();
-        this.lifeExp = source.readDouble();
-        this.finNipper = source.readByte() != 0;
-        this.longFins = source.readByte() != 0;
-        this.aggressive = source.readByte() != 0;
-        this.hardy = source.readByte() != 0;
-        this.territorial = source.readByte() != 0;
-        this.fast = source.readByte() != 0;
-    }
-
+    /**
+     * Creating a fish object from the parcel.
+     * @param in Parcel of the object.
+     */
     protected Fish(Parcel in) {
         this.name = in.readString();
         this.sciName = in.readString();
@@ -230,6 +241,12 @@ public class Fish implements Parcelable {
         }
     };
 
+    /**
+     * Checks if two fish are compatible with each other.
+     * @param fishB Fish to be compared to.
+     * @return ZCompatibility object containing whether they are compatible or not and a reason for
+     *         them not being compatible if they aren't.
+     */
     public Compatibility areFishCompatible(Fish fishB) {
         // If two fish are the same, check if more than one can be kept together
         Compatibility comp;
